@@ -1,0 +1,492 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,500&display=swap");
+* {
+  font-family: "Poppins", sans-serif;
+}
+* svg {
+  width: 30px;
+}
+* li {
+  list-style-type: none;
+}
+* a {
+  text-decoration: none;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #fff;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #737d81;
+  border-radius: 20px;
+  border: 6px solid transparent;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2D225B;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #f6f5f8;
+}
+body .container {
+  display: grid;
+  grid-template-columns: 100px auto;
+  height: 100vh;
+  overflow: hidden;
+  background: #1F1C2D;
+}
+body .container aside {
+  display: grid;
+  grid-template-rows: 120px auto;
+  overflow-y: auto;
+  min-height: 100vh;
+}
+body .container aside .logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+body .container aside .logo svg {
+  width: 90px;
+}
+body .container aside ul {
+  margin: 0;
+  padding: 0;
+  gap: 6px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+body .container aside ul li a {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  font-weight: 300;
+  flex-direction: column;
+  justify-content: center;
+  gap: 3px;
+}
+body .container aside ul li a svg {
+  width: 22px;
+  stroke: #ababab;
+}
+body .container aside ul li a span {
+  text-transform: capitalize;
+  font-size: 12px;
+  font-weight: 300;
+  color: #ababab;
+}
+body .container aside ul li a svg, body .container aside ul li a span {
+  transition: all 1.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+body .container aside ul li a:hover svg, body .container aside ul li a:focus svg {
+  stroke: #f3f2fa;
+}
+body .container aside ul li a:hover span, body .container aside ul li a:focus span {
+  color: #f3f2fa;
+}
+body .container aside ul li .active svg {
+  stroke: #f3f2fa;
+}
+body .container aside ul li .active span {
+  color: #f3f2fa;
+}
+body .container main {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+body .container main .empty {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 200px;
+  justify-content: center;
+}
+body .container main .empty img {
+  width: 50px;
+}
+body .container main .empty p {
+  margin: 0;
+  padding: 0;
+  color: rgba(31, 28, 45, 0.9);
+}
+@media screen and (max-width: 360px) {
+  body .container main .empty p {
+    font-size: 12px;
+  }
+}
+body .container main .empty .copyCover {
+  display: grid;
+  grid-template-columns: auto 20px;
+  align-items: center;
+  gap: 10px;
+  padding: 3px 10px;
+  justify-content: center;
+  max-width: calc(100% - 20px);
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  background: #B4B3B8;
+  border-radius: 5px;
+  margin-top: 14px;
+}
+body .container main .empty .copyCover p {
+  font-size: 12px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+@media screen and (max-width: 524px) {
+  body .container main .empty .copyCover p {
+    font-size: 10px;
+  }
+}
+body .container main .empty .copyCover svg {
+  width: 18px;
+  border-radius: 4px;
+  padding: 2px;
+  cursor: pointer;
+  transition: all 1.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+  stroke: rgba(31, 28, 45, 0.9);
+}
+body .container main .empty .copyCover svg:hover {
+  background: #2D225B;
+  stroke: #FFF;
+}
+body .container main header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 40px 4% 20px 2%;
+  height: 40px;
+}
+body .container main header div > svg {
+  display: none;
+}
+body .container main header div h3 {
+  font-size: 1.75rem;
+  padding: 0;
+  margin: 0;
+  color: #f3f2fa;
+}
+body .container main header div a {
+  background: rgb(246, 227, 246);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 15px;
+}
+body .container main header div a svg {
+  width: 21px;
+  stroke: #1F1C2D;
+}
+@media screen and (max-width: 789px) {
+  body .container main header div {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  body .container main header div > svg {
+    display: block;
+    width: 60px;
+  }
+}
+@media screen and (max-width: 524px) {
+  body .container main header div {
+    gap: 5px;
+  }
+  body .container main header div h3 {
+    font-size: 1.3rem;
+  }
+  body .container main header div > svg {
+    width: 40px;
+  }
+}
+@media screen and (max-width: 360px) {
+  body .container main header div h3 {
+    font-size: 1.2rem;
+  }
+  body .container main header div > svg {
+    width: 30px;
+  }
+  body .container main header div a span {
+    display: none;
+  }
+}
+@media screen and (max-width: 789px) {
+  body .container main header {
+    padding: 40px 2% 20px 2%;
+  }
+}
+body .container main #content {
+  background: rgb(246, 227, 246);
+  height: calc(100vh - 150px);
+  border-radius: 20px 20px 0 0;
+  padding: 30px 30px;
+  overflow-y: auto;
+}
+@media screen and (max-width: 980px) {
+  body .container main #content {
+    padding: 30px 10px;
+  }
+}
+@media screen and (max-width: 789px) {
+  body .container main #content {
+    padding: 30px 5px;
+    padding-bottom: 100px;
+  }
+}
+body .container main #content .content {
+  height: calc(100vh - 150px);
+  display: grid;
+  grid-template-columns: auto 500px;
+  overflow-y: auto;
+}
+@media screen and (max-width: 1300px) {
+  body .container main #content .content {
+    grid-template-columns: auto 450px;
+  }
+}
+@media screen and (max-width: 1200px) {
+  body .container main #content .content {
+    display: flex;
+    flex-direction: column;
+  }
+}
+body .container main #content .content .amountRemain {
+  margin-bottom: 30px;
+}
+body .container main #content .content #contentLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+body .container main #content .content #contentLeft #wallets {
+  margin-bottom: 20px;
+}
+body .container main #content .content #contentLeft #wallets h4 {
+  font-size: 5.4rem;
+  margin: 0;
+  margin-left: 20px;
+}
+@media screen and (max-width: 1200px) {
+  body .container main #content .content #contentLeft #wallets {
+    margin-left: 5px;
+  }
+}
+@media screen and (max-width: 1200px) {
+  body .container main #content .content #contentLeft #plans {
+    display: none;
+  }
+}
+body .container main #content .content #contentLeft #plans ul {
+  margin: 0;
+  padding: 0;
+}
+body .container main #content .content #contentLeft #plans ul .card {
+  display: inline-block;
+  width: 240px;
+  background: #1F1C2D;
+  overflow: hidden;
+  border-radius: 6px;
+  margin: 5px 10px;
+}
+body .container main #content .content #contentLeft #plans ul .card * {
+  color: #B4B3B8;
+}
+body .container main #content .content #contentLeft #plans ul .card .cardHeader {
+  padding: 10px 20px;
+  padding-bottom: 10px;
+  margin-top: 10px;
+  background: white;
+  border-radius: 16px 16px 0 0;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  justify-items: flex-start;
+}
+body .container main #content .content #contentLeft #plans ul .card .cardHeader span {
+  color: #2D225B;
+  font-size: 14px;
+  font-weight: 400;
+}
+body .container main #content .content #contentLeft #plans ul .card .cardHeader img {
+  height: 25px;
+}
+body .container main #content .content #contentLeft #plans ul .card .cardBody {
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  justify-content: center;
+  align-items: center;
+  height: 140px;
+  padding: 20px 16px;
+}
+body .container main #content .content #contentLeft #plans ul .card .cardBody p {
+  font-size: 15px;
+  text-align: center;
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+}
+body .container main #content .content #contentLeft #plans ul .card .cardBody small {
+  font-size: 24px;
+  font-weight: 700;
+}
+body .container main #content .content #contentLeft #plans ul .card .cardBody strong {
+  background: #2D225B;
+  font-weight: 400;
+  border-radius: 3px;
+  padding: 6px 20px;
+  font-size: 14px;
+  margin-top: 10px;
+  max-width: -webkit-fit-content;
+  max-width: -moz-fit-content;
+  max-width: fit-content;
+  color: #B4B3B8;
+}
+body .container main #content .content #contentLeft #plans ul .card .cardFooter {
+  border-top: 3px solid #2D225B;
+}
+body .container main #content .content #contentLeft #plans ul .card .cardFooter a {
+  padding: 10px;
+  display: block;
+  text-align: center;
+  transition: all 1.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+body .container main #content .content #contentLeft #plans ul .card .cardFooter a:hover {
+  background: white;
+  color: #1F1C2D;
+}
+body .container main #content .content .contentRight {
+  border-radius: 10px;
+  margin: 0;
+  padding: 0;
+}
+body .container main #content .content .contentRight li {
+  overflow: hidden;
+  background: #1F1C2D;
+  border-radius: 25px 25px 0 0;
+  padding-bottom: 35px;
+  margin-top: -30px;
+}
+body .container main #content .content .contentRight li:first-child {
+  margin-top: 0px;
+}
+body .container main #content .content .contentRight li:last-child {
+  border-radius: 25px 25px 25px 25px;
+  padding-bottom: 5px;
+}
+body .container main #content .content .contentRight li .cardHead {
+  display: flex;
+  height: 70px;
+  padding: 0 20px;
+  gap: 14px;
+  align-items: center;
+  cursor: pointer;
+}
+body .container main #content .content .contentRight li .cardHead svg {
+  background-color: rgba(45, 34, 91, 0.9);
+  color: #B4B3B8;
+  width: 20px;
+  padding: 10px 10px;
+  border-radius: 10px;
+}
+body .container main #content .content .contentRight li .cardHead span {
+  color: #B4B3B8;
+}
+body .container main #content .content .contentRight li:nth-child(even) {
+  background: #2D225B;
+}
+body .container main #content .content .contentRight li:nth-child(even) .cardHead svg {
+  background-color: rgba(31, 28, 45, 0.9);
+}
+body .container main #content .content .contentRight li .cardBody {
+  padding: 10px 20px;
+  display: none;
+}
+body .container main #content .content .contentRight li:hover {
+  background: #8e562e;
+}
+body .container main #content .content .contentRight .active .cardBody {
+  display: block;
+}
+@media screen and (max-width: 789px) {
+  body .container {
+    display: flex;
+    flex-direction: column-reverse;
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+  }
+  body .container aside {
+    min-height: -webkit-fit-content;
+    min-height: -moz-fit-content;
+    min-height: fit-content;
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+  body .container aside .logo {
+    display: none;
+  }
+  body .container aside ul {
+    height: 50px;
+    padding: 10px 22px;
+    flex-direction: row;
+    background: #1F1C2D;
+    align-items: center;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    gap: 1px;
+    border-radius: 50px;
+    margin: 14px 0;
+    box-shadow: 0px 0px 10px 1px rgba(45, 34, 91, 0.9);
+  }
+  body .container aside ul li {
+    width: 60px;
+  }
+  body .container aside ul li a svg {
+    width: 24px;
+  }
+  body .container aside ul li a span {
+    display: none;
+  }
+  body .container aside ul li:last-child {
+    display: none;
+  }
+}
+@media screen and (max-width: 789px) and (max-width: 360px) {
+  body .container aside {
+    background: green;
+    width: 100%;
+  }
+  body .container aside ul {
+    width: 100%;
+    border-radius: 0;
+    margin: 0 0;
+    padding: 10px 0px;
+    box-shadow: none;
+  }
+  body .container aside ul li {
+    width: 20%;
+  }
+  body .container aside ul li a {
+    padding: 10px 0px;
+  }
+}/*# sourceMappingURL=main.css.map */

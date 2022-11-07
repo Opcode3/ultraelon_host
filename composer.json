@@ -1,0 +1,17 @@
+{
+    "name": "ultraelon/app",
+    "description": "This app is developed for the ultraelon investment platform",
+    "autoload": {
+        "psr-4": {
+            "app\\": "server/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Joseph Emmanuel Emeka",
+            "email": "opcode3@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}

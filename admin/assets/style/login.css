@@ -1,0 +1,121 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+body {
+  padding: 0;
+  margin: 0;
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+svg {
+  width: 20px;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+ul li {
+  list-style-type: none;
+}
+
+body main #loginFormFrame {
+  max-width: calc(100% - 60px);
+  width: 450px;
+  padding: 40px 20px 30px 20px;
+  background: #203E7A;
+  margin: 12vh auto 0 auto;
+}
+body main #loginFormFrame .imgHolder {
+  width: 200px;
+}
+body main #loginFormFrame .imgHolder img {
+  width: 100%;
+}
+body main #loginFormFrame h2 {
+  margin: 0;
+  margin-bottom: 25px;
+  color: rgb(245, 253, 227);
+}
+body main #loginFormFrame form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+body main #loginFormFrame form .formControl {
+  display: flex;
+  justify-content: center;
+}
+body main #loginFormFrame form .formControl input {
+  padding: 10px 16px;
+  width: calc(100% - 32px);
+  outline: none;
+  border: none;
+  background: #161719;
+  font-weight: 300;
+  color: rgb(245, 253, 227);
+  font-size: 20px;
+}
+body main #loginFormFrame form .formControl input:focus {
+  background: rgba(22, 23, 25, 0.8);
+}
+@media screen and (max-width: 480px) {
+  body main #loginFormFrame form .formControl input {
+    font-size: 18px;
+    padding: 10px 14px;
+    width: calc(100% - 28px);
+  }
+}
+@media screen and (max-width: 780px) {
+  body main #loginFormFrame form .formControl input {
+    font-size: 16px;
+    padding: 10px 10px;
+    width: calc(100% - 20px);
+  }
+}
+body main #loginFormFrame form .formControl button {
+  padding: 10px 20px;
+  outline: none;
+  border: none;
+  width: 100%;
+  margin-top: 10px;
+  border-radius: 4px;
+  color: #203E7A;
+  font-weight: 600;
+  background: #E04034;
+  cursor: pointer;
+  transition: all 1.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+  font-size: 20px;
+}
+body main #loginFormFrame form .formControl button:hover {
+  background: rbga(#E04034, 0.9);
+  box-shadow: 0 0 0px 3px rgba(224, 64, 52, 0.7), 0 0 0px 6px rgba(224, 64, 52, 0.4), 0 0 0px 9px rgba(224, 64, 52, 0.1);
+}
+body main footer {
+  padding-top: 80px;
+  text-align: center;
+  color: #203D79;
+  font-weight: 700;
+  font-size: 20px;
+}
+@media screen and (max-width: 780px) {
+  body main footer {
+    color: rgb(245, 253, 227);
+  }
+}
+body main footer a {
+  color: #E04034;
+}
+@media screen and (max-width: 780px) {
+  body {
+    background: #203E7A;
+  }
+  body main #loginFormFrame {
+    max-width: calc(100% - 20px);
+    padding: 30px 10px 20px 10px;
+    margin: 6vh auto 0 auto;
+  }
+}/*# sourceMappingURL=login.css.map */

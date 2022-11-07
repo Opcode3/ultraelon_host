@@ -1,0 +1,91 @@
+@import "./variable.scss";
+@import "./mixins.scss";
+
+body{
+    main{
+
+        #loginFormFrame{
+            max-width: calc(100% - 60px);
+            width: 450px;
+            padding: 40px 20px 30px 20px;
+            background: #203E7A;
+            margin: 12vh auto 0 auto;
+            .imgHolder{
+                width: 200px;
+                img{width: 100%;}
+            }
+    
+            h2{ 
+                margin: 0; margin-bottom: 25px; 
+                color: $primaryWhiteColor; 
+
+            }
+    
+    
+            form{
+                display: flex;
+                flex-direction: column;
+                gap:14px;
+                .formControl{
+                    display: flex;
+                    justify-content: center;
+    
+                    input{
+                        @include input;
+                        color: $primaryWhiteColor;
+                        font-size: 20px;
+
+                        @include Phone(){
+                            font-size: 18px;
+                            padding: 10px 14px;
+                            width: calc(100% - 28px);
+                        }
+
+                        @include Mobile(){
+                            font-size: 16px;
+                            padding: 10px 10px;
+                            width: calc(100% - 20px);
+                        }
+                    }
+                    button{
+                        @include btn;
+                        font-size: 20px;
+
+                    }
+                }
+            }
+        }
+
+        footer{
+            // background: gray;
+            padding-top:80px;
+            text-align: center;
+            color: #203D79;
+            font-weight: 700;
+            font-size: 20px;
+            @include Mobile(){
+                color: $primaryWhiteColor;
+            }
+            a{
+                color: #E04034;
+
+            }
+        }
+        
+    }
+
+    @include Mobile(){
+        background: #203E7A;
+        main{
+
+            #loginFormFrame{
+                max-width: calc(100% - 20px);
+                padding: 30px 10px 20px 10px;
+                // background: red;
+                margin: 6vh auto 0 auto;
+            }
+        }
+    }
+}
+
+

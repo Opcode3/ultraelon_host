@@ -1,0 +1,247 @@
+@import "./variable.scss";
+@import "./mixins.scss";
+
+
+.container{
+    background: #FAFAFB;
+    display: grid;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    grid-template-columns: 272px auto;
+    
+
+    @include Tablet(){
+        grid-template-columns: 1fr;
+    }
+
+    aside{
+        background: #E7E9F8;
+        height: 100vh;
+        overflow-y: auto;
+
+        @include Tablet(){
+            position: fixed;
+            background: rgba(#131418, 0.4);
+            width: 100%;
+            z-index: 10;
+            display: none;
+        }
+    
+        #asideHolder{
+
+            @include Tablet(){
+                width: 270px;
+                height: 100%;
+                background: #E7E9F8;
+            }
+
+            .logo{
+                height: 120px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                span{ 
+                    display: none;
+                }
+
+                img{ width: 154px;}
+
+                @include Tablet(){
+                    justify-content: space-between;
+                    padding: 0 15px;
+                    // background: green;
+                    span{
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        width: 36px; height: 36px;
+                        border-radius: 50%;
+                        background: #98A2E3;
+
+                        svg{
+                            width: 19px; color: #fff;
+                        }
+                    }
+
+
+                }
+            }
+            
+
+            nav, .goOff{
+                ul{
+                    display: grid;
+                    gap: 6px;
+                    li{
+
+                        a{
+                            
+                            display: flex; gap: 10px;
+                            justify-content: flex-start;
+                            align-items: center;
+                            padding: 15px 14px;
+
+                            svg,span{
+                                color:#A1A4B6;
+                                font-size: 18px;
+                                font-weight: 500;
+                                text-transform: capitalize;
+                            }
+                        }
+
+                        .active{
+                            background: white;
+                            span,svg{
+                                font-weight: 600;
+                                color: #0F27BD;
+                            }
+                        }
+                    }
+                }
+            }
+
+            nav{
+                min-height: calc(100vh - 240px);
+
+                &>span{
+                    text-transform: uppercase;
+                    font-weight: 600;
+                    color: #0F27BD;
+                    padding-bottom: 25px;
+                    padding-left: 20px;
+                    display: block;
+                }
+            }
+
+            .goOff{
+                height: fit-content;
+
+                ul{
+                    li{
+                        a{
+                            span, svg{
+                                color: #D41111;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
+    main{ 
+        // background: red;
+        height: 100vh;
+        max-width: 100%;
+        overflow-y: auto;
+
+        nav{
+            display: none;
+            justify-content: space-between;
+            padding: 20px 4%;
+            // background: green;
+            align-items: center;
+
+            img{ width: 154px;}
+
+            button{
+                border: none;
+                outline: none;
+                width: 50px;
+                height: 50px;
+                background: transparent;
+                border: 0.916667px solid #0F27BD;
+                border-radius: 12.8333px;
+                svg{
+                    width: 30px;
+                }
+            }
+        }
+
+        @include Tablet(){
+            nav{
+                display: flex;
+            }
+        }
+
+        menu{
+            display: flex;
+            justify-content: space-between;
+            margin: inherit 0; padding: 20px 4%;
+            #title{
+                // background: green; 
+                span{
+                    font-weight: 500;
+                    font-size: 20px;
+                    color: #131418;
+                }
+                h2{ 
+                    margin: 0;
+                    font-weight: 700;
+                    font-size: 28px;
+                    color: #131418;
+                }
+            }
+
+            #profiling{
+                display: flex; align-items: center;
+                gap:20px; //background: green;
+
+                @include Mobile(){
+                    display: none;
+                }
+                span{
+                    width: 60px; height: 60px;
+                    background: #E7E9F8;
+                    border-radius: 60px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    svg{ width: 30px; color: #717591;}
+                }
+            }
+        }
+
+        .mainContainer{
+            min-height: 100vh;
+            // background: white;
+
+            #homeShow{
+                font-size: 3.5rem; padding-top: 100px; width: 70%; margin: 0 auto;
+                font-weight: 500; text-align: center; color: #252730;
+
+                @include Mobile(){
+                    font-size: 1.5rem;
+                }
+            }
+        }
+    }
+}
+
+
+
+
+::-webkit-scrollbar{
+    width: 5px;
+  }
+  
+  ::-webkit-scrollbar-track{
+    background: transparent;
+  }
+  
+  ::-webkit-scrollbar-thumb{
+    background: #737d81;
+    border-radius: 20px;
+    border: 6px solid transparent;
+    background-clip: content-box;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover{
+    background: #003A7D;
+    // background: #a8bbbf;
+  }
+  

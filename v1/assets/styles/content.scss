@@ -1,0 +1,365 @@
+@import "./variable.scss";
+@import "./mixin";
+#content{
+    .amountRemain{
+        .subTitle{ margin-bottom: 0;}
+        h3{
+            font-size: 5.4rem; margin: 0; padding: 0;
+            color: rgba($primaryBlackColor, 0.9);
+
+            @include mobile(){ font-size: 3.8rem;}
+            @include semiPhone(){ font-size: 3rem;}
+            @include smallPhone(){ font-size: 2rem;}
+        }
+    }
+
+    .pages{
+        margin: 0; padding: 0;
+        // background: green;
+
+        @include phone(){ padding: 0 30px; }
+        @include semiPhone(){ padding: 0 5px; }
+        @include smallPhone(){ padding: 0; }
+
+        .subTitle, .title{
+            display: block; color: rgba($primaryBlackColor, 0.6);
+            margin-top: 25px; font-size: 14px; font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+
+        li{            
+            .cardHead{
+                // background: red; 
+                display: flex; 
+                height: 50px;
+                padding:0 20px 0 10px;
+                gap: 14px;
+                border-radius: 4px;
+                align-items: center;
+                cursor: pointer;
+                background-color: rgba($primaryColor, 0.9);
+                width: fit-content;
+
+                svg{color: #B4B3B8; width: 20px;}
+                span{ color: #B4B3B8;}
+            }
+            .desc{
+                padding: 20px 5px;
+                p{ 
+                    margin: 0; font-size: 1.2rem;
+
+                    @include phone(){
+                        font-size: 1rem;
+                    }
+                }
+            }
+            .cardBody{
+                padding:10px 0;
+                // margin-bottom: 20px;
+
+                #plans{
+                    // @include tablet(){ display: none; }
+                    // background: red;
+                    ul{ 
+                        margin: 0; padding: 0; display: grid; gap: 20px;
+                        grid-template-columns: repeat(4, 1fr); max-width: 1200px;
+                       
+
+                        @include tablet(){ 
+                            grid-template-columns: repeat(3, 1fr);
+                        }
+
+                        @include phone(){ 
+                            gap: 15px;
+                            grid-template-columns: repeat(2, 1fr);
+                        }
+
+                        @include semiPhone(){
+                            width: 80%; grid-template-columns: 1fr; 
+                            margin: 0 auto;
+                        }
+
+                        @include smallPhone(){ width: 100%; }
+                        .card{
+                            width: 100%; max-width: 260px;  background: $primaryBlackColor;
+                            overflow: hidden; border-radius: 6px;
+                            @include semiPhone(){ max-width: 100%;}
+                            *{ color:#B4B3B8;}
+                            .cardHeader{
+                                padding: 10px 20px; padding-bottom: 10px; margin-top: 10px;
+                                background: white; border-radius: 16px 16px 0 0;
+                                span{
+                                    color: $primaryColor;
+                                    font-size: 14px; font-weight: 400;
+                                }
+                                img{ height: 25px;}
+                                display: flex; gap: 6px; align-items: center; 
+                                justify-items: flex-start;
+                            }
+                            .cardBody{
+                                display: flex; flex-direction: column; gap: 0px;
+                                justify-content: center; align-items: center;
+                                p{ 
+                                    font-size: 15px; text-align: center; font-weight: 400; 
+                                    margin: 0; padding: 0;
+                                }
+                                small{ font-size: 24px; font-weight: 700;}
+                                strong{ 
+                                    background: $primaryColor; font-weight: 400; border-radius: 3px; 
+                                    padding: 6px 20px; font-size: 14px; margin-top: 10px;
+                                    max-width: fit-content; color: #B4B3B8;
+                                }
+                                height: 140px;
+                                padding: 20px 16px;
+                            }
+
+                            .cardFooter{
+                                border-top: 3px solid $primaryColor;
+                                a{
+                                    padding: 10px; display: block;
+                                    text-align: center;
+                                    transition: all 1.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+                                    &:hover{
+                                        background: white;
+                                        color: $primaryBlackColor;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .empty{ min-height: 40vh; }
+
+                .transaction{
+                    
+                    .listCover{
+                        display: flex;
+                        flex-direction: column; gap: 15px;
+                        width: 700px; margin: 0; padding: 0;
+                        max-width: 100%;
+                        li{
+                            background: $whiteColor;
+                            // border-top: 1px solid #B4B3B8;
+                            box-shadow: 0px 0px 1px 1px rgba($primaryColor, 0.3);
+                            padding: 10px 15px ;
+                            border-radius: 5px;
+                            display: flex; justify-content: space-between;
+                            cursor: pointer;
+
+                            @include semiPhone(){ padding: 10px 10px; }
+                            @include smallPhone(){ padding: 8px 5px;}
+
+                            div{
+
+                                &:first-child{
+                                    // background: green;
+                                    display: flex; gap: 10px;
+                                    align-items: center;
+                                    .icon{
+                                        width: 50px; height: 50px; background: #F6E3F6;
+                                        display: flex; justify-content: center;
+                                        align-items: center; border-radius: 50%;
+                                        img{width: 70%;}
+                                    }
+
+                                    label{
+                                        color: rgba($primaryBlackColor, 0.9);
+
+                                        h5{ margin: 0; font-size: .94rem;}
+                                        span{font-size: 12px;}
+                                    }
+
+                                    @include smallPhone(){
+                                        gap: 6px;
+                                        .icon{
+                                            width: 40px; height: 40px;
+                                        }
+                                    }
+                                }
+
+                                &:last-child{
+                                    // background: yellow;
+                                    display: flex; flex-direction: column;
+
+                                    span{
+                                        font-size: 1.4rem; font-weight: 600;
+                                        color: rgba($primaryBlackColor, 0.9);
+                                    }
+
+                                    label{ 
+                                        font-size: 12px; color: #B4B3B8;
+                                        border-radius: 4px; padding: 2px 6px;
+                                        background: $primaryColor; width: fit-content;
+                                    }
+
+                                    @include smallPhone(){
+                                        span{font-size: 1rem;}
+                                        label{ font-size: 10px; padding: 2px 4px;}
+                                    }
+                                }
+                            }
+
+                            &:hover{
+                                box-shadow: 0px 0px 4px 1px rgba($primaryColor, 0.3);
+                            }
+                        }
+                    }
+                }
+
+                .setting{
+                    // background: red;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    max-width: 1000px;
+                    width:100%;
+                    padding-left: 30px;
+                    gap: 5px;
+
+                    @include tablet(){ padding-left: 0; }
+                    
+                    .title{
+                        font-size: 3rem; margin: 0; //background: green;
+                        width: 100%;
+                        @include mobile(){ font-size: 2.52rem; }
+                        @include semiPhone(){ font-size: 2.1rem; }
+                        @include smallPhone(){ font-size: 1.7rem; }
+                    }
+                    .items{
+                        width: 100%; display: flex;
+                        gap: 14px; flex-direction: column;
+                        .item{
+                            display: grid;
+                            grid-template-columns: 40% 60%;
+                            gap: 10px; align-items: center;
+                            
+                            span{
+                                color: rgba($primaryBlackColor, 0.6);
+                            }
+                            div{ span{ color: rgba($primaryBlackColor, 0.8);}}
+                            input{
+                                width: calc(98% - 30px);
+                                padding: 10px 15px;
+                                font-size: 15px;
+                                font-weight: 300;
+                                color: $primaryColor;
+                                border:none; outline: 0;
+                                // background: rgba($primaryBlackColor, 0.6);
+                            }
+
+                            @include semiPhone(){
+                                display: flex; flex-direction: column; gap: 5px;
+                                align-items: flex-start; //background: green;
+                                .item_value{ width: 99%; margin-left: 1%;}
+                                .item_name{ font-size: 14px;}
+                            }
+
+                        }
+
+                        .subTitle{ margin: 40px 0 5px 0;}
+
+                        @include phone(){ gap: 20px;}
+                        // @include semiPhone(){ gap: 50px;}
+
+                    }
+
+                    button{
+                        background: rgba($primaryBlackColor, 0.9);
+                        border:none; outline: none; border-radius: 20px;
+                        font-size: 1.32rem; max-width: 100%; margin-top: 15px;
+                        color: #F6E3F6; padding: 14px 25px; cursor: pointer;
+                        transition: all 1.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+
+                        @include mobile(){ font-size: 1.12rem; }
+                        @include semiPhone(){ font-size: 1rem; }
+                        @include smallPhone(){ font-size: 0.94rem; }
+
+                        &:hover{
+                            background: rgba($primaryBlackColor, 0.7);
+                        }
+                    }
+                }
+
+                .referral{
+                    // background: green;
+                    max-width: 1200px;
+                    margin: 0 auto;
+                    width: 100%;
+
+                    .table_cover{
+                        display: block;
+                        overflow: hidden;
+                        overflow-x: auto;
+                        border-radius: 6px;
+                        table{
+                            width: 100%; 
+                            border: 10px solid $primaryBlackColor;
+                            border-collapse: collapse; 
+                            
+                            @include phone(){
+                                border: 5px solid $primaryBlackColor;
+                            }
+                            @include semiPhone(){
+                                border: none;
+                            }
+                        
+                            thead{
+                                background: $primaryBlackColor;
+                                th{ 
+                                    height: 40px; padding: 6px 10px; 
+                                    color: #F6E3F6; font-size: 18px;
+                                    @include phone(){
+                                        font-size: 16px;
+                                    }
+                                }//rgba($primaryBlackColor, 0.98);}
+                                
+                            }
+
+                            tbody{
+
+                                tr{
+
+                                    td:first-child{ width: 30px; }
+                                    td:nth-child(2){ min-width: fit-content; }
+                                    td:nth-child(3){ min-width: 175px;}
+                                    td:last-child{ width: 125px;}
+                                    td{ 
+                                        color: rgba($primaryBlackColor, 0.9);
+                                        padding: 6px 10px; 
+                                        height: 40px;
+                                        &:first-child{ font-weight: 600;}
+    
+                                        @include phone(){
+                                            font-size: 14px;
+                                        }
+                                    }
+                                    &:nth-child(odd){ background: rgba($primaryBlackColor, 0.1); }
+
+                                }
+
+                                
+                            }
+
+                            .pending, .paid, .settled{
+                                font-size: 12px; padding: 4px 12px;
+                                background: $primaryColor; text-transform: capitalize;
+                                color:#F6E3F6; border-radius: 5px;
+                            }
+
+                            .paid{ background: rgb(11, 164, 11);}
+                            .settled{ background: rgb(138, 136, 12);}
+                        }
+                    }
+                }
+            }
+
+
+            // &:hover{
+            //     background: rgba(#8E562E, 1);
+            //  }
+        }
+
+    }
+}

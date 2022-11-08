@@ -1,0 +1,58 @@
+<div class="referral">
+    <h2>Referrals</h2>
+    <div class="outCard">
+        <!-- <h3 class="outCardTitle"> Our Investment plans </h3> -->
+
+        <div class="referGroup">
+            <div class="referImage">
+                <img src="./assets/referral.jpg" alt="refer image banner" />
+            </div>
+            <div class="referInfo">
+                <h4 class="outCardTitle">Earn by referring an investor</h4>
+                <p>Share your referral link to earn commissions on every investor that uses your link!</p>
+
+                <label for="copyLink" class="referLink">
+                    <p><?php echo $_SERVER["HTTP_HOST"]."/register.php?a=slugHere"; ?></p>
+                    <span id="copyLink">Copy Link</span>
+                </label>
+
+            </div>
+        </div>
+    </div>
+    <div class="outCard">
+        <h3 class="outCardTitle"> Referred Users </h3>
+        <div class="overflowCard">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Sn</th>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Date Reg.</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- <tr>
+                        <td>1</td>
+                        <td>Opcode3</td>
+                        <td>Opcode3@gmail.com</td>
+                        <td>20-11-2023</td>
+                        <td> <span class="pending">pending</span> </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Kola3547</td>
+                        <td>Kola3@gmail.com</td>
+                        <td>20-11-2023</td>
+                        <td> <span class="pending">pending</span> </td>
+                    </tr> -->
+
+                    <tr>
+                        <td colspan="5"> No investor has used your referral code.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,351 @@
+@import "./variable.scss";
+@import "./mixin";
+
+body{
+    margin: 0; padding: 0;
+    background: #f6f5f8;
+
+    .container{
+        display: grid;
+        grid-template-columns: 100px auto;
+        height:100vh;
+        overflow: hidden;
+        background: $primaryBlackColor;
+
+        
+
+        aside{
+            display: grid; grid-template-rows: 120px auto;
+            overflow-y: auto; min-height: 100vh;
+
+            .logo{
+                // padding-bottom: 20px;
+                display: flex; align-items: center; justify-content: center;
+                svg{ width: 90px;}
+            }
+            ul{ 
+                margin: 0; padding: 0; gap: 6px;
+                display: flex; flex-direction: column; justify-content: center;
+                li{
+                    a{
+                        display: flex; align-items: center; padding: 10px 0; font-weight: 300;
+                        flex-direction: column; justify-content: center; gap: 3px; //background: green; 
+    
+                        svg{ width: 22px; stroke: #ababab;}
+    
+                        span{
+                            text-transform: capitalize; font-size: 12px; width: 80%;
+                            text-align: center;
+                            font-weight: 300; color: #ababab;
+                        }
+
+                        svg, span{ transition: all 1.5s cubic-bezier(0.075, 0.82, 0.165, 1);}
+
+                        &:hover, &:focus{
+                            svg{stroke: $primaryWhiteColor;}
+                            span{ color: $primaryWhiteColor; }
+                        }
+                    }
+
+                    .active{
+                        svg{stroke: $primaryWhiteColor;}
+                        span{ color: $primaryWhiteColor; }
+                    }
+                }
+
+            
+            }
+        }
+
+        main{
+            // background: green; 
+            // overflow-x: hidden; overflow-y: auto;
+            display: flex; flex-direction: column;
+            height: 100vh; 
+
+            .empty{
+                display: flex; align-items: center;
+                flex-direction: column; height: 200px; justify-content: center;
+                img{ width: 50px;}
+                p{
+                    margin: 0; padding: 0; color:  rgba($primaryBlackColor, 0.9);
+                    @include smallPhone(){
+                        font-size: 12px;
+                    }
+                }
+
+                .copyCover{ 
+                    display: grid; grid-template-columns: auto 20px; align-items: center; gap: 10px; padding: 3px 10px;
+                    justify-content: center; max-width: calc(100% - 20px); width: fit-content;
+                    background: #B4B3B8; border-radius: 5px; margin-top: 14px;
+                    p{ 
+                        font-size: 12px; overflow: hidden; white-space: nowrap; 
+                        text-overflow: ellipsis;
+
+                        @include semiPhone(){ font-size: 10px;}
+                    }
+                    svg{
+                        width: 18px; border-radius: 4px; padding: 2px; cursor: pointer;
+                        transition: all 1.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+                        stroke: rgba($primaryBlackColor, 0.9);
+                        // stroke: ;
+                        &:hover{
+                            background: $primaryColor; stroke: #FFF;
+                        }
+                    }
+                }
+            }
+
+            header{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                // padding: 40px 4% 20px 2%;
+                // background: red;
+                height: 120px;
+
+                div{
+                    &>svg{ display: none;}
+                    h3{ font-size: 1.75rem; padding: 0; margin: 0; color: $primaryWhiteColor;}
+
+                    a{
+                        background: rgb(246, 227, 246); display: flex; justify-content: center;
+                        align-items: center; gap: 5px; padding: 8px 12px;
+                        border-radius: 4px; font-size: 15px;
+                        svg{ width: 21px; stroke: $primaryBlackColor;}
+                    }
+
+                    @include phone(){
+                        display: flex; gap: 10px; align-items: center;
+                        &>svg{display: block; width: 60px;}
+                    }
+
+                    @include semiPhone(){
+                        gap: 5px;
+                        h3{ font-size: 1.3rem;}
+                        &>svg{width: 40px;}
+                    }
+
+                    @include smallPhone(){
+                        h3{ font-size: 1.2rem;}
+                        &>svg{width: 30px;}
+                        a{ span{display: none;} }
+                    }
+                }
+
+                @include phone(){
+                    padding: 40px 2% 20px 2%;
+                }
+
+                
+            }
+
+            #content{
+                background: rgb(246, 227, 246);
+                height: calc(100vh - 150px);
+                border-radius: 20px 20px 0 0;
+                padding: 25px 25px;
+                overflow-y: auto;
+                @include mobile(){ padding: 30px 10px; }
+                @include phone(){ 
+                    padding: 30px 5px;
+                    padding-bottom: 100px;
+                 }
+
+                // .content{
+                //     height: calc(100vh - 150px);
+                //     display: grid;
+                //     grid-template-columns: auto 500px;
+                //     overflow-y: auto;
+    
+                //     @include laptop(){
+                //         grid-template-columns: auto 450px;
+                //     }
+    
+                //     @include tablet(){
+                //         display: flex; flex-direction: column;
+                //     }
+    
+    
+                //     .amountRemain{ 
+                //         margin-bottom: 30px; 
+                //         // @include tablet(){ margin-bottom: 0px;}
+                //     }
+    
+                //     #contentLeft{
+                //         display: flex; flex-direction: column; gap: 20px;
+                //         #wallets{ 
+                //             margin-bottom: 20px;
+                //             h4{ font-size: 5.4rem; margin: 0; margin-left: 20px;}
+                //             @include tablet(){ margin-left: 5px; }
+                //         }
+                //         #plans{
+                //             @include tablet(){ display: none; }
+                //             ul{ 
+                //                 margin: 0; padding: 0;
+                //                 .card{
+                //                     display: inline-block; width: 240px; background: $primaryBlackColor;
+                //                     overflow: hidden; border-radius: 6px; margin: 5px 10px;
+                //                     *{
+                //                         color:#B4B3B8;
+                //                     }
+                //                     .cardHeader{
+                //                         padding: 10px 20px; padding-bottom: 10px; margin-top: 10px;
+                //                         background: white; border-radius: 16px 16px 0 0;
+                //                         span{
+                //                             color: $primaryColor;
+                //                             font-size: 14px; font-weight: 400;
+                //                         }
+                //                         img{ height: 25px;}
+                //                         display: flex; gap: 6px; align-items: center; 
+                //                         justify-items: flex-start;
+                //                     }
+                //                     .cardBody{
+                //                         display: flex; flex-direction: column; gap: 0px;
+                //                         justify-content: center; align-items: center;
+                //                         p{ 
+                //                             font-size: 15px; text-align: center; font-weight: 400; 
+                //                             margin: 0; padding: 0;
+                //                         }
+                //                         small{ font-size: 24px; font-weight: 700;}
+                //                         strong{ 
+                //                             background: $primaryColor; font-weight: 400; border-radius: 3px; 
+                //                             padding: 6px 20px; font-size: 14px; margin-top: 10px;
+                //                             max-width: fit-content; color: #B4B3B8;
+                //                         }
+                //                         height: 140px;
+                //                         padding: 20px 16px;
+                //                     }
+    
+                //                     .cardFooter{
+                //                         border-top: 3px solid $primaryColor;
+                //                         a{
+                //                             padding: 10px; display: block;
+                //                             text-align: center;
+                //                             transition: all 1.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+                //                             &:hover{
+                //                                 background: white;
+                //                                 color: $primaryBlackColor;
+                //                             }
+                //                         }
+                //                     }
+                //                 }
+                //             }
+                //         }
+                //     }
+    
+                //     .contentRight{
+                //         border-radius: 10px; margin: 0; padding: 0;
+    
+                //         li{
+                //             overflow: hidden;
+                //             background: $primaryBlackColor;
+                //             border-radius: 25px 25px 0 0;
+                //             padding-bottom: 35px;
+                //             margin-top: -30px;
+                //             // height: 80px;
+    
+                //             &:first-child{ margin-top: 0px; }
+                //             &:last-child{ border-radius: 25px 25px 25px 25px; padding-bottom: 5px; }
+                            
+                //             .cardHead{
+                //                 // background: red; 
+                //                 display: flex; 
+                //                 height: 70px;
+                //                 padding:0 20px;
+                //                 gap: 14px;
+                //                 align-items: center;
+                //                 cursor: pointer;
+    
+                //                 svg{
+                //                     background-color: rgba($primaryColor, 0.9);
+                //                     color: #B4B3B8; width: 20px;
+                //                     padding: 10px 10px;
+                //                     border-radius: 10px;
+                //                 }
+                //                 span{ color: #B4B3B8;}
+                //             }
+    
+                //             &:nth-child(even){ 
+                //                 background: $primaryColor;
+    
+                //                 .cardHead{
+                //                     svg{
+                //                         background-color: rgba($primaryBlackColor, 0.9);
+                //                     }
+                //                 }
+                //             }
+    
+                //             .cardBody{
+                //                 padding:10px 20px;
+                //                 display: none;
+                //                 // margin-bottom: 20px;
+                //             }
+    
+    
+                //             &:hover{
+                //                 background: rgba(#8E562E, 1);
+                //              }
+                //         }
+    
+                //         .active{
+    
+                //             .cardBody{
+                //                 display: block;
+                //             }
+                //         }
+    
+                //     }
+                // }
+            }
+
+            
+        }
+
+
+        @include phone(){
+            display: flex;
+            flex-direction: column-reverse;
+            height: fit-content ;
+            aside{
+                .logo{ display: none;}
+                min-height: fit-content;
+                display: flex; justify-content: center; 
+                position: fixed; bottom: 0; width: 100%;
+                ul{
+                    height: 50px; padding: 10px 22px;
+                    flex-direction: row; background: $primaryBlackColor; align-items: center;
+                    width: fit-content; gap: 1px; border-radius: 50px; margin: 14px 0;
+                    box-shadow: 0px 0px 10px 1px rgba($primaryColor, 0.9);
+                    li{
+                        width: 60px; //background: red;
+                        a{
+                            svg{ width: 24px;}
+                            span{ display: none;}
+                        }
+                        &:last-child{ display: none;}
+                    }
+                }
+
+                @include smallPhone(){
+                    background: green;
+                    width: 100%;
+                    ul{
+                        width: 100%; border-radius: 0;
+                        margin: 0 0;
+                        padding: 10px 0px;
+                        box-shadow: none;
+
+                        li{
+                            width: 20%;
+                            a{
+                                padding: 10px 0px;
+
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

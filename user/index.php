@@ -137,5 +137,22 @@
             </div>
         </main>
     </div>
+    <div id="modal" class="hideModal">
+        <!-- <div class="modalCover">  -->
+            <div class="coverFrame">
+                <div class="modalHeader">
+                    <h2>Withdrawing from Investment Earning</h2>
+                    <svg id="modalCancelBtn" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </div>
+                <div id="modalInclude">
+                    <?php
+                        include_once("./modal/withdraw.php");
+                    ?>
+                </div>
+            </div>
+        <!-- </div> -->
+    </div>
+
+    <script src="./assets/js/main.js"></script>
 </body>
 </html>

@@ -315,4 +315,78 @@ body .container main #content {
   body .container aside ul li a {
     padding: 10px 0px;
   }
+}
+body #modal {
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  background: rgba(31, 28, 45, 0.6);
+  top: 0;
+}
+body #modal .coverFrame {
+  margin: 40px auto;
+  width: 400px;
+  overflow: hidden;
+  border-radius: 4px;
+  max-width: 100%;
+  background: white;
+}
+body #modal .coverFrame .modalHeader {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 15px 15px;
+  align-items: center;
+  background: rgb(246, 227, 246);
+}
+body #modal .coverFrame .modalHeader h2 {
+  margin: 0;
+  padding: 0;
+  width: calc(99% - 30px);
+  font-size: 1.3rem;
+  color: rgba(31, 28, 45, 0.6);
+}
+body #modal .coverFrame .modalHeader svg {
+  width: 24px;
+  height: 24px;
+  background: #2D225B;
+  border-radius: 50%;
+  padding: 2px;
+  stroke: #fff;
+  cursor: pointer;
+}
+body #modal .coverFrame #modalInclude {
+  padding: 10px;
+}
+body #modal .coverFrame #modalInclude #modalWithdraw {
+  width: 100%;
+}
+body #modal .coverFrame #modalInclude #modalWithdraw .formControl {
+  width: 100%;
+  display: flex;
+  padding: 5px 0;
+}
+body #modal .coverFrame #modalInclude #modalWithdraw .formControl input, body #modal .coverFrame #modalInclude #modalWithdraw .formControl select {
+  width: 100%;
+  padding: 10px 15px;
+  font-size: 15px;
+  font-weight: 300;
+  background: rgb(246, 227, 246);
+  color: #1F1C2D;
+  border: none;
+  outline: 0;
+  border-radius: 4px;
+}
+body #modal .coverFrame #modalInclude #modalWithdraw .formControl button {
+  width: 100%;
+  padding: 10px 15px;
+  font-size: 19px;
+  font-weight: 300;
+  background: #2D225B;
+  color: #fff;
+  border: none;
+  outline: 0;
+  border-radius: 4px;
+}
+body .hideModal {
+  display: none;
 }/*# sourceMappingURL=main.css.map */

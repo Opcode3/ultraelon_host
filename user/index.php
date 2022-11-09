@@ -8,7 +8,7 @@
         && count($_SESSION["userDetails"]) == 12)
     ){
         session_destroy();
-        // header("location: ../signin.html");
+        header("location: ../signin.html");
     }
     $page = isset($_GET["page"]) ? $_GET["page"] : "";
     switch ($page) {

@@ -28,7 +28,7 @@ use app\config\DatabaseHandler;
 
         // find referral by user id
         function findReferralsByUserId(int $id ): array{
-            $sql = "SELECT $this->table_name.referral_status, $this->table_name.createdAt, users_tb.user_email FROM $this->table_name LEFT JOIN users_tb ON users_tb.user_id = $this->table_name.referral_user_id WHERE referral_referredby=?";
+            $sql = "SELECT $this->table_name.referral_status, $this->table_name.createdAt, users_tb.user_email, users_tb.user_username FROM $this->table_name LEFT JOIN users_tb ON users_tb.user_id = $this->table_name.referral_user_id WHERE referral_referredby=?";
             $response = $this->fetchMany($sql, [$id]);
             return $response;
         }

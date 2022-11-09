@@ -8,7 +8,8 @@ use app\controller\ReferralController;
 
     $callReferrals = json_decode($referralController->getReferralsById((int) $user_id), true);
     $referrals = $callReferrals["message"];
-    // var_dump($referrals);
+
+
     // var_dump($GLOBALS[]);
 ?>
 <ul class="pages">  
@@ -41,6 +42,7 @@ use app\controller\ReferralController;
                                     ?>
                                     <tr>
                                         <td><?php echo ($key + 1); ?></td>
+                                        <td><?php echo $referral["user_email"]; ?></td>
                                         <td><?php echo $referral["user_email"]; ?></td>
                                         <td>
                                             <?php 

@@ -55,15 +55,16 @@
                                     <form id="frmRegister" class="uk-grid uk-form">
                                         <div class="uk-margin-small uk-width-1-1 uk-inline">
                                             <span class="uk-form-icon uk-form-icon-flip fas fa-user fa-sm"></span>
-                                            <input class="uk-input uk-border-rounded" value="Dora123" id="username" type="text" placeholder="Username">
+                                            <input class="uk-input uk-border-rounded" id="username" type="text" placeholder="Username">
                                         </div>
                                         <div class="uk-margin-small uk-width-1-1 uk-inline">
                                             <span class="uk-form-icon uk-form-icon-flip fas fa-mail-bulk fa-sm"></span>
-                                            <input class="uk-input uk-border-rounded" value="opcode2@gmail.com" id="email" type="email" placeholder="Email address">
+                                            <input class="uk-input uk-border-rounded"  id="email" type="email" placeholder="Email address">
                                         </div>
                                         <div class="uk-margin-small uk-width-1-1 uk-inline">
                                             <span class="uk-form-icon uk-form-icon-flip fas fa-lock fa-sm"></span>
-                                            <input class="uk-input uk-border-rounded" value="12334444" id="password" type="password" placeholder="Password">
+                                            <input class="uk-input uk-border-rounded"  id="password" type="password" placeholder="Password"> 
+                                            <!-- value="12334444"  value="Dora123" value="opcode2@gmail.com" -->
                                         </div>
                                         <input type="hidden" value="<?php echo (isset($_GET["a"]) && strlen(trim($_GET["a"])) > 4) ? $_GET["a"] : "nil";  ?>" id="referredBy">
                                         <div class="uk-margin-small uk-width-1-1 uk-text-small">

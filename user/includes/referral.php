@@ -1,3 +1,16 @@
+<?php
+
+use app\controller\ReferralController;
+
+    $user_id = $GLOBALS["user_id"];
+    require_once("../vendor/autoload.php");
+    $referralController = new ReferralController();
+
+    $callReferrals = json_decode($referralController->getReferralsById((int) $user_id), true);
+    $referrals = $callReferrals["message"];
+    // var_dump($referrals);
+    // var_dump($GLOBALS[]);
+?>
 <div class="referral">
     <h2>Referrals</h2>
     <div class="outCard">
@@ -12,7 +25,7 @@
                 <p>Share your referral link to earn commissions on every investor that uses your link!</p>
 
                 <label for="copyLink" class="referLink">
-                    <p><?php echo $_SERVER["HTTP_HOST"]."/register.php?a=slugHere"; ?></p>
+                    <p><?php echo $_SERVER["HTTP_HOST"]."/projects/ultra/register.php?a=slugHere"; ?></p>
                     <span id="copyLink">Copy Link</span>
                 </label>
 
@@ -33,25 +46,56 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- <tr>
+
+                <?php
+                    if(count($referrals) > 0){
+                            foreach ($referrals as $key => $referral) {
+                ?>
+                                <tr>
+                                    <td><?php echo ($key + 1); ?></td>
+                                    <td><?php echo $referral["user_email"]; ?></td>
+                                    <td>
+                                        <?php 
+                                            $date = date_create($referral["createdAt"]);
+                                            echo date_format($date, "D, d-M-Y");
+                                        ?>
+                                    </td>
+                                    <!-- <td>Sun, 29th-June-2022</td> -->
+                                    <td> 
+                                        <?php
+                                            $status = (int) $referral["referral_status"];
+
+                                            if($status == 2){
+                                                echo '<label class="settled">settled</label>';
+                                            }else if($status == 1){
+                                                echo '<label class="paid">paid</label>';
+                                            }else{
+                                                echo '<label class="pending">pending</label>';
+                                            }
+                                        ?>
+                                            
+                                    </td>
+                                </tr>
+                    <?php
+                            }
+                        }else{
+                    ?>
+                    <tr>
+                        <td colspan="5"> No investor has used your referral code.</td>
+                    </tr>
+                    <?php } ?>
+                </tbody>
+
+
+                <!-- <tr>
                         <td>1</td>
                         <td>Opcode3</td>
                         <td>Opcode3@gmail.com</td>
                         <td>20-11-2023</td>
                         <td> <span class="pending">pending</span> </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Kola3547</td>
-                        <td>Kola3@gmail.com</td>
-                        <td>20-11-2023</td>
-                        <td> <span class="pending">pending</span> </td>
                     </tr> -->
 
-                    <tr>
-                        <td colspan="5"> No investor has used your referral code.</td>
-                    </tr>
-                </tbody>
+
             </table>
         </div>
     </div>

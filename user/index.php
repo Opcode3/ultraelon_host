@@ -29,18 +29,18 @@
             break;
     }
 
-    $username = "Opcode3"; //$_SESSION["userDetails"]["user_username"];
-    // $user_id = $_SESSION["userDetails"]["user_id"];
-    // $email = $_SESSION["userDetails"]["user_email"];
-    // $passwordHash = $_SESSION["userDetails"]["user_password"];
-    // $slug = $_SESSION["userDetails"]["user_slug"];
-    // $createdAt = $_SESSION["userDetails"]["createdAt"];
-    // $updatedAt = $_SESSION["userDetails"]["updatedAt"];
-    // $bitcoin = $_SESSION["userDetails"]["user_bitcoin"];
-    // $eth = $_SESSION["userDetails"]["user_eth"];
-    // $bnb = $_SESSION["userDetails"]["user_bnb"];
-    // $ultra = $_SESSION["userDetails"]["user_ultra"];
-    // $usdt = $_SESSION["userDetails"]["user_usdt"];
+    $username = $_SESSION["userDetails"]["user_username"];
+    $user_id = $_SESSION["userDetails"]["user_id"];
+    $email = $_SESSION["userDetails"]["user_email"];
+    $passwordHash = $_SESSION["userDetails"]["user_password"];
+    $slug = $_SESSION["userDetails"]["user_slug"];
+    $createdAt = $_SESSION["userDetails"]["createdAt"];
+    $updatedAt = $_SESSION["userDetails"]["updatedAt"];
+    $bitcoin = $_SESSION["userDetails"]["user_bitcoin"];
+    $eth = $_SESSION["userDetails"]["user_eth"];
+    $bnb = $_SESSION["userDetails"]["user_bnb"];
+    $ultra = $_SESSION["userDetails"]["user_ultra"];
+    $usdt = $_SESSION["userDetails"]["user_usdt"];
     // $email = 
     // var_dump($_SESSION["userDetails"]);
 ?>

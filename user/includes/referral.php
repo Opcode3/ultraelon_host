@@ -8,7 +8,7 @@ use app\controller\ReferralController;
 
     $callReferrals = json_decode($referralController->getReferralsById((int) $user_id), true);
     $referrals = $callReferrals["message"];
-    var_dump($referrals);
+    // var_dump($referrals);
     // var_dump($GLOBALS[]);
 ?>
 <div class="referral">

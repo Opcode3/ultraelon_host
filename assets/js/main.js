@@ -5,8 +5,8 @@ if(frmRegister){ frmRegister.addEventListener("submit", registerHandler);}
 if(frmLogin){ frmLogin.addEventListener("submit", loginHandler);}
 
 //const api_url = "http://192.168.43.19/projects/ultraelon/in/api/v1/"; //"https://testing.crownnation.org/api/";
-const api_url =  (location.protocol == 'http:') ? "http://127.0.0.1/projects/ultra/api/v1/" : "https://127.0.0.1/projects/ultra/api/v1/" ; 
-// const api_url =  (location.protocol !== 'https:') ? "http://ultraelon.giembs.com/api/v1/" : "https://ultraelon.giembs.com/api/v1/" ; 
+// const api_url =  (location.protocol == 'http:') ? "http://127.0.0.1/projects/ultra/api/v1/" : "https://127.0.0.1/projects/ultra/api/v1/" ; 
+const api_url =  (location.protocol !== 'https:') ? "http://ultraelon.giembs.com/api/v1/" : "https://ultraelon.giembs.com/api/v1/" ; 
 
 console.log(api_url);
 // form handler function

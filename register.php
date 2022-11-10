@@ -77,6 +77,7 @@
                                                 <span id="in-mtext">Register account</span>
                                             </button>
                                         </div>
+                                        
                                     </form>
                                     <!-- login form end -->
                                     

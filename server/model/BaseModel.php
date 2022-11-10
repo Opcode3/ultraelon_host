@@ -26,6 +26,7 @@ use app\config\DatabaseHandler;
         }
 
         protected function update($sql, $payload): bool{
+            $payload["updatedAt"] = $this->getUpdatedDate();
             $stmt = $this->dbconnector->prepare($sql);
             $stmt->execute($payload);
             return ($stmt->rowCount() == 1);
@@ -58,6 +59,9 @@ use app\config\DatabaseHandler;
 
         private function generateSlug(): string{
             return uniqid(time());
+        }
+        private function getUpdatedDate(): string{
+            return date("Y-m-d h:i:s");
         }
     }
 

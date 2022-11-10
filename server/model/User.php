@@ -50,6 +50,28 @@ use app\config\PasswordConfig;
 
         // add new admin
         // update user
+        function updateUserAccountSetting(array $updateUser){
+           if(strlen(trim($updateUser["user_password"])) >= 5){
+
+                $sql = "UPDATE $this->table_name SET 
+                    user_email = :user_email, user_bitcoin = :user_bitcoin, user_eth = :user_eth, 
+                    user_bnb = :user_bnb, user_ultra = :user_ultra, user_usdt = :user_usdt,
+                    user_password = :user_password, updatedAt = :updatedAt WHERE user_slug = :user_slug
+                ";
+                
+           }else{
+                $sql = "UPDATE $this->table_name SET 
+                    user_email = :user_email, user_bitcoin = :user_bitcoin, user_eth = :user_eth, 
+                    user_bnb = :user_bnb, user_ultra = :user_ultra, user_usdt = :user_usdt, 
+                    updatedAt = :updatedAt WHERE user_slug = :user_slug";
+                $password = array_pop($updateUser);
+           }
+
+            if($this->update($sql, $updateUser)){
+                return $this->findUser($updateUser["user_slug"]);
+            }
+            return false;
+        }
 
         //return user_id from username
         function findUserIdFromUsername(string $username): string{

@@ -61,6 +61,15 @@ use app\services\impl\UserServiceImpl;
             return Response::json($response);
         }
 
+        function updateUserAccount(array $userUpdateRequest): string
+        {
+            $response = $this->model->updateUserAccountSetting($userUpdateRequest);
+            if(is_array($response) && count($response) > 3){
+                return Response::json($response, 200);
+            }
+            return Response::json($response, 500);
+        }
+
 
         function userAuthentication(string $username, string $password): string{
             $response = $this->model->findUserByUsername($username);

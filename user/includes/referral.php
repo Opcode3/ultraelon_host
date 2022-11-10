@@ -1,9 +1,9 @@
 <?php
 
+require_once("../vendor/autoload.php");
 use app\controller\ReferralController;
 
     $user_id = $GLOBALS["user_id"];
-    require_once("../vendor/autoload.php");
     $referralController = new ReferralController();
 
     $callReferrals = json_decode($referralController->getReferralsById((int) $user_id), true);
@@ -25,7 +25,7 @@ use app\controller\ReferralController;
                 <p>Share your referral link to earn commissions on every investor that uses your link!</p>
 
                 <label for="copyLink" class="referLink">
-                    <p id="linkToCopy"><?php echo $_SERVER["HTTP_HOST"]."/projects/ultra/register.php?a=".$GLOBALS["slug"]; ?></p>
+                    <p id="linkToCopy"><?php echo $_SERVER["REQUEST_SCHEME"]."://".$_SERVER["HTTP_HOST"]."/projects/ultra/register.php?a=".$GLOBALS["slug"]; ?></p>
                     <span id="copyLink">Copy Link</span>
                 </label>
 

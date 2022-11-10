@@ -40,6 +40,61 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <!-- <tr>
+                        <td>Classic</td>
+                        <td>$100.00</td>
+                        <td>2-11-2023</td>
+                        <td>20-11-2023</td>
+                        <td>11 days</td>
+                        <td>$160.00</td>
+                        <td>29 ultra token</td>
+                        <td> <span class="pending">pending</span> </td>
+                    </tr>
+                    <tr>
+                        <td>Classic</td>
+                        <td>$100.00</td>
+                        <td>2-11-2023</td>
+                        <td>20-11-2023</td>
+                        <td>11 days</td>
+                        <td>$160.00</td>
+                        <td>29 ultra token</td>
+                        <td> <span class="paid">Paid</span> </td>
+                    </tr>
+                    <tr>
+                        <td>Classic</td>
+                        <td>$100.00</td>
+                        <td>2-11-2023</td>
+                        <td>20-11-2023</td>
+                        <td>11 days</td>
+                        <td>$160.00</td>
+                        <td>29 ultra token</td>
+                        <td> <span class="pending">pending</span> </td>
+                    </tr> -->
+                    <tr>
+                        <td colspan="8">No investment has been recorded for this account!</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+<!--     
+    <div class="outCard">
+        <h3 class="outCardTitle"> Investment History </h3>
+        <div class="overflowCard">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Package</th>
+                        <th>Capital</th>
+                        <th>Start Date</th>
+                        <th>Elapse Date</th>
+                        <th>Days Left</th>
+                        <th>Total ROI</th>
+                        <th>Total Ultra</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
                     <tr>
                         <td>Classic</td>
                         <td>$100.00</td>
@@ -73,7 +128,7 @@
                 </tbody>
             </table>
         </div>
-    </div>
+    </div> -->
     <div class="outCard">
         <h3 class="outCardTitle"> Statistics </h3>
         <div class="card">

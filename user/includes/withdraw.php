@@ -55,19 +55,19 @@
             <div class="card">
                 <span class="title">Investment</span>
                 <span class="amount">$0</span>
-                <span class="link" id="modalInvestTrigger" >Click to withdraw fund</span>
+                <span class="link" data-amount="0" id="modalInvestTrigger" >Click to withdraw fund</span>
             </div>
 
             <div class="card">
                 <span class="title">Ultra token</span>
-                <span class="amount">$0</span>
-                <span class="link" id="modalUltraTrigger">Click to withdraw fund</span>
+                <span class="amount">$7</span>
+                <span class="link" data-amount="7" id="modalUltraTrigger">Click to withdraw fund</span>
             </div>
 
             <div class="card">
                 <span class="title">Referral Bonus</span>
-                <span class="amount">$0</span>
-                <span class="link" id="modalReferralTrigger">Click to withdraw fund</span>
+                <span class="amount">$20</span>
+                <span class="link" data-amount="20" id="modalReferralTrigger">Click to withdraw fund</span>
             </div>
         </div>
     </div>

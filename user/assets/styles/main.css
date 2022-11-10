@@ -168,7 +168,13 @@ body .container main header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0 2%;
   height: 120px;
+}
+@media screen and (max-width: 524px) {
+  body .container main header {
+    height: 90px;
+  }
 }
 body .container main header div > svg {
   display: none;
@@ -214,6 +220,9 @@ body .container main header div a svg {
   body .container main header div > svg {
     width: 40px;
   }
+  body .container main header div a span {
+    display: none;
+  }
 }
 @media screen and (max-width: 360px) {
   body .container main header div h3 {
@@ -221,9 +230,6 @@ body .container main header div a svg {
   }
   body .container main header div > svg {
     width: 30px;
-  }
-  body .container main header div a span {
-    display: none;
   }
 }
 @media screen and (max-width: 789px) {
@@ -247,6 +253,11 @@ body .container main #content {
   body .container main #content {
     padding: 30px 5px;
     padding-bottom: 100px;
+  }
+}
+@media screen and (max-width: 524px) {
+  body .container main #content {
+    border-radius: 10px 10px 0 0;
   }
 }
 @media screen and (max-width: 789px) {
@@ -299,7 +310,6 @@ body .container main #content {
 }
 @media screen and (max-width: 789px) and (max-width: 360px) {
   body .container aside {
-    background: green;
     width: 100%;
   }
   body .container aside ul {
@@ -322,13 +332,14 @@ body #modal {
   position: fixed;
   background: rgba(31, 28, 45, 0.6);
   top: 0;
+  overflow-y: auto;
 }
 body #modal .coverFrame {
   margin: 40px auto;
-  width: 400px;
+  width: 500px;
   overflow: hidden;
   border-radius: 4px;
-  max-width: 100%;
+  max-width: 96%;
   background: white;
 }
 body #modal .coverFrame .modalHeader {
@@ -341,7 +352,7 @@ body #modal .coverFrame .modalHeader {
 body #modal .coverFrame .modalHeader h2 {
   margin: 0;
   padding: 0;
-  width: calc(99% - 30px);
+  width: calc(95% - 30px);
   font-size: 1.3rem;
   color: rgba(31, 28, 45, 0.6);
 }
@@ -357,18 +368,19 @@ body #modal .coverFrame .modalHeader svg {
 body #modal .coverFrame #modalInclude {
   padding: 10px;
 }
-body #modal .coverFrame #modalInclude #modalWithdraw {
+body #modal .coverFrame #modalInclude #modalWithdraw, body #modal .coverFrame #modalInclude #modalInvest {
   width: 100%;
+  display: none;
 }
-body #modal .coverFrame #modalInclude #modalWithdraw .formControl {
+body #modal .coverFrame #modalInclude #modalWithdraw .formControl, body #modal .coverFrame #modalInclude #modalInvest .formControl {
   width: 100%;
   display: flex;
   padding: 5px 0;
 }
-body #modal .coverFrame #modalInclude #modalWithdraw .formControl input, body #modal .coverFrame #modalInclude #modalWithdraw .formControl select {
-  width: 100%;
+body #modal .coverFrame #modalInclude #modalWithdraw .formControl input, body #modal .coverFrame #modalInclude #modalWithdraw .formControl select, body #modal .coverFrame #modalInclude #modalInvest .formControl input, body #modal .coverFrame #modalInclude #modalInvest .formControl select {
+  width: calc(100% - 30px);
   padding: 10px 15px;
-  font-size: 15px;
+  font-size: 17px;
   font-weight: 300;
   background: rgb(246, 227, 246);
   color: #1F1C2D;
@@ -376,16 +388,107 @@ body #modal .coverFrame #modalInclude #modalWithdraw .formControl input, body #m
   outline: 0;
   border-radius: 4px;
 }
-body #modal .coverFrame #modalInclude #modalWithdraw .formControl button {
+body #modal .coverFrame #modalInclude #modalWithdraw .formControl select, body #modal .coverFrame #modalInclude #modalInvest .formControl select {
   width: 100%;
-  padding: 10px 15px;
-  font-size: 19px;
-  font-weight: 300;
-  background: #2D225B;
-  color: #fff;
-  border: none;
-  outline: 0;
+}
+body #modal .coverFrame #modalInclude .showInnerModel {
+  display: block !important;
+}
+body #modal .coverFrame #modalInclude #modalInvest {
+  padding: 10px 4px 20px 4px;
+}
+body #modal .coverFrame #modalInclude #modalInvest #depositShow p {
+  color: rgba(31, 28, 45, 0.9);
+  margin: 0;
+  text-align: center;
+}
+@media screen and (max-width: 524px) {
+  body #modal .coverFrame #modalInclude #modalInvest #depositShow p {
+    font-size: 14px;
+  }
+}
+@media screen and (max-width: 360px) {
+  body #modal .coverFrame #modalInclude #modalInvest #depositShow p {
+    font-size: 13px;
+  }
+}
+body #modal .coverFrame #modalInclude #modalInvest #depositShow .know {
+  color: red;
+  margin-top: 10px;
+}
+body #modal .coverFrame #modalInclude #modalInvest #depositShow #walletFrame {
+  display: flex;
+  gap: 30px;
+  flex-direction: column;
+  margin-top: 20px;
+  border: 2px dashed #2D225B;
+  padding: 20px;
+}
+body #modal .coverFrame #modalInclude #modalInvest #depositShow #walletFrame .item {
+  text-align: center;
+}
+body #modal .coverFrame #modalInclude #modalInvest #depositShow #walletFrame .item span {
+  font-weight: 500;
+  background: #1F1C2D;
+  color: rgb(246, 227, 246);
+  padding: 4px 10px;
+  font-size: 14px;
   border-radius: 4px;
+  display: inline-block;
+  margin-bottom: 2px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+body #modal .coverFrame #modalInclude #modalInvest #depositShow #walletFrame .item p {
+  margin: 0;
+  padding: 0;
+  font-size: 18px;
+  font-weight: 400;
+  color: rgba(31, 28, 45, 0.7);
+  overflow-wrap: break-word;
+}
+@media screen and (max-width: 789px) {
+  body #modal .coverFrame #modalInclude #modalInvest #depositShow #walletFrame .item p {
+    font-size: 16px;
+  }
+}
+@media screen and (max-width: 360px) {
+  body #modal .coverFrame #modalInclude #modalInvest #depositShow #walletFrame .item p {
+    font-size: 14px;
+  }
+}
+body #modal .coverFrame #modalInclude #modalInvest form {
+  display: none;
+  width: 98%;
+}
+body #modal .coverFrame #modalInclude #modalInvest form p {
+  margin: 0;
+  text-align: center;
+  color: red;
+  font-size: 18px;
+  padding: 0;
+  margin-bottom: 10px;
+}
+body #modal button {
+  background: #2D225B;
+  color: rgb(246, 227, 246);
+  width: 100%;
+  margin: 20px auto 0 auto;
+  padding: 10px 20px;
+  border-radius: 4px;
+  display: block;
+  border: none;
+  outline: none;
+  font-size: 20px;
+  box-shadow: 0px 0px 10px 1px inset #1F1C2D;
+  transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+  cursor: pointer;
+}
+body #modal button:hover {
+  background: #1F1C2D;
+  box-shadow: 0px 0px 10px 1px inset rgb(246, 227, 246);
 }
 body .hideModal {
   display: none;

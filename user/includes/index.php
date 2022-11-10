@@ -1,25 +1,25 @@
 <div class="dashboard">
     <h2>Dashboard</h2>
     <div class="outCard">
-        <h3 class="outCardTitle"> Earnings </h3>
+        <h3 class="outCardTitle"> Locked Savings </h3>
 
         <div class="cardGroup">
             <div class="card">
                 <span class="title">Investment</span>
                 <span class="amount">$0</span>
-                <span class="link">Click to withdraw fund</span>
+                <!-- <span class="link">Click to withdraw fund</span> -->
             </div>
 
             <div class="card">
                 <span class="title">Ultra token</span>
                 <span class="amount">$0</span>
-                <span class="link">Click to withdraw fund</span>
+                <!-- <span class="link">Click to withdraw fund</span> -->
             </div>
 
             <div class="card">
                 <span class="title">Referral Bonus</span>
                 <span class="amount">$0</span>
-                <span class="link">Click to withdraw fund</span>
+                <!-- <span class="link">Click to withdraw fund</span> -->
             </div>
         </div>
     </div>

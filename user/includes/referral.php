@@ -25,7 +25,7 @@ use app\controller\ReferralController;
                 <p>Share your referral link to earn commissions on every investor that uses your link!</p>
 
                 <label for="copyLink" class="referLink">
-                    <p><?php echo $_SERVER["HTTP_HOST"]."/projects/ultra/register.php?a=slugHere"; ?></p>
+                    <p id="linkToCopy"><?php echo $_SERVER["HTTP_HOST"]."/projects/ultra/register.php?a=".$GLOBALS["slug"]; ?></p>
                     <span id="copyLink">Copy Link</span>
                 </label>
 
@@ -67,11 +67,11 @@ use app\controller\ReferralController;
                                             $status = (int) $referral["referral_status"];
 
                                             if($status == 2){
-                                                echo '<label class="settled">settled</label>';
+                                                echo '<span class="settled">settled</span>';
                                             }else if($status == 1){
-                                                echo '<label class="paid">paid</label>';
+                                                echo '<span class="paid">paid</span>';
                                             }else{
-                                                echo '<label class="pending">pending</label>';
+                                                echo '<span class="pending">pending</span>';
                                             }
                                         ?>
                                             

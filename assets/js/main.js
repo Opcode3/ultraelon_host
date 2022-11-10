@@ -51,12 +51,13 @@ function loginHandler(e){
         const data = await postRequest(`${api_url}auth.php`, JSON.stringify(form_data));
         if(data.status_code == 200 && data.message == "true"){
             notify(parentEle, "Redirecting you to your dashboard...", "success");
-            setTimeout(()=>{ window.location.href = "./v1" }, 3000);
+            setTimeout(()=>{ window.location.href = "./user" }, 3000);
+            // setTimeout(()=>{ window.location.href = "./v1" }, 3000);
         }else{
             stopLoader()
             notify(parentEle, data.message);
         }
-        console.log(data)
+        // console.log(data)
     });
 }
 

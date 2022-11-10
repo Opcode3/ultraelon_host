@@ -39,6 +39,16 @@
   color: #2D225B;
   font-size: 2.4rem;
 }
+@media screen and (max-width: 1200px) {
+  .dashboard h2, .withdrawals h2, .setting h2, .investment h2, .referral h2 {
+    font-size: 2rem;
+  }
+}
+@media screen and (max-width: 980px) {
+  .dashboard h2, .withdrawals h2, .setting h2, .investment h2, .referral h2 {
+    font-size: 1.7rem;
+  }
+}
 .dashboard .outCard, .withdrawals .outCard, .setting .outCard, .investment .outCard, .referral .outCard {
   background: white;
   padding: 20px;
@@ -46,10 +56,35 @@
   margin: 20px 0;
   box-shadow: 0px 0px 6px 2px #eee;
 }
+@media screen and (max-width: 1200px) {
+  .dashboard .outCard, .withdrawals .outCard, .setting .outCard, .investment .outCard, .referral .outCard {
+    padding: 10px;
+  }
+}
+@media screen and (max-width: 980px) {
+  .dashboard .outCard, .withdrawals .outCard, .setting .outCard, .investment .outCard, .referral .outCard {
+    padding: 6px;
+    margin: 10px 0;
+  }
+}
 .dashboard .outCard .outCardTitle, .withdrawals .outCard .outCardTitle, .setting .outCard .outCardTitle, .investment .outCard .outCardTitle, .referral .outCard .outCardTitle {
   color: rgba(45, 34, 91, 0.7);
   font-size: 1.4rem;
   padding: 10px 5px;
+}
+.dashboard .outCard .outCardTitle small, .withdrawals .outCard .outCardTitle small, .setting .outCard .outCardTitle small, .investment .outCard .outCardTitle small, .referral .outCard .outCardTitle small {
+  display: block;
+  font-size: 1rem;
+  font-weight: 500;
+  padding-left: 5px;
+}
+@media screen and (max-width: 789px) {
+  .dashboard .outCard .outCardTitle, .withdrawals .outCard .outCardTitle, .setting .outCard .outCardTitle, .investment .outCard .outCardTitle, .referral .outCard .outCardTitle {
+    font-size: 1.2rem;
+  }
+  .dashboard .outCard .outCardTitle small, .withdrawals .outCard .outCardTitle small, .setting .outCard .outCardTitle small, .investment .outCard .outCardTitle small, .referral .outCard .outCardTitle small {
+    font-size: 0.9rem;
+  }
 }
 .dashboard .outCard .cardGroup, .withdrawals .outCard .cardGroup, .setting .outCard .cardGroup, .investment .outCard .cardGroup, .referral .outCard .cardGroup {
   display: grid;
@@ -57,34 +92,68 @@
   gap: 20px;
   padding: 20px;
 }
+@media screen and (max-width: 1300px) {
+  .dashboard .outCard .cardGroup, .withdrawals .outCard .cardGroup, .setting .outCard .cardGroup, .investment .outCard .cardGroup, .referral .outCard .cardGroup {
+    gap: 10px;
+    padding: 5px;
+  }
+}
+@media screen and (max-width: 1200px) {
+  .dashboard .outCard .cardGroup, .withdrawals .outCard .cardGroup, .setting .outCard .cardGroup, .investment .outCard .cardGroup, .referral .outCard .cardGroup {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5px;
+    padding: 0;
+  }
+}
+@media screen and (max-width: 524px) {
+  .dashboard .outCard .cardGroup, .withdrawals .outCard .cardGroup, .setting .outCard .cardGroup, .investment .outCard .cardGroup, .referral .outCard .cardGroup {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 6px;
+    padding: 0;
+  }
+}
 .dashboard .outCard .cardGroup .card, .withdrawals .outCard .cardGroup .card, .setting .outCard .cardGroup .card, .investment .outCard .cardGroup .card, .referral .outCard .cardGroup .card {
-  background: rgb(246, 227, 246);
   padding: 20px 15px;
   display: flex;
   flex-direction: column;
   border-radius: 4px;
-}
-.dashboard .outCard .cardGroup .card .title, .withdrawals .outCard .cardGroup .card .title, .setting .outCard .cardGroup .card .title, .investment .outCard .cardGroup .card .title, .referral .outCard .cardGroup .card .title {
-  text-transform: uppercase;
-  color: #2D225B;
-  font-weight: 600;
-  font-size: 14px;
+  background: linear-gradient(135deg, rgb(246, 227, 246) 0%, rgb(231, 205, 231) 60%, rgba(45, 34, 91, 0.7) 100%);
 }
 .dashboard .outCard .cardGroup .card .amount, .withdrawals .outCard .cardGroup .card .amount, .setting .outCard .cardGroup .card .amount, .investment .outCard .cardGroup .card .amount, .referral .outCard .cardGroup .card .amount {
-  font-size: 2.3rem;
+  font-size: 2.9rem;
   color: #2D225B;
 }
-.dashboard .outCard .cardGroup .card .link, .withdrawals .outCard .cardGroup .card .link, .setting .outCard .cardGroup .card .link, .investment .outCard .cardGroup .card .link, .referral .outCard .cardGroup .card .link {
-  font-size: 11px;
+@media screen and (max-width: 789px) {
+  .dashboard .outCard .cardGroup .card .amount, .withdrawals .outCard .cardGroup .card .amount, .setting .outCard .cardGroup .card .amount, .investment .outCard .cardGroup .card .amount, .referral .outCard .cardGroup .card .amount {
+    font-size: 2.6rem;
+  }
+}
+@media screen and (max-width: 524px) {
+  .dashboard .outCard .cardGroup .card .amount, .withdrawals .outCard .cardGroup .card .amount, .setting .outCard .cardGroup .card .amount, .investment .outCard .cardGroup .card .amount, .referral .outCard .cardGroup .card .amount {
+    font-size: 2.2rem;
+  }
+}
+@media screen and (max-width: 360px) {
+  .dashboard .outCard .cardGroup .card .amount, .withdrawals .outCard .cardGroup .card .amount, .setting .outCard .cardGroup .card .amount, .investment .outCard .cardGroup .card .amount, .referral .outCard .cardGroup .card .amount {
+    font-size: 1.92rem;
+  }
+}
+.dashboard .outCard .cardGroup .link, .withdrawals .outCard .cardGroup .link, .setting .outCard .cardGroup .link, .investment .outCard .cardGroup .link, .referral .outCard .cardGroup .link {
+  font-size: 15px;
   color: rgb(28, 28, 217);
   cursor: pointer;
   transition: all 1.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
   position: relative;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
+  text-transform: capitalize;
+  font-weight: 600;
 }
-.dashboard .outCard .cardGroup .card .link:after, .withdrawals .outCard .cardGroup .card .link:after, .setting .outCard .cardGroup .card .link:after, .investment .outCard .cardGroup .card .link:after, .referral .outCard .cardGroup .card .link:after {
+.dashboard .outCard .cardGroup .link:after, .withdrawals .outCard .cardGroup .link:after, .setting .outCard .cardGroup .link:after, .investment .outCard .cardGroup .link:after, .referral .outCard .cardGroup .link:after {
   content: "";
   position: absolute;
   height: 2px;
@@ -94,11 +163,128 @@
   transition: all 1.5s cubic-bezier(0.165, 0.84, 0.44, 1);
   background: rgb(28, 28, 217);
 }
-.dashboard .outCard .cardGroup .card .link:hover, .withdrawals .outCard .cardGroup .card .link:hover, .setting .outCard .cardGroup .card .link:hover, .investment .outCard .cardGroup .card .link:hover, .referral .outCard .cardGroup .card .link:hover {
+.dashboard .outCard .cardGroup .link:hover, .withdrawals .outCard .cardGroup .link:hover, .setting .outCard .cardGroup .link:hover, .investment .outCard .cardGroup .link:hover, .referral .outCard .cardGroup .link:hover {
   color: rgb(16, 16, 227);
 }
-.dashboard .outCard .cardGroup .card .link:hover:after, .withdrawals .outCard .cardGroup .card .link:hover:after, .setting .outCard .cardGroup .card .link:hover:after, .investment .outCard .cardGroup .card .link:hover:after, .referral .outCard .cardGroup .card .link:hover:after {
+.dashboard .outCard .cardGroup .link:hover:after, .withdrawals .outCard .cardGroup .link:hover:after, .setting .outCard .cardGroup .link:hover:after, .investment .outCard .cardGroup .link:hover:after, .referral .outCard .cardGroup .link:hover:after {
   width: 90%;
+}
+.dashboard .outCard .cardGroup .title, .withdrawals .outCard .cardGroup .title, .setting .outCard .cardGroup .title, .investment .outCard .cardGroup .title, .referral .outCard .cardGroup .title {
+  text-transform: uppercase;
+  color: #2D225B;
+  font-weight: 600;
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+}
+@media screen and (max-width: 789px) {
+  .dashboard .outCard .cardGroup .title, .withdrawals .outCard .cardGroup .title, .setting .outCard .cardGroup .title, .investment .outCard .cardGroup .title, .referral .outCard .cardGroup .title {
+    margin-bottom: 8px;
+    font-size: 1.2rem;
+  }
+}
+.dashboard .outCard .cardGroup .investCard, .withdrawals .outCard .cardGroup .investCard, .setting .outCard .cardGroup .investCard, .investment .outCard .cardGroup .investCard, .referral .outCard .cardGroup .investCard {
+  padding: 20px 15px;
+  min-width: 300px;
+  display: grid;
+  flex-direction: column;
+  border-radius: 4px;
+  background: linear-gradient(135deg, rgba(31, 28, 45, 0.7) 0%, rgb(246, 227, 246) 60%, #2D225B 100%);
+}
+@media screen and (max-width: 789px) {
+  .dashboard .outCard .cardGroup .investCard, .withdrawals .outCard .cardGroup .investCard, .setting .outCard .cardGroup .investCard, .investment .outCard .cardGroup .investCard, .referral .outCard .cardGroup .investCard {
+    min-width: 200px;
+  }
+}
+.dashboard .outCard .cardGroup .investCard .pricing, .withdrawals .outCard .cardGroup .investCard .pricing, .setting .outCard .cardGroup .investCard .pricing, .investment .outCard .cardGroup .investCard .pricing, .referral .outCard .cardGroup .investCard .pricing {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding-top: 20px;
+  display: flex;
+  align-items: center;
+}
+@media screen and (max-width: 524px) {
+  .dashboard .outCard .cardGroup .investCard .pricing, .withdrawals .outCard .cardGroup .investCard .pricing, .setting .outCard .cardGroup .investCard .pricing, .investment .outCard .cardGroup .investCard .pricing, .referral .outCard .cardGroup .investCard .pricing {
+    padding-top: 12px;
+  }
+}
+.dashboard .outCard .cardGroup .investCard .pricing span, .withdrawals .outCard .cardGroup .investCard .pricing span, .setting .outCard .cardGroup .investCard .pricing span, .investment .outCard .cardGroup .investCard .pricing span, .referral .outCard .cardGroup .investCard .pricing span {
+  font-size: 2.5rem;
+  color: #2D225B;
+  position: relative;
+  padding: 5px 4px;
+}
+@media screen and (max-width: 789px) {
+  .dashboard .outCard .cardGroup .investCard .pricing span, .withdrawals .outCard .cardGroup .investCard .pricing span, .setting .outCard .cardGroup .investCard .pricing span, .investment .outCard .cardGroup .investCard .pricing span, .referral .outCard .cardGroup .investCard .pricing span {
+    font-size: 1.8rem;
+  }
+}
+.dashboard .outCard .cardGroup .investCard .pricing span:after, .withdrawals .outCard .cardGroup .investCard .pricing span:after, .setting .outCard .cardGroup .investCard .pricing span:after, .investment .outCard .cardGroup .investCard .pricing span:after, .referral .outCard .cardGroup .investCard .pricing span:after {
+  position: absolute;
+  content: "minimum";
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 2px 5px;
+  border-radius: 4px;
+  background: #2D225B;
+  color: rgb(246, 227, 246);
+  font-size: 10px;
+  top: -10px;
+  left: 0;
+}
+@media screen and (max-width: 789px) {
+  .dashboard .outCard .cardGroup .investCard .pricing span:after, .withdrawals .outCard .cardGroup .investCard .pricing span:after, .setting .outCard .cardGroup .investCard .pricing span:after, .investment .outCard .cardGroup .investCard .pricing span:after, .referral .outCard .cardGroup .investCard .pricing span:after {
+    font-size: 9px;
+    top: -4px;
+    padding: 2px 3px;
+  }
+}
+.dashboard .outCard .cardGroup .investCard .pricing .maximum, .withdrawals .outCard .cardGroup .investCard .pricing .maximum, .setting .outCard .cardGroup .investCard .pricing .maximum, .investment .outCard .cardGroup .investCard .pricing .maximum, .referral .outCard .cardGroup .investCard .pricing .maximum {
+  margin-left: 40px;
+}
+.dashboard .outCard .cardGroup .investCard .pricing .maximum::after, .withdrawals .outCard .cardGroup .investCard .pricing .maximum::after, .setting .outCard .cardGroup .investCard .pricing .maximum::after, .investment .outCard .cardGroup .investCard .pricing .maximum::after, .referral .outCard .cardGroup .investCard .pricing .maximum::after {
+  content: "maximum";
+}
+.dashboard .outCard .cardGroup .investCard .pricing .maximum:before, .withdrawals .outCard .cardGroup .investCard .pricing .maximum:before, .setting .outCard .cardGroup .investCard .pricing .maximum:before, .investment .outCard .cardGroup .investCard .pricing .maximum:before, .referral .outCard .cardGroup .investCard .pricing .maximum:before {
+  position: absolute;
+  content: "-";
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 2px 3px;
+  border-radius: 2px;
+  background: #2D225B;
+  color: rgb(246, 227, 246);
+  font-size: 30px;
+  top: 24px;
+  left: -33px;
+  line-height: 15px;
+}
+@media screen and (max-width: 789px) {
+  .dashboard .outCard .cardGroup .investCard .pricing .maximum:before, .withdrawals .outCard .cardGroup .investCard .pricing .maximum:before, .setting .outCard .cardGroup .investCard .pricing .maximum:before, .investment .outCard .cardGroup .investCard .pricing .maximum:before, .referral .outCard .cardGroup .investCard .pricing .maximum:before {
+    font-size: 22px;
+    top: 16px;
+    left: -32px;
+    line-height: 12px;
+  }
+}
+.dashboard .outCard .cardGroup .investCard p, .withdrawals .outCard .cardGroup .investCard p, .setting .outCard .cardGroup .investCard p, .investment .outCard .cardGroup .investCard p, .referral .outCard .cardGroup .investCard p {
+  margin: 0;
+  padding: 0;
+  padding-bottom: 15px;
+  font-size: 18px;
+  color: #2D225B;
+}
+@media screen and (max-width: 789px) {
+  .dashboard .outCard .cardGroup .investCard p, .withdrawals .outCard .cardGroup .investCard p, .setting .outCard .cardGroup .investCard p, .investment .outCard .cardGroup .investCard p, .referral .outCard .cardGroup .investCard p {
+    font-size: 16px;
+  }
+}
+@media screen and (max-width: 524px) {
+  .dashboard .outCard .cardGroup .investCard p, .withdrawals .outCard .cardGroup .investCard p, .setting .outCard .cardGroup .investCard p, .investment .outCard .cardGroup .investCard p, .referral .outCard .cardGroup .investCard p {
+    font-size: 14px;
+  }
 }
 .dashboard .outCard .referGroup, .withdrawals .outCard .referGroup, .setting .outCard .referGroup, .investment .outCard .referGroup, .referral .outCard .referGroup {
   width: 80%;
@@ -108,8 +294,28 @@
   height: 240px;
   gap: 30px;
 }
+@media screen and (max-width: 1300px) {
+  .dashboard .outCard .referGroup, .withdrawals .outCard .referGroup, .setting .outCard .referGroup, .investment .outCard .referGroup, .referral .outCard .referGroup {
+    padding: 20px 0;
+    width: 100%;
+  }
+}
+@media screen and (max-width: 980px) {
+  .dashboard .outCard .referGroup, .withdrawals .outCard .referGroup, .setting .outCard .referGroup, .investment .outCard .referGroup, .referral .outCard .referGroup {
+    flex-direction: column;
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+    gap: 0px;
+  }
+}
 .dashboard .outCard .referGroup .referImage img, .withdrawals .outCard .referGroup .referImage img, .setting .outCard .referGroup .referImage img, .investment .outCard .referGroup .referImage img, .referral .outCard .referGroup .referImage img {
   width: 240px;
+}
+@media screen and (max-width: 524px) {
+  .dashboard .outCard .referGroup .referImage img, .withdrawals .outCard .referGroup .referImage img, .setting .outCard .referGroup .referImage img, .investment .outCard .referGroup .referImage img, .referral .outCard .referGroup .referImage img {
+    width: 180px;
+  }
 }
 .dashboard .outCard .referGroup .referInfo, .withdrawals .outCard .referGroup .referInfo, .setting .outCard .referGroup .referInfo, .investment .outCard .referGroup .referInfo, .referral .outCard .referGroup .referInfo {
   width: 100%;
@@ -125,8 +331,21 @@
   color: #2D225B;
   padding-left: 7px;
 }
+@media screen and (max-width: 980px) {
+  .dashboard .outCard .referGroup .referInfo, .withdrawals .outCard .referGroup .referInfo, .setting .outCard .referGroup .referInfo, .investment .outCard .referGroup .referInfo, .referral .outCard .referGroup .referInfo {
+    width: 90%;
+  }
+  .dashboard .outCard .referGroup .referInfo p, .dashboard .outCard .referGroup .referInfo h4, .withdrawals .outCard .referGroup .referInfo p, .withdrawals .outCard .referGroup .referInfo h4, .setting .outCard .referGroup .referInfo p, .setting .outCard .referGroup .referInfo h4, .investment .outCard .referGroup .referInfo p, .investment .outCard .referGroup .referInfo h4, .referral .outCard .referGroup .referInfo p, .referral .outCard .referGroup .referInfo h4 {
+    text-align: center;
+  }
+}
+@media screen and (max-width: 524px) {
+  .dashboard .outCard .referGroup .referInfo, .withdrawals .outCard .referGroup .referInfo, .setting .outCard .referGroup .referInfo, .investment .outCard .referGroup .referInfo, .referral .outCard .referGroup .referInfo {
+    width: 100%;
+  }
+}
 .dashboard .outCard .referGroup .referInfo .referLink, .withdrawals .outCard .referGroup .referInfo .referLink, .setting .outCard .referGroup .referInfo .referLink, .investment .outCard .referGroup .referInfo .referLink, .referral .outCard .referGroup .referInfo .referLink {
-  background: yellow;
+  background: rgb(246, 227, 246);
   margin-top: 15px;
   display: flex;
   width: -webkit-fit-content;
@@ -139,21 +358,90 @@
   border-radius: 6px;
   margin-left: 7px;
 }
+@media screen and (max-width: 980px) {
+  .dashboard .outCard .referGroup .referInfo .referLink, .withdrawals .outCard .referGroup .referInfo .referLink, .setting .outCard .referGroup .referInfo .referLink, .investment .outCard .referGroup .referInfo .referLink, .referral .outCard .referGroup .referInfo .referLink {
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 4px;
+    gap: 5px;
+  }
+}
+@media screen and (max-width: 360px) {
+  .dashboard .outCard .referGroup .referInfo .referLink, .withdrawals .outCard .referGroup .referInfo .referLink, .setting .outCard .referGroup .referInfo .referLink, .investment .outCard .referGroup .referInfo .referLink, .referral .outCard .referGroup .referInfo .referLink {
+    flex-direction: column;
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+    padding: 0;
+    gap: 5px;
+  }
+}
 .dashboard .outCard .referGroup .referInfo .referLink p, .withdrawals .outCard .referGroup .referInfo .referLink p, .setting .outCard .referGroup .referInfo .referLink p, .investment .outCard .referGroup .referInfo .referLink p, .referral .outCard .referGroup .referInfo .referLink p {
   padding-left: 20px;
+  width: 500px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 14px;
+}
+@media screen and (max-width: 1200px) {
+  .dashboard .outCard .referGroup .referInfo .referLink p, .withdrawals .outCard .referGroup .referInfo .referLink p, .setting .outCard .referGroup .referInfo .referLink p, .investment .outCard .referGroup .referInfo .referLink p, .referral .outCard .referGroup .referInfo .referLink p {
+    width: 350px;
+    padding-left: 10px;
+  }
+}
+@media screen and (max-width: 789px) {
+  .dashboard .outCard .referGroup .referInfo .referLink p, .withdrawals .outCard .referGroup .referInfo .referLink p, .setting .outCard .referGroup .referInfo .referLink p, .investment .outCard .referGroup .referInfo .referLink p, .referral .outCard .referGroup .referInfo .referLink p {
+    width: 300px;
+    padding-left: 6px;
+  }
+}
+@media screen and (max-width: 524px) {
+  .dashboard .outCard .referGroup .referInfo .referLink p, .withdrawals .outCard .referGroup .referInfo .referLink p, .setting .outCard .referGroup .referInfo .referLink p, .investment .outCard .referGroup .referInfo .referLink p, .referral .outCard .referGroup .referInfo .referLink p {
+    width: 250px;
+    padding-left: 6px;
+  }
+}
+@media screen and (max-width: 360px) {
+  .dashboard .outCard .referGroup .referInfo .referLink p, .withdrawals .outCard .referGroup .referInfo .referLink p, .setting .outCard .referGroup .referInfo .referLink p, .investment .outCard .referGroup .referInfo .referLink p, .referral .outCard .referGroup .referInfo .referLink p {
+    width: 230px;
+    padding-left: 8px;
+    padding-top: 8px;
+  }
 }
 .dashboard .outCard .referGroup .referInfo .referLink #copyLink, .withdrawals .outCard .referGroup .referInfo .referLink #copyLink, .setting .outCard .referGroup .referInfo .referLink #copyLink, .investment .outCard .referGroup .referInfo .referLink #copyLink, .referral .outCard .referGroup .referInfo .referLink #copyLink {
-  background: red;
-  height: 50px;
-  padding: 0 20px;
+  background: #2D225B;
+  width: 100px;
   display: flex;
+  height: 50px;
+  justify-content: center;
   align-items: center;
+  color: rgb(246, 227, 246);
+  cursor: pointer;
+}
+@media screen and (max-width: 980px) {
+  .dashboard .outCard .referGroup .referInfo .referLink #copyLink, .withdrawals .outCard .referGroup .referInfo .referLink #copyLink, .setting .outCard .referGroup .referInfo .referLink #copyLink, .investment .outCard .referGroup .referInfo .referLink #copyLink, .referral .outCard .referGroup .referInfo .referLink #copyLink {
+    width: 85px;
+    font-size: 14px;
+  }
+}
+@media screen and (max-width: 789px) {
+  .dashboard .outCard .referGroup .referInfo .referLink #copyLink, .withdrawals .outCard .referGroup .referInfo .referLink #copyLink, .setting .outCard .referGroup .referInfo .referLink #copyLink, .investment .outCard .referGroup .referInfo .referLink #copyLink, .referral .outCard .referGroup .referInfo .referLink #copyLink {
+    width: 75px;
+    font-size: 12px;
+  }
+}
+@media screen and (max-width: 360px) {
+  .dashboard .outCard .referGroup .referInfo .referLink #copyLink, .withdrawals .outCard .referGroup .referInfo .referLink #copyLink, .setting .outCard .referGroup .referInfo .referLink #copyLink, .investment .outCard .referGroup .referInfo .referLink #copyLink, .referral .outCard .referGroup .referInfo .referLink #copyLink {
+    width: 100%;
+    height: 40px;
+    font-size: 12px;
+  }
 }
 .dashboard .outCard .overflowCard, .withdrawals .outCard .overflowCard, .setting .outCard .overflowCard, .investment .outCard .overflowCard, .referral .outCard .overflowCard {
   display: block;
   overflow: hidden;
   overflow-x: auto;
-  padding: 20px;
 }
 .dashboard .outCard .overflowCard table, .withdrawals .outCard .overflowCard table, .setting .outCard .overflowCard table, .investment .outCard .overflowCard table, .referral .outCard .overflowCard table {
   width: 100%;
@@ -192,9 +480,15 @@
   width: fit-content;
   border-radius: 4px;
   text-transform: capitalize;
-  background: green;
   padding: 1px 6px 3px 6px;
   color: #fff;
+  background: rgba(31, 28, 45, 0.8);
+}
+.dashboard .outCard .overflowCard table tr th:last-child .paid, .dashboard .outCard .overflowCard table tr td:last-child .paid, .withdrawals .outCard .overflowCard table tr th:last-child .paid, .withdrawals .outCard .overflowCard table tr td:last-child .paid, .setting .outCard .overflowCard table tr th:last-child .paid, .setting .outCard .overflowCard table tr td:last-child .paid, .investment .outCard .overflowCard table tr th:last-child .paid, .investment .outCard .overflowCard table tr td:last-child .paid, .referral .outCard .overflowCard table tr th:last-child .paid, .referral .outCard .overflowCard table tr td:last-child .paid {
+  background: green;
+}
+.dashboard .outCard .overflowCard table tr th:last-child .settled, .dashboard .outCard .overflowCard table tr td:last-child .settled, .withdrawals .outCard .overflowCard table tr th:last-child .settled, .withdrawals .outCard .overflowCard table tr td:last-child .settled, .setting .outCard .overflowCard table tr th:last-child .settled, .setting .outCard .overflowCard table tr td:last-child .settled, .investment .outCard .overflowCard table tr th:last-child .settled, .investment .outCard .overflowCard table tr td:last-child .settled, .referral .outCard .overflowCard table tr th:last-child .settled, .referral .outCard .overflowCard table tr td:last-child .settled {
+  background: red;
 }
 
 .setting {

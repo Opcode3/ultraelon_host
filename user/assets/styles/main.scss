@@ -100,13 +100,18 @@ body{
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-                // padding: 40px 4% 20px 2%;
-                // background: red;
+                padding: 0 2%;
                 height: 120px;
+                // background: green;
+
+                @include semiPhone(){ height: 90px; }
 
                 div{
                     &>svg{ display: none;}
-                    h3{ font-size: 1.75rem; padding: 0; margin: 0; color: $primaryWhiteColor;}
+                    h3{ 
+                        font-size: 1.75rem; padding: 0; margin: 0; 
+                        color: $primaryWhiteColor;
+                    }
 
                     a{
                         background: rgb(246, 227, 246); display: flex; justify-content: center;
@@ -124,12 +129,12 @@ body{
                         gap: 5px;
                         h3{ font-size: 1.3rem;}
                         &>svg{width: 40px;}
+                        a{ span{display: none;} }
                     }
 
                     @include smallPhone(){
                         h3{ font-size: 1.2rem;}
                         &>svg{width: 30px;}
-                        a{ span{display: none;} }
                     }
                 }
 
@@ -150,7 +155,12 @@ body{
                 @include phone(){ 
                     padding: 30px 5px;
                     padding-bottom: 100px;
-                 }
+                }
+                @include semiPhone(){
+                    border-radius: 10px 10px 0 0;
+                } 
+
+
 
                 // .content{
                 //     height: calc(100vh - 150px);
@@ -328,7 +338,6 @@ body{
                 }
 
                 @include smallPhone(){
-                    background: green;
                     width: 100%;
                     ul{
                         width: 100%; border-radius: 0;
@@ -352,18 +361,21 @@ body{
     #modal{
         height: 100vh; width: 100%; position: fixed;
         background: rgba($primaryBlackColor, 0.6); top: 0;
+        overflow-y: auto;
 
         .coverFrame{
             margin: 40px auto;
-            width: 400px; overflow: hidden; border-radius: 4px;
-            max-width: 100%; background: white;
+            width: 500px; overflow: hidden; border-radius: 4px;
+            max-width: 96%; background: white;
 
             .modalHeader{
                 display: flex; justify-content: space-between;
                 padding: 20px 15px 15px; align-items: center;
                 background: rgb(246, 227, 246);
-
-                h2{ margin: 0; padding: 0; width: calc(99% - 30px); font-size: 1.3rem; color: rgba($primaryBlackColor, 0.6);}
+                h2{ 
+                    margin: 0; padding: 0; width: calc(95% - 30px); 
+                    font-size: 1.3rem; color: rgba($primaryBlackColor, 0.6);
+                }
 
                 svg{
                     width: 24px; height: 24px; background: $primaryColor; border-radius: 50%;
@@ -375,15 +387,15 @@ body{
                 // background: green;
                 padding: 10px;
 
-                #modalWithdraw{
-                    width: 100%; 
+                #modalWithdraw, #modalInvest{
+                    width: 100%; display: none;
 
                     .formControl{
                         width: 100%; display: flex; padding: 5px 0;
                         input, select{ 
-                            width: 100%;
+                            width: calc(100% - 30px);
                             padding: 10px 15px;
-                            font-size: 15px;
+                            font-size: 17px;
                             font-weight: 300;
                             background: rgb(246, 227, 246);
                             color: $primaryBlackColor;
@@ -392,19 +404,100 @@ body{
                             border-radius: 4px;
                         }
 
-                        button{
-                            width: 100%;
-                            padding: 10px 15px;
-                            font-size: 19px;
-                            font-weight: 300;
-                            background: $primaryColor;
-                            color: $whiteColor;
-                            border:none; outline: 0;
-                            // background: rgba($primaryColor, 0.6);
-                            border-radius: 4px;
-                        }
+                        select{ width: 100%;}
+
+                        // button{
+                        //     width: fit-content;
+                        //     padding: 10px 15px;
+                        //     font-size: 19px;
+                        //     font-weight: 300;
+                        //     background: $primaryColor;
+                        //     color: $whiteColor;
+                        //     border:none; outline: 0;
+                        //     margin: 0 auto;
+                        //     margin-top: 10px;
+
+                        //     // background: rgba($primaryColor, 0.6);
+                        //     border-radius: 4px;
+                        // }
                     }
                 }
+
+                .showInnerModel{ display: block !important;}
+
+                #modalInvest{
+                    // background: red;
+                    padding: 10px 4px 20px 4px;
+
+                    #depositShow{
+                        p{
+                            color: rgba($primaryBlackColor, 0.9);
+                            margin: 0; text-align: center;
+
+                            @include semiPhone(){ font-size: 14px; }
+                            @include smallPhone(){ font-size: 13px; }
+                        }
+                        .know{ color: red; margin-top: 10px;}
+                        
+                        #walletFrame{
+                            display: flex; gap: 30px;
+                            flex-direction: column; 
+                            // margin-bottom: 30px;
+                            margin-top: 20px;
+                            // background: yellow;
+                            border: 2px dashed $primaryColor;
+                            // border-style:dashed;
+                            padding: 20px;
+                            
+                            .item{
+                                text-align: center;
+                                span{ 
+                                    font-weight: 500; background: $primaryBlackColor;
+                                    color: rgb(246, 227, 246); padding: 4px 10px;
+                                    font-size: 14px; border-radius: 4px;
+                                    display: inline-block;
+                                    margin-bottom: 2px; user-select: none;
+                                }
+
+                                p{
+                                    margin: 0;padding: 0;
+                                    font-size: 18px; font-weight: 400;
+                                    color: rgba($primaryBlackColor, 0.7);
+                                    overflow-wrap: break-word;
+
+                                    @include phone(){ font-size: 16px; }
+                                    @include smallPhone(){ font-size: 14px; }
+
+                                }
+                            }
+                        }
+                    }
+
+                    form{ 
+                        display: none;
+                        p{
+                            margin: 0; text-align: center; color: red;
+                            font-size: 18px; padding: 0; margin-bottom: 10px;
+                        }
+                        width: 98%; 
+                    }
+                }
+            }
+        }
+
+        button{
+            background: $primaryColor;
+            color: rgb(246, 227, 246);
+            width: 100%; margin: 20px auto 0 auto;
+            padding: 10px 20px; border-radius: 4px;
+            display: block;
+            border: none; outline: none; font-size: 20px;
+            box-shadow: 0px 0px 10px 1px inset $primaryBlackColor;
+            transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+            cursor: pointer;
+            &:hover{
+                background: $primaryBlackColor;
+                box-shadow: 0px 0px 10px 1px inset rgb(246, 227, 246);
             }
         }
     }

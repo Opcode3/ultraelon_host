@@ -25,7 +25,7 @@
                             <h1 class="uk-margin-remove">Our <span class="in-highlight">Affiliate</span> Program</h1>
                             <p>There's no better way to spread the word about our investment plan than straight from you. Refer your friends and earn up to 8% from each completed order you refer.</p>
                             <a href=""></a>
-                            <a href="./signin.html" class="uk-button uk-button-primary uk-border-rounded">Start Now<i class="fas fa-arrow-circle-right uk-margin-small-left"></i></a>
+                            <a href="./user/" class="uk-button uk-button-primary uk-border-rounded">Start Now<i class="fas fa-arrow-circle-right uk-margin-small-left"></i></a>
                         </div>
                     </div>
                 </div>
@@ -118,7 +118,7 @@
                                 <p>You earn up to 8% of every investor(s) you refer to our system.</p>
                             </div>
                             <div class="uk-width-1-1 uk-grid-margin uk-first-column">
-                                <a href="#" class="uk-button uk-button-text">Goto account<i class="fas fa-arrow-circle-right uk-margin-small-left"></i></a>
+                                <a href="./user/" class="uk-button uk-button-text">Goto account<i class="fas fa-arrow-circle-right uk-margin-small-left"></i></a>
                             </div>
                         </div>
                     </div>

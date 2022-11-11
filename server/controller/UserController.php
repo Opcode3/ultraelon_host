@@ -34,6 +34,14 @@ use Exception;
             return $this->userService->userAuthentication($username, $password);
         }
 
+
+
+        // contact form
+
+        function postSupportQueryForm(array $request){
+            return $this->userService->createSupportRequest($request);
+        }
+
     }
 
 ?>

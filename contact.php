@@ -1,3 +1,24 @@
+<?php
+require_once("./vendor/autoload.php");
+use app\controller\UserController;
+
+    if(isset($_POST["submit"]) && isset($_POST["email"]) && strlen(trim($_POST["email"])) > 9){
+        $name = $_POST["name"];
+        $subject = $_POST["subject"];
+        $email = $_POST["email"];
+        $message = $_POST["message"];
+
+        $requestPayload = array(
+            "contact_name" => $name, "contact_email" => $email, 
+            "contact_subject" => $subject, "contact_message" => $message,
+        );
+        $userController = new UserController();
+        $response = json_decode($userController->postSupportQueryForm($requestPayload), true);
+        echo "<script> alert('".$response["message"]."'); </script>";
+        unset($_POST);
+    }
+
+?>
 <!DOCTYPE html>
 <html lang="en">
     <?php 
@@ -44,24 +65,24 @@
                         <hr class="uk-margin-medium">
                         <p class="uk-margin-remove-bottom uk-text-lead uk-text-muted uk-text-center">Have a questions?</p>
                         <h1 class="uk-margin-small-top uk-text-center">Let's <span class="in-highlight">get in touch</span></h1>
-                        <form id="contact-form" class="uk-form uk-grid-small uk-margin-medium-top" data-uk-grid>
+                        <form method="post" class="uk-form uk-grid-small uk-margin-medium-top" data-uk-grid>
                             <div class="uk-width-1-2@s uk-inline">
                                 <span class="uk-form-icon fas fa-user fa-sm"></span>
-                                <input class="uk-input uk-border-rounded" id="name" name="name" type="text" placeholder="Full name">
+                                <input class="uk-input uk-border-rounded" id="name" required name="name" minlength="5" type="text" placeholder="Full name">
                             </div>
                             <div class="uk-width-1-2@s uk-inline">
                                 <span class="uk-form-icon fas fa-envelope fa-sm"></span>
-                                <input class="uk-input uk-border-rounded" id="email" name="email" type="email" placeholder="Email address">
+                                <input class="uk-input uk-border-rounded" id="email" required name="email" type="email" placeholder="Email address">
                             </div>
                             <div class="uk-width-1-1 uk-inline">
                                 <span class="uk-form-icon fas fa-pen fa-sm"></span>
-                                <input class="uk-input uk-border-rounded" id="subject" name="subject" type="text" placeholder="Subject">
+                                <input class="uk-input uk-border-rounded" id="subject" required name="subject" minlength="4" type="text" placeholder="Subject">
                             </div>
                             <div class="uk-width-1-1">
-                                <textarea class="uk-textarea uk-border-rounded" id="message" name="message" rows="6" placeholder="Message"></textarea>
+                                <textarea class="uk-textarea uk-border-rounded" id="message" required name="message" minlength="5" rows="6" placeholder="Message"></textarea>
                             </div>
                             <div class="uk-width-1-1">
-                                <button class="uk-width-1-1 uk-button uk-button-primary uk-border-rounded" id="sendemail" type="submit" name="submit">Send Message</button>
+                                <button class="uk-width-1-1 uk-button uk-button-primary uk-border-rounded" type="submit" name="submit">Send Message</button>
                             </div>
                         </form>
                     </div>

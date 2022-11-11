@@ -17,7 +17,7 @@
     <!-- breadcrumb content end -->
     <main>
         <!-- section content begin -->
-        <!-- <div class="uk-section in-equity-17">
+        <div class="uk-section in-equity-17">
             <div class="uk-container uk-margin-top uk-margin-medium-bottom">
                 <div class="uk-grid uk-grid-collapsed uk-flex uk-flex-center">
                     <div class="uk-width-3-5@m uk-text-center">
@@ -28,84 +28,63 @@
                         <div class="uk-grid-small uk-child-width-1-2@s  uk-child-width-1-3@l in-equity-pricing" data-uk-grid>
                             
                             <div>
-                                <div class="uk-card uk-card-default uk-card-body uk-box-shadow-medium">
-                                    <p class="uk-text-small uk-text-muted uk-text-uppercase">Minimum funding<span class="uk-label uk-margin-small-left in-label-small">USD 200</span></p>
-                                    <h2 class="uk-margin-top uk-margin-remove-bottom">Classic account</h2>
-                                    <p class="uk-text-lead uk-text-muted uk-margin-remove-top">Benefit from industry-leading entry prices</p>
+                                <div class="uk-card uk-card-default uk-card-body uk-box-shadow-large">
+                                    <p class="uk-text-small uk-text-muted uk-text-uppercase">Minimum funding<span class="uk-label uk-margin-small-left in-label-small">USD 5</span></p>
+                                    <h2 class="uk-margin-top uk-margin-remove-bottom">Classic Plan</h2>
+                                    <p class="uk-text-lead uk-text-muted uk-margin-remove-top">Lots of our investors begins with this plan</p>
                                     <hr>
                                     <ul class="uk-list uk-list-bullet in-list-check">
-                                        <li>One of the established industry leaders</li>
-                                        <li>Three decades of trading know-how</li>
-                                        <li>Award-winning customer service*</li>
-                                        <li>Highly-regarded trader education*</li>
-                                        <li>Advanced risk management</li>
-                                        <li>Tax-free spread betting profits</li>
-                                        <li>Low minimum deposit</li>
+                                        <li> <b>Minimum:</b> 5</li>
+                                        <li> <b>Maximum:</b> 500</li>
+                                        <li><b>ROI Profit:</b>  8%</li>
+                                        <li><b>Ultra Profit:</b>  2%</li>
+                                        <li><b>Duration:</b> 24 Hours</li>
                                     </ul>
-                                    <a href="#" class="uk-button uk-button-primary uk-border-rounded uk-align-center">Open an account<i class="fas fa-arrow-circle-right uk-margin-small-left"></i></a>
+                                    <a href="./user/" class="uk-button uk-button-primary uk-border-rounded uk-align-center">Start Investing Now<i class="fas fa-arrow-circle-right uk-margin-small-left"></i></a>
                                 </div>
                             </div>
                             <div>
                                 <div class="uk-card uk-card-default uk-card-body uk-box-shadow-large">
                                     <p class="uk-text-small uk-text-muted uk-text-uppercase">Minimum funding<span class="uk-label uk-margin-small-left in-label-small">USD 500</span></p>
-                                    <h2 class="uk-margin-top uk-margin-remove-bottom">Platinum account</h2>
-                                    <p class="uk-text-lead uk-text-muted uk-margin-remove-top">Receive even tighter spreads and commissions</p>
+                                    <h2 class="uk-margin-top uk-margin-remove-bottom">Premium Plan</h2>
+                                    <p class="uk-text-lead uk-text-muted uk-margin-remove-top">Most sorted plan for almost every medium investors</p>
                                     <hr>
                                     <ul class="uk-list uk-list-bullet in-list-check">
-                                        <li>Award-winning trading platform*</li>
-                                        <li>Wide range of charting tools</li>
-                                        <li>Fast, automated excecution</li>
-                                        <li>Expert news & analysis</li>
-                                        <li>Competitive spreads</li>
-                                        <li>Advanced trading tools</li>
-                                        <li>Tax-free spread betting profits</li>
+                                        <li> <b>Minimum:</b> 500</li>
+                                        <li> <b>Maximum:</b> 3000</li>
+                                        <li><b>ROI Profit:</b>  20%</li>
+                                        <li><b>Ultra Profit:</b>  10%</li>
+                                        <li><b>Duration:</b> 24 Hours</li>
                                     </ul>
-                                    <a href="#" class="uk-button uk-button-primary uk-border-rounded uk-align-center">Open an account<i class="fas fa-arrow-circle-right uk-margin-small-left"></i></a>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="uk-card uk-card-default uk-card-body uk-box-shadow-large">
-                                    <p class="uk-text-small uk-text-muted uk-text-uppercase">Minimum funding<span class="uk-label uk-margin-small-left in-label-small">USD 500</span></p>
-                                    <h2 class="uk-margin-top uk-margin-remove-bottom">Platinum account</h2>
-                                    <p class="uk-text-lead uk-text-muted uk-margin-remove-top">Receive even tighter spreads and commissions</p>
-                                    <hr>
-                                    <ul class="uk-list uk-list-bullet in-list-check">
-                                        <li>Award-winning trading platform*</li>
-                                        <li>Wide range of charting tools</li>
-                                        <li>Fast, automated excecution</li>
-                                        <li>Expert news & analysis</li>
-                                        <li>Competitive spreads</li>
-                                        <li>Advanced trading tools</li>
-                                        <li>Tax-free spread betting profits</li>
-                                    </ul>
-                                    <a href="#" class="uk-button uk-button-primary uk-border-rounded uk-align-center">Open an account<i class="fas fa-arrow-circle-right uk-margin-small-left"></i></a>
+                                    <a href="./user/" class="uk-button uk-button-primary uk-border-rounded uk-align-center">Start Investing Now<i class="fas fa-arrow-circle-right uk-margin-small-left"></i></a>
                                 </div>
                             </div>
                             <div>
                                 <div class="uk-card uk-card-default uk-card-body uk-box-shadow-medium">
-                                    <p class="uk-text-small uk-text-muted uk-text-uppercase">Minimum funding<span class="uk-label uk-margin-small-left in-label-small">USD 200</span></p>
-                                    <h2 class="uk-margin-top uk-margin-remove-bottom">Classic account</h2>
-                                    <p class="uk-text-lead uk-text-muted uk-margin-remove-top">Benefit from industry-leading entry prices</p>
+                                    <!-- <p class="uk-text-small uk-text-muted uk-text-uppercase">Minimum funding<span class="uk-label uk-margin-small-left in-label-small">USD 200</span></p> -->
+                                    <h3 class="uk-margin-top uk-margin-remove-bottom">Pro (Whales Investors)</h3>
+                                    <p class="uk-text-lead uk-text-muted uk-margin-remove-top">Become our partner and enjoy the enormous longtime benefit.</p>
                                     <hr>
+
+                                    <p>
+                                        The Ultra token is sponsoring sports teams, building hospitals, schools, financing big casinos
+                                        and building a bigger game community. You too can be a shareholder.
+                                    </p>
                                     <ul class="uk-list uk-list-bullet in-list-check">
-                                        <li>One of the established industry leaders</li>
-                                        <li>Three decades of trading know-how</li>
-                                        <li>Award-winning customer service*</li>
-                                        <li>Highly-regarded trader education*</li>
-                                        <li>Advanced risk management</li>
-                                        <li>Tax-free spread betting profits</li>
-                                        <li>Low minimum deposit</li>
+                                        <!-- <li>Tax-free spread betting profits</li> -->
+                                        <li>Earn as a shareholder</li>
+                                        <!-- <li>Low minimum deposit</li> -->
                                     </ul>
-                                    <a href="#" class="uk-button uk-button-default uk-border-rounded uk-align-center">Open an account<i class="fas fa-arrow-circle-right uk-margin-small-left"></i></a>
+                                    <a href="./user/" class="uk-button uk-button-default uk-border-rounded uk-align-center">Start Investing Now<i class="fas fa-arrow-circle-right uk-margin-small-left"></i></a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div> -->
+        </div>
 
-        <div class="uk-section in-equity-17">
+        <!-- <div class="uk-section in-equity-17">
             <div class="uk-container uk-margin-top uk-margin-medium-bottom">
                 <div class="uk-grid uk-flex uk-flex-center">
                     <div class="uk-width-3-5@m uk-text-center">
@@ -118,7 +97,6 @@
                                 <div class="uk-card uk-card-default uk-card-body uk-box-shadow-medium">
                                     <p class="uk-text-small uk-text-muted uk-text-uppercase">Minimum funding<span class="uk-label uk-margin-small-left in-label-small">USD 5</span></p>
                                     <h2 class="uk-margin-top uk-margin-remove-bottom">Classic Plan</h2>
-                                    <!-- <p class="uk-text-lead uk-text-muted uk-margin-remove-top">Benefit from industry-leading entry prices</p> -->
                                     <hr>
                                     <ul class="uk-list uk-list-bullet in-list-check">
                                         <li>Instant Withdrawal</li>
@@ -136,7 +114,6 @@
                                 <div class="uk-card uk-card-default uk-card-body uk-box-shadow-large">
                                     <p class="uk-text-small uk-text-muted uk-text-uppercase">Minimium funding<span class="uk-label uk-margin-small-left in-label-small">USD 500</span></p>
                                     <h2 class="uk-margin-top uk-margin-remove-bottom">Premium Plan</h2>
-                                    <!-- <p class="uk-text-lead uk-text-muted uk-margin-remove-top">Receive even tighter spreads and commissions</p> -->
                                     <hr>
                                     <ul class="uk-list uk-list-bullet in-list-check">
                                         <li>Instant Withdrawal</li>
@@ -154,7 +131,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
         
         <!-- section content end -->

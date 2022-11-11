@@ -77,15 +77,13 @@ if(depositForm){
                     amount: depositors_amount, address: depositors_address,
                     plan: depositors_plan, from: "invest_1"
                 });
-                console.log(investmentPayload);
+                // console.log(investmentPayload);
                 make_call( async () => {
                     const response = await postRequest(`${api_url}investment.php`, investmentPayload);
                     console.log(response);
                     if(response.status_code == 201){
-                        // modal.classList.add("hideModal")
-                        // window.location.reload();
                         startNotifier(response.message, "success");
-                        // setTimeout(()=>{ window.location.reload()}, 4100);
+                        setTimeout(()=>{ window.location.reload()}, 1000);
                     }else{
                         startNotifier(response.message)
                     }

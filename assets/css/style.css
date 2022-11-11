@@ -9756,18 +9756,18 @@ readers do not read off random characters that represent icons */
 }
 
  /* Take off this */
-.in-equity-17 .in-equity-pricing div:first-child .uk-card {
+/* .in-equity-17 .in-equity-pricing div:first-child .uk-card {
     border-right: 0;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
     margin-top: 35px;
-}
+} */
 
 /* And also this */
-.in-equity-17 .in-equity-pricing div:last-child .uk-card-body {
+/* .in-equity-17 .in-equity-pricing div:last-child .uk-card-body {
     padding-top: 75px;
     padding-bottom: 75px;
-}
+} */
 
 .in-equity-17 .in-equity-pricing div .uk-card-default:hover {
     border-color: #2D225B;

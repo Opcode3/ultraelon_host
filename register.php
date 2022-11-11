@@ -3,11 +3,13 @@
 <head>
     <!-- Standard Meta -->
     <meta charset="utf-8">
-    <meta name="description" content="Ultraelon Investment Platform">
-    <meta name="keywords" content="blockit, uikit3, indonez, handlebars, scss, javascript">
-    <meta name="author" content="Indonez">
+    <meta name="description" content="ULTRAELON is an African based international financial company engaged in investment
+activities, which are related to trading on financial markets and cryptocurrency exchanges
+performed by qualified professional traders.">
+    <meta name="keywords" content="Investment, Cryptocurrency, traders, financial company, ultraelon, ultra investment platform, ultra token, bitcoin, ethereum, bnb, usdt">
+    <meta name="author" content="Ultraelon Investment Platform">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#FCB42D" />
+    <meta name="theme-color" content="#A37FEF" />
     <!-- Site Properties -->
     <title>Sign up - Ultraelon Investment Platform</title>
     <!-- critical preload -->
@@ -50,7 +52,8 @@
                                         <img src="assets/img/in-lazy.gif" data-src="assets/img/ultraelon.png" alt="logo" width="146" height="39" data-uk-img>
                                     </a>
                                     <!-- logo end -->
-                                    <p class="uk-text-lead uk-margin-small-top uk-margin-medium-bottom">Register account</p>
+                                    <p class="uk-text-large uk-margin-small-top uk-margin-medium-bottom">Register account</p>
+
                                     <!-- login form begin -->
                                     <form id="frmRegister" class="uk-grid uk-form">
                                         <div class="uk-margin-small uk-width-1-1 uk-inline">

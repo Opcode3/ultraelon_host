@@ -89,6 +89,14 @@ use app\config\PasswordConfig;
             $stmt = $this->query($sql, $payload);
             return $stmt->rowCount() == 0; 
         }
+
+
+        // user contact form
+        function newSupportQuery(array $query){
+            $sql = "INSERT INTO contacts_tb(contact_slug, contact_name, contact_email, contact_subject, contact_message) VALUES(:contact_slug, :contact_name, :contact_email, :contact_subject, :contact_message)";
+            $response = $this->insert($sql, $query, "contact_slug");
+            return $response;
+        }
        
     }
 

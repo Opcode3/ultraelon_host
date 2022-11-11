@@ -83,6 +83,17 @@ use app\services\impl\UserServiceImpl;
             return Response::json("Your username is not recognized!");
         }
 
+
+        // for contact form functionalities
+        function createSupportRequest(array $supportRequest): string
+        {
+            $response = $this->model->newSupportQuery($supportRequest);
+            if($response){
+                return Response::json("Support message was sent. Thank you for reaching out to us. We truly appreciate.", 201);
+            }
+            return Response::json("An error was encountered while trying to submit support. Please try again later.");
+        }
+
         private function getUserIDByUsername(string $username){
             $response = $this->model->findUserIdFromUsername($username);
             return $response;

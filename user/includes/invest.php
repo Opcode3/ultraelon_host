@@ -1,3 +1,16 @@
+<?php
+    require_once("../vendor/autoload.php");
+
+use app\controller\InvestmentController;
+
+    $user_id = (int) $GLOBALS["user_id"];
+
+    $investmentController = new InvestmentController();
+
+    if($user_id > 0){
+        $myInvestment = json_decode($investmentController->getAllInvestmentByUserId($user_id), true);
+    }
+?>
 <div class="investment">
     <h2>Your Investment</h2>
     <div class="outCard">
@@ -46,8 +59,8 @@
                         <th>Package</th>
                         <th>Capital</th>
                         <th>Start Date</th>
-                        <th>Elapse Date</th>
-                        <th>Days Left</th>
+                        <!-- <th>Elapse Date</th> -->
+                        <th>Duration</th>
                         <th>Total ROI</th>
                         <th>Total Ultra</th>
                         <th>Status</th>
@@ -84,9 +97,31 @@
                         <td>29 ultra token</td>
                         <td> <span class="pending">pending</span> </td>
                     </tr> -->
-                    <tr>
-                        <td colspan="8">No investment has been recorded for this account!</td>
-                    </tr>
+
+                    <?php
+                      if($myInvestment["status_code"] == 200 && count($myInvestment["message"]) > 0) {
+                        foreach ($myInvestment["message"] as $key => $value) {
+                    ?>
+                        <tr>
+                            <td><?php echo ucfirst($value["invest_plan"]); ?></td>
+                            <td><?php echo "$".$value["invest_amount"]; ?></td>
+                            <td><?php  echo date_format(date_create($value["createdAt"]), "D, d-M-Y");?></td>
+                            <!-- <td>20-11-2023</td> -->
+                            <td>1 day (24 Hours)</td>
+                            <td>$160.00</td>
+                            <td>29 ultra token</td>
+                            <td> <span class="pending">pending</span> </td>
+                        </tr>
+                    <?php
+                        }
+                      }else{
+                    ?>
+                        <tr>
+                            <td colspan="8">No investment has been recorded for this account!</td>
+                        </tr>
+                    <?php
+                      }
+                    ?>
                 </tbody>
             </table>
         </div>

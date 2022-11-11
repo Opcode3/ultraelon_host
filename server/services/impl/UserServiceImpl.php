@@ -7,6 +7,7 @@
         function getUsers(): string;
         function updateUserAccount(array $userUpdateRequest): string;
         function userAuthentication(string $username, string $password): string;
+        function createSupportRequest(array $supportRequest): string;
     }
 
 ?>

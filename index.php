@@ -53,16 +53,16 @@
                     <div class="uk-width-1-2@m in-symbol-wrap">
                         <div class="uk-inline uk-dark uk-width-1-1 uk-height-1-1">
                             <span class="uk-position-absolute uk-transform-center in-symbol-1" style="left: 12%; top: 42%">
-                                <img src="./v1/assets/icons/bitcoin.svg" alt="symbol-logo">
+                                <img src="./assets/icons/bitcoin.svg" alt="symbol-logo">
                             </span>
                             <span class="uk-position-absolute uk-transform-center in-symbol-2" style="left: 58%; top: 18%">
-                                <img src="./v1/assets/icons/eth.svg" alt="symbol-logo">
+                                <img src="./assets/icons/eth.svg" alt="symbol-logo">
                             </span>
                             <span class="uk-position-absolute uk-transform-center in-symbol-3" style="left: 22%; top: 13%">
-                                <img src="./v1/assets/icons/bnb.svg" alt="symbol-logo">
+                                <img src="./assets/icons/bnb.svg" alt="symbol-logo">
                             </span>
                             <span class="uk-position-absolute uk-transform-center in-symbol-4" style="left: 70%; top: 60%">
-                                <img src="./v1/assets/icons/usdt.svg" alt="symbol-logo">
+                                <img src="./assets/icons/usdt.svg" alt="symbol-logo">
                             </span>
                             <span class="uk-position-absolute uk-transform-center in-symbol-5" style="left: 10%; top: 38%"></span>
                             <span class="uk-position-absolute uk-transform-center in-symbol-6" style="left: 52%; top: 6%"></span>
@@ -186,28 +186,6 @@
                                     <a href="#" class="uk-button uk-button-default uk-border-rounded uk-align-center">Open an account<i class="fas fa-arrow-circle-right uk-margin-small-left"></i></a>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-
-        <!-- <div class="uk-section in-equity-3 in-offset-top-20">
-            <div class="uk-container uk-margin-large-bottom">
-                <div class="uk-grid uk-flex uk-flex-middle">
-                    <div class="uk-width-expand@m">
-                        <h1 class="uk-margin-small-bottom">Tight spreads and <span class="in-highlight">ultra-fast</span> execution</h1>
-                        <h3 class="uk-margin-top uk-text-warning">Best market prices available so you can receive excellent conditions.</h3>
-                        <hr class="uk-margin-medium-top uk-margin-medium-bottom">
-                        <ul class="uk-list in-list-check">
-                            <li>Negative balance protection</li>
-                            <li>Segregated and supervised client funds</li>
-                            <li>Instant deposit & fast withdrawal</li>
-                        </ul>
-                    </div>
-                    <div class="uk-width-2xlarge uk-flex uk-flex-right uk-flex-center@s">
-                        <div class="uk-card uk-card-body uk-card-default uk-border-rounded in-margin-top-60@s">
-                            <div id="tradingview-widget"></div>
                         </div>
                     </div>
                 </div>

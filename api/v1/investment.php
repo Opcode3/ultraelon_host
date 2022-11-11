@@ -1,10 +1,9 @@
 <?php
 
-use app\controller\WithdrawController;
+use app\controller\InvestmentController;
 use app\response\Response;
 
 require dirname(__DIR__)."../../vendor/autoload.php";
-// echo json_encode(array("name" => "Emmanuel Emeka", "url" => dirname(__DIR__)."/../vendor/autoload.php"));
 
 header("Access-Control-Allow-Origin: same");
 header("Content-Type: application/json; charset=UTF-8");
@@ -21,46 +20,29 @@ header("Access-Control-Max-Age: 3600");
         if(array_key_exists("from", $request_data)){
             
             if( $request_data["from"] == "invest_1"){
-                session_start();
-                
+                session_start();            
                 $amount = (int) $request_data["amount"];
                 $address = $request_data["address"];
                 $plan = $request_data["plan"];
-                $user_id = $_SESSION["userDetails"]["user_id"]; 
+                $user_id = (int) $_SESSION["userDetails"]["user_id"]; 
 
-                $investPayload = array(
-                    "invest_user_id" => $user_id, "invest_amount" => $amount,
-                    "invest_depositors_address" => $address, 
-                    "invest_plan" => $plan
-                );
-                echo Response::json($investPayload, 201);
+                if($user_id > 0){
+                    $investPayload = array(
+                        "invest_user_id" => $user_id, "invest_amount" => $amount,
+                        "invest_depositor_address" => $address, 
+                        "invest_plan" => $plan
+                    );
+                    // echo Response::json($investPayload, 201);
+                    $investmentController = new InvestmentController();
+                    $reponseToInvestment = $investmentController->registerInvestment($investPayload);
+                    echo $reponseToInvestment;    
+                }else{
+                    echo Response::json("Oooops! we are not able to validate the user at the monent. Try logout and login in again..");
+                }
+            }else{
+                echo Response::json("Oooops! we are not able to validate the user at the monent. Try logout and login in again..");
             }
     
-            // if($fromWallet > 10 && ($fromWallet - $amount) >= 0){
-            //     // echo Response::json("good");
-            //     if(strlen(trim($withdraw_address)) < 5){
-            //         echo Response::json("No wallet address has been specified for the account type. Try inputting an address from the setting tab.");
-            //     }else{
-            //         $withdrawPayload = array(
-            //             "withdraw_amount" => $amount,
-            //             "withdraw_account_type" => $type,
-            //             "withdraw_user_id" => $user_id,
-            //             "withdraw_address" => $withdraw_address,
-            //             "withdraw_from" => $fromWalletName
-            //         );
-            //         $withdrawController = new WithdrawController();
-            //         $reponseToWithdraw = json_decode($withdrawController->withdrawFund($withdrawPayload), true);
-            //         if($reponseToWithdraw["status_code"] == 201){
-            //             $_SESSION[$fromWalletName] = ($fromWallet - $amount);
-            //         }
-            //         echo Response::json($reponseToWithdraw["message"], $reponseToWithdraw["status_code"]);
-                    
-            //         // echo Response::json($withdrawPayload, 201);
-            //     }
-            // }else{
-            //     echo Response::json("Oooops! Insufficient account balance in wallet.");
-            // }
-            // }
         }else{
             echo Response::json("No withdraw verification token present in request data..");
         }

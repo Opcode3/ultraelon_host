@@ -15,6 +15,16 @@ const modalWithdraw = document.querySelector("#modalWithdraw");
 const modalInvest = document.querySelector("#modalInvest");
 
 
+// a globale variable to monitor investment type:
+let investmentType = -1;
+
+
+const modalAlertCloseBtn = document.querySelector("#modalAlertCloseBtn");
+const notifier = document.querySelector(".modalNotifier");
+
+const api_url =  (location.protocol == 'http:') ? "http://127.0.0.1/projects/ultra/api/v1/" : "https://127.0.0.1/projects/ultra/api/v1/" ; 
+// const api_url =  (location.protocol !== 'https:') ? "http://ultraelon.giembs.com/api/v1/" : "https://ultraelon.giembs.com/api/v1/" ; 
+
 // referrals
 const copyLink = document.querySelector("#copyLink");
 
@@ -22,10 +32,7 @@ if(copyLink){
     const copyFrom = document.querySelector("#linkToCopy");
     copyLink.addEventListener("click", () => copyClickedText(copyFrom));
 }
-
-
 // wallet address
-
 const walletFrame = document.querySelector("#walletFrame");
 
 if(walletFrame){
@@ -37,19 +44,60 @@ if(walletFrame){
     // copyLink.addEventListener("click", () => copyClickedText("#linkToCopy"));
 }
 
-
-
-
-
-
 // withdrawals
-if(modalInvestTrigger){
+if(modalInvestTrigger){    
     modalInvestTrigger.addEventListener("click", () => showWithdrawal(0, modalInvestTrigger))
     modalUltraTrigger.addEventListener("click", () => showWithdrawal(1, modalUltraTrigger))
     modalReferralTrigger.addEventListener("click", () => showWithdrawal(2, modalReferralTrigger))
 }
 
 
+// work on investment deposit
+const depositShow = document.querySelector("#depositShow");
+const depositForm = document.querySelector("#depositForm");
+if(depositShow){
+    depositShow.querySelector("button").addEventListener("click", e => {
+        depositShow.style.display = "none";
+        depositForm.style.display = "block";
+    })
+}
+
+if(depositForm){
+    depositForm.addEventListener("submit", function(e){
+        e.preventDefault();
+        const depositors_amount = el_value(this, "#depositors_amount");
+        const depositors_address = el_value(this, "#depositors_address");
+        const depositors_plan = investmentType == 3 ? "classic" : 
+                                   investmentType == 4 ? "premium" : "pro";
+        if(investmentType != 5){        
+            const min = depositors_plan == "classic" ? 5 : 500;
+            const max = depositors_plan == "classic" ? 500 : 3000;
+            if(depositors_amount >= min && depositors_amount <= max){
+                const investmentPayload = JSON.stringify({
+                    amount: depositors_amount, address: depositors_address,
+                    plan: depositors_plan, from: "invest_1"
+                });
+                console.log(investmentPayload);
+                make_call( async () => {
+                    const response = await postRequest(`${api_url}investment.php`, investmentPayload);
+                    console.log(response);
+                    if(response.status_code == 201){
+                        // modal.classList.add("hideModal")
+                        // window.location.reload();
+                        startNotifier(response.message, "success");
+                        // setTimeout(()=>{ window.location.reload()}, 4100);
+                    }else{
+                        startNotifier(response.message)
+                    }
+                    console.log("Stop loading api!!!")
+                });
+                // startNotifier("Make Investment!"+investmentType, "success");
+            }else{
+                startNotifier("Your depositing amount is either above or below your selected investment plan!")
+            }
+        }
+    })
+}
 
 // investment
 if(premiumInvestTrigger){
@@ -60,11 +108,14 @@ if(premiumInvestTrigger){
 
 modalCancelBtn.addEventListener("click", () => modal.classList.add("hideModal"));
 
-
 function showWithdrawal(index, ele){
     const redrawableAmount = ele.getAttribute("data-amount");
     if(redrawableAmount >= 10){
+
+
         modelSubtitle.innerHTML = `Withdrawing from ${ index == 0 ? "Investment" : index == 1 ? "Ultra token" : "Referral Bonus"} Earnings`;
+        modelSubtitle.setAttribute("data-from", index == 0 ? "invest" : index == 1 ? "ultra" : "referral");
+        
         modalWithdraw.classList.add("showInnerModel");
         modalInvest.classList.remove("showInnerModel");
         modal.classList.remove("hideModal");
@@ -84,6 +135,9 @@ function showInvestment(index){
     modalInvest.classList.add("showInnerModel");
     modalWithdraw.classList.remove("showInnerModel");
     modal.classList.remove("hideModal");
+    depositForm.style.display = "none";
+    depositShow.style.display = "block";
+    investmentType = index;
 }
 
 // copyText
@@ -91,7 +145,82 @@ function copyClickedText(element){
     const copyText = element.innerHTML;
     navigator.clipboard.writeText(copyText);
     alert("Text copied");
-
 }
 
-// hideModal
+// withdrawFormHandler
+const withdrawForm = document.querySelector("#withdrawForm");
+
+if(withdrawForm){
+    withdrawForm.addEventListener("submit", function(e){
+        e.preventDefault();
+        console.log("Start loading api!!!")
+        const type = el_value(withdrawForm, "#withdraw_address");
+        const jwt_token = el_value(withdrawForm,"#jwt_token");
+        const withdraw_amount = el_value(withdrawForm, "#withdraw_amount");
+        const withdraw_from = modelSubtitle.getAttribute("data-from");
+        // continue HERE
+        const withdraw_data = JSON.stringify({type, jwt: jwt_token, amount: withdraw_amount, from: withdraw_from});
+
+        // console.log(withdraw_data);
+
+        make_call( async () => {
+            const response = await postRequest(`${api_url}withdraw.php`, withdraw_data);
+            console.log(response);
+            if(response.status_code == 201){
+                // modal.classList.add("hideModal")
+                // window.location.reload();
+                startNotifier(response.message, "success");
+                setTimeout(()=>{ window.location.reload()}, 4100);
+            }else{
+                startNotifier(response.message)
+            }
+            // if(data.status_code == 200 && data.message == "true"){
+            // }
+            console.log("Stop loading api!!!")
+        });
+        // console.log(`Type: ${type}, JWT: ${jwt_token}, Amount: ${withdraw_amount}`)
+    });
+}
+
+
+/// Default reuse component
+// modal alert functionality
+
+
+
+function startNotifier(message, type = "error"){
+    if(type == "success"){
+        notifier.classList.add("success");
+    }else{
+        notifier.classList.add("error");
+    }
+    notifier.querySelector("p").innerHTML = message;
+    setTimeout(() => stopNotifier(), 6000); 
+}
+
+function stopNotifier(){
+    notifier.classList.remove("error");
+    notifier.classList.remove("success");
+}
+if(notifier){
+    modalAlertCloseBtn.addEventListener("click", e => { stopNotifier()})
+}
+
+
+function make_call(callback){
+    callback();
+}
+
+const el_value = (parent, pointer) => parent.querySelector(pointer).value;
+
+async function postRequest(url, request_data = [], headers = {'Content-Type': 'application/json'}){
+    try {
+        const response = await fetch(url, {method: 'POST', headers: headers, body: request_data});
+        // console.log(response.text())
+        return await response.json();
+    } catch (error) {
+        // console.error("Unable to connect to server", error)
+        console.log("Here");
+        return { message: 'unable to 55 connect to server.'}
+    }
+}

@@ -1,11 +1,17 @@
 <?php
 
+require_once("../vendor/autoload.php");
+
+use app\controller\WalletController;
+
     session_start();
     // var_dump($_SESSION);
+    $walletId = (int) $_SESSION["userDetails"]["user_id"];
+
     if(
         !(isset($_SESSION["isAuthenticated"]) && is_bool($_SESSION["isAuthenticated"])
         && $_SESSION["isAuthenticated"] == true && isset($_SESSION["userDetails"]) 
-        && count($_SESSION["userDetails"]) == 12)
+        && count($_SESSION["userDetails"]) == 12 && $walletId > 0)
     ){
         session_destroy();
         header("location: ../signin.html");
@@ -29,6 +35,20 @@
             break;
     }
 
+    // always sync db for current wallet details
+    if(isset($_SESSION["wallet_invest"]) == false){
+        $walletController = new WalletController();
+        if($walletId > 0){
+            $walletResponse = json_decode($walletController->getUserWalletAmount($walletId), true);
+            $_SESSION["wallet_invest"] = $walletResponse["message"]["wallet_invest"];
+            $_SESSION["wallet_referral"] = $walletResponse["message"]["wallet_referral"];
+            $_SESSION["wallet_ultra"] = $walletResponse["message"]["wallet_ultra"];
+        }
+    
+        // var_dump($walletResponse["message"]);
+    }
+    
+
     $username = $_SESSION["userDetails"]["user_username"];
     $user_id = $_SESSION["userDetails"]["user_id"];
     $email = $_SESSION["userDetails"]["user_email"];
@@ -41,6 +61,9 @@
     $bnb = $_SESSION["userDetails"]["user_bnb"];
     $ultra = $_SESSION["userDetails"]["user_ultra"];
     $usdt = $_SESSION["userDetails"]["user_usdt"];
+    $walletROI = $_SESSION["wallet_invest"];
+    $walletUltra = $_SESSION["wallet_ultra"];
+    $walletReferral = $_SESSION["wallet_referral"];
     // $email = 
     // var_dump($_SESSION["userDetails"]);
 ?>

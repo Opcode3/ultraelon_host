@@ -396,6 +396,7 @@ body #modal .coverFrame #modalInclude .showInnerModel {
 }
 body #modal .coverFrame #modalInclude #modalInvest {
   padding: 10px 4px 20px 4px;
+  transition: all 1.5s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 body #modal .coverFrame #modalInclude #modalInvest #depositShow p {
   color: rgba(31, 28, 45, 0.9);
@@ -459,17 +460,54 @@ body #modal .coverFrame #modalInclude #modalInvest #depositShow #walletFrame .it
     font-size: 14px;
   }
 }
-body #modal .coverFrame #modalInclude #modalInvest form {
+body #modal .coverFrame #modalInclude #modalInvest #depositForm {
   display: none;
   width: 98%;
 }
-body #modal .coverFrame #modalInclude #modalInvest form p {
+body #modal .coverFrame #modalInclude #modalInvest #depositForm p {
   margin: 0;
   text-align: center;
   color: red;
   font-size: 18px;
   padding: 0;
   margin-bottom: 10px;
+}
+body #modal .coverFrame #modalInclude .modalNotifier {
+  padding: 6px 8px;
+  margin: 10px;
+  border-radius: 4px;
+  display: none;
+  min-height: 30px;
+}
+body #modal .coverFrame #modalInclude .modalNotifier svg {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  padding: 4px;
+  float: right;
+}
+body #modal .coverFrame #modalInclude .modalNotifier p {
+  margin: 0;
+  font-size: 14px;
+  color: #333 !important;
+}
+body #modal .coverFrame #modalInclude .error {
+  display: block;
+  background: rgb(246, 210, 210);
+  box-shadow: 0 0 1px 2px #f6afaf;
+}
+body #modal .coverFrame #modalInclude .error svg {
+  background: #f6afaf;
+  stroke: rgb(254, 235, 235);
+}
+body #modal .coverFrame #modalInclude .success {
+  display: block;
+  background: rgb(235, 246, 210);
+  box-shadow: 0 0 1px 2px #d5f6af;
+}
+body #modal .coverFrame #modalInclude .success svg {
+  background: #92b866;
+  stroke: rgb(242, 254, 235);
 }
 body #modal button {
   background: #2D225B;

@@ -428,6 +428,7 @@ body{
                 #modalInvest{
                     // background: red;
                     padding: 10px 4px 20px 4px;
+                    transition: all 1.5s cubic-bezier(0.165, 0.84, 0.44, 1);
 
                     #depositShow{
                         p{
@@ -473,7 +474,7 @@ body{
                         }
                     }
 
-                    form{ 
+                    #depositForm{ 
                         display: none;
                         p{
                             margin: 0; text-align: center; color: red;
@@ -481,6 +482,30 @@ body{
                         }
                         width: 98%; 
                     }
+                }
+
+
+                .modalNotifier{
+                    
+                    padding: 6px 8px; margin: 10px; border-radius: 4px;
+                    display: none; min-height: 30px;
+                    svg{
+                        width: 20px; height: 20px; border-radius: 50%; 
+                        padding: 4px; float: right;
+                    }
+                    p{margin: 0; font-size: 14px; color: #333 !important;}
+                }
+                .error{
+                    display: block;
+                    svg{ background: #f6afaf; stroke: rgb(254, 235, 235);}
+                    background: rgb(246, 210, 210);
+                    box-shadow: 0 0 1px 2px #f6afaf;
+                }
+                .success{
+                    display: block;
+                    svg{ background: #92b866; stroke: rgb(242, 254, 235);}
+                    background: rgb(235, 246, 210);
+                    box-shadow: 0 0 1px 2px #d5f6af;
                 }
             }
         }

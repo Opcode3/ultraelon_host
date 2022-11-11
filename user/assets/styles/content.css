@@ -152,6 +152,7 @@
   width: fit-content;
   text-transform: capitalize;
   font-weight: 600;
+  display: inline-block;
 }
 .dashboard .outCard .cardGroup .link:after, .withdrawals .outCard .cardGroup .link:after, .setting .outCard .cardGroup .link:after, .investment .outCard .cardGroup .link:after, .referral .outCard .cardGroup .link:after {
   content: "";

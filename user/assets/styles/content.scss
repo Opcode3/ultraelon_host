@@ -89,7 +89,7 @@
                 font-size: 15px; color: rgb(28, 28, 217); cursor: pointer;
                 transition: all 1.5s cubic-bezier(0.165, 0.84, 0.44, 1); height: fit-content;
                 position: relative; width: fit-content; //background: green;
-                text-transform: capitalize; font-weight: 600;
+                text-transform: capitalize; font-weight: 600; display: inline-block;
                 &:after{
                     content: "";
                     position: absolute; height: 2px;

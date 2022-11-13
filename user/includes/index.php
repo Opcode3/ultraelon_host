@@ -1,11 +1,29 @@
 <?php
     require_once("../vendor/autoload.php");
     use app\controller\InvestmentController;
+use app\controller\ReferralController;
+use app\helper\GetLockedCapital;
 
     $user_id = (int) $GLOBALS["user_id"];
     $investmentController = new InvestmentController();
+    $referralController = new ReferralController();
+    $lockedInvestment = 0;
+    $lockedUltra = 0;
+    $lockedReferral = 0;
+
     if($user_id > 0){
         $myInvestment = json_decode($investmentController->getAllInvestmentByUserId($user_id), true);
+        $myreferrals = json_decode($referralController->getReferralsById($user_id), true);
+
+        if(count($myInvestment["message"]) > 0)
+            $lockedInvestment = GetLockedCapital::investment($myInvestment["message"]);
+
+        if(count($myInvestment["message"]) > 0)
+            $lockedUltra = GetLockedCapital::ultra($myInvestment["message"]);
+
+        if(count($myreferrals["message"]) > 0)
+            $lockedReferral = GetLockedCapital::referral($myreferrals["message"]);
+        
     }
 ?>
 <div class="dashboard">
@@ -16,19 +34,19 @@
         <div class="cardGroup">
             <div class="card">
                 <span class="title">Investment</span>
-                <span class="amount">$0</span>
+                <span class="amount"><?php echo "$".$lockedInvestment; ?></span>
                 <!-- <span class="link">Click to withdraw fund</span> -->
             </div>
 
             <div class="card">
                 <span class="title">Ultra token</span>
-                <span class="amount">$0</span>
+                <span class="amount"><?php echo "$".$lockedUltra; ?></span>
                 <!-- <span class="link">Click to withdraw fund</span> -->
             </div>
 
             <div class="card">
                 <span class="title">Referral Bonus</span>
-                <span class="amount">$0</span>
+                <span class="amount"><?php echo "$".$lockedReferral; ?></span>
                 <!-- <span class="link">Click to withdraw fund</span> -->
             </div>
         </div>
@@ -61,7 +79,15 @@
                             <td>1 day (24 Hours)</td>
                             <td>$160.00</td>
                             <td>29 ultra token</td>
-                            <td> <span class="pending">pending</span> </td>
+                            <td>
+                                <?php
+                                    if($value["invest_status"] == 1){
+                                        echo '<span class="paid">Paid</span>';
+                                    }else{
+                                        echo '<span class="pending">Pending</span>';
+                                    }
+                                ?> 
+                            </td>
                         </tr>
                     <?php
                         }

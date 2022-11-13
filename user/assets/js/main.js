@@ -13,6 +13,7 @@ const proInvestTrigger = document.querySelector("#proInvestTrigger");
 
 const modalWithdraw = document.querySelector("#modalWithdraw");
 const modalInvest = document.querySelector("#modalInvest");
+const modalInvestPro = document.querySelector("#modalInvestPro");
 
 
 // a globale variable to monitor investment type:
@@ -129,12 +130,22 @@ function showWithdrawal(index, ele){
 }
 
 function showInvestment(index){
-    modelSubtitle.innerHTML = `Making payment for ${ index == 3 ? "Classic" : index == 4 ? "Premium" : "Pro"} Investment Plan`;
-    modalInvest.classList.add("showInnerModel");
-    modalWithdraw.classList.remove("showInnerModel");
-    modal.classList.remove("hideModal");
-    depositForm.style.display = "none";
-    depositShow.style.display = "block";
+    if(index != 5){
+        modelSubtitle.innerHTML = `Making payment for ${ index == 3 ? "Classic" : index == 4 ? "Premium" : "Pro"} Investment Plan`;
+        modalInvest.classList.add("showInnerModel");
+        modalWithdraw.classList.remove("showInnerModel");
+        modal.classList.remove("hideModal");
+        depositForm.style.display = "none";
+        depositShow.style.display = "block";
+    }else{
+        modelSubtitle.innerHTML = `Welcome message from Mr. Nicolas Gilot`;
+        modalInvest.classList.remove("showInnerModel");
+        modalWithdraw.classList.remove("showInnerModel");
+        modalInvestPro.classList.add("showInnerModel")
+        modal.classList.remove("hideModal");
+        // depositForm.style.display = "none";
+        // depositShow.style.display = "block";
+    }
     investmentType = index;
 }
 

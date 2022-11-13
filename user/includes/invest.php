@@ -110,7 +110,15 @@ use app\controller\InvestmentController;
                             <td>1 day (24 Hours)</td>
                             <td>$160.00</td>
                             <td>29 ultra token</td>
-                            <td> <span class="pending">pending</span> </td>
+                            <td> 
+                                <?php
+                                    if($value["invest_status"] == 1){
+                                        echo '<span class="paid">Paid</span>';
+                                    }else{
+                                        echo '<span class="pending">Pending</span>';
+                                    }
+                                ?> 
+                            </td>
                         </tr>
                     <?php
                         }

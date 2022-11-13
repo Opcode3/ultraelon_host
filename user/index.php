@@ -161,7 +161,7 @@ use app\controller\WalletController;
         </main>
     </div>
     <div id="modal" class="hideModal">
-        <!-- <div class="modalCover">  -->
+        <!-- <div class="modalCover"> class="hideModal"  -->
             <div class="coverFrame">
                 <div class="modalHeader">
                     <h2 id="modelSubtitle"></h2>
@@ -174,6 +174,9 @@ use app\controller\WalletController;
                     </div>
                     <div id="modalWithdraw">
                         <?php include_once("./modal/withdraw.php"); ?>
+                    </div>
+                    <div id="modalInvestPro">
+                        <?php include_once("./modal/proInvest.php"); ?>
                     </div>
 
                 </div>

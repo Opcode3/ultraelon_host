@@ -472,6 +472,62 @@ body #modal .coverFrame #modalInclude #modalInvest #depositForm p {
   padding: 0;
   margin-bottom: 10px;
 }
+body #modal .coverFrame #modalInclude #modalInvestPro {
+  display: block;
+  width: 96%;
+  margin: 0 auto;
+  padding-bottom: 25px;
+}
+body #modal .coverFrame #modalInclude #modalInvestPro #proInvestmentShow p {
+  font-size: 18px;
+  padding: 0;
+  margin: 0;
+  color: #1F1C2D;
+  font-weight: 300;
+}
+body #modal .coverFrame #modalInclude #modalInvestPro #proInvestmentShow p:nth-child(even) {
+  padding-top: 10px;
+}
+body #modal .coverFrame #modalInclude #modalInvestPro #proInvestmentShow #writtenBy {
+  padding-top: 20px;
+  font-size: 16px;
+}
+body #modal .coverFrame #modalInclude #modalInvestPro #proInvestmentShow #writtenBy b {
+  display: block;
+  font-weight: 800;
+  color: #2D225B;
+  font-size: 17px;
+}
+body #modal .coverFrame #modalInclude #modalInvestPro #proInvestmentShow #social_btn {
+  display: flex;
+  gap: 5px;
+  padding-top: 30px;
+  justify-content: center;
+}
+body #modal .coverFrame #modalInclude #modalInvestPro #proInvestmentShow #social_btn a {
+  background: #f1eefb;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  padding: 10px 12px;
+  gap: 5px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  transition: all 1.2s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+body #modal .coverFrame #modalInclude #modalInvestPro #proInvestmentShow #social_btn a img {
+  width: 26px;
+}
+body #modal .coverFrame #modalInclude #modalInvestPro #proInvestmentShow #social_btn a span {
+  font-size: 17px;
+  font-weight: 300;
+  color: rgba(31, 28, 45, 0.6);
+}
+body #modal .coverFrame #modalInclude #modalInvestPro #proInvestmentShow #social_btn a:hover {
+  background: #dfdce8;
+  box-shadow: 0px 0px 2px 1px #eeebfb, 0px 0px 2px 2px #e7dfff, 0px 0px 2px 3px #ccbef9;
+}
 body #modal .coverFrame #modalInclude .modalNotifier {
   padding: 6px 8px;
   margin: 10px;

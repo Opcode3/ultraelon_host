@@ -8,11 +8,12 @@
     $user_id = (int) $GLOBALS["user_id"];
 
     $withdrawController = new WithdrawController();
-
     if($user_id > 0){
         $myWithdrawList = json_decode($withdrawController->getAllWithdrawsByUserId($user_id), true);
         // var_dump($myWithdrawList);
     }
+
+    echo "User ID $user_id";
 ?>
 <div class="withdrawals">
     <h2>Available Withdrawals</h2>

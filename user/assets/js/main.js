@@ -30,8 +30,12 @@ const api_url =  (location.protocol == 'http:') ? "http://127.0.0.1/projects/ult
 const copyLink = document.querySelector("#copyLink");
 
 if(copyLink){
-    const copyFrom = document.querySelector("#linkToCopy");
-    copyLink.addEventListener("click", () => copyClickedText(copyFrom));
+    const copyText = document.querySelector("#linkToCopy").innerHTML;
+    copyLink.addEventListener("click", function(){
+        navigator.clipboard.writeText(copyText);
+        console.log(copyText)
+        alert("Text copied");
+    });
 }
 // wallet address
 const walletFrame = document.querySelector("#walletFrame");
@@ -40,9 +44,12 @@ if(walletFrame){
     const pWallet = walletFrame.querySelectorAll(".item p");
     // console.log(pWallet)
     for (let p = 0; p < pWallet.length; p++) {
-        pWallet[p].addEventListener("click", () => copyClickedText(pWallet[p]));
+        pWallet[p].addEventListener("click", function(){
+            navigator.clipboard.writeText(this.innerHTML);
+            console.log(this.innerHTML)
+            alert("Text copied");
+        });
     }
-    // copyLink.addEventListener("click", () => copyClickedText("#linkToCopy"));
 }
 
 // withdrawals
@@ -56,6 +63,7 @@ if(modalInvestTrigger){
 // work on investment deposit
 const depositShow = document.querySelector("#depositShow");
 const depositForm = document.querySelector("#depositForm");
+const proInvestmentShow = document.querySelector("#proInvestmentShow");
 if(depositShow){
     depositShow.querySelector("button").addEventListener("click", e => {
         depositShow.style.display = "none";
@@ -134,26 +142,23 @@ function showInvestment(index){
         modelSubtitle.innerHTML = `Making payment for ${ index == 3 ? "Classic" : index == 4 ? "Premium" : "Pro"} Investment Plan`;
         modalInvest.classList.add("showInnerModel");
         modalWithdraw.classList.remove("showInnerModel");
+        modalInvestPro.classList.remove("showInnerModel")
         modal.classList.remove("hideModal");
         depositForm.style.display = "none";
         depositShow.style.display = "block";
+        proInvestmentShow.style.display = "none";
     }else{
         modelSubtitle.innerHTML = `Welcome message from Mr. Nicolas Gilot`;
         modalInvest.classList.remove("showInnerModel");
         modalWithdraw.classList.remove("showInnerModel");
         modalInvestPro.classList.add("showInnerModel")
         modal.classList.remove("hideModal");
-        // depositForm.style.display = "none";
-        // depositShow.style.display = "block";
+        depositForm.style.display = "none";
+        depositShow.style.display = "none";
+        proInvestmentShow.style.display = "block";
+
     }
     investmentType = index;
-}
-
-// copyText
-function copyClickedText(element){
-    const copyText = element.innerHTML;
-    navigator.clipboard.writeText(copyText);
-    alert("Text copied");
 }
 
 // withdrawFormHandler

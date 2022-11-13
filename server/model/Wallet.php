@@ -32,7 +32,7 @@ use app\config\DatabaseHandler;
                 }
                 $stmt = $this->query($sql, [$id]);
             }
-            return $stmt->fetch();
+            return $this->fetch($sql, [$id]);
         }
 
         // reduce account from::::::

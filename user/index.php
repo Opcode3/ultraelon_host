@@ -161,7 +161,7 @@ use app\controller\WalletController;
         </main>
     </div>
     <div id="modal" class="hideModal">
-        <!-- <div class="modalCover"> class="hideModal"  -->
+        <!-- <div class="modalCover">  -->
             <div class="coverFrame">
                 <div class="modalHeader">
                     <h2 id="modelSubtitle"></h2>

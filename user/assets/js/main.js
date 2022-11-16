@@ -68,6 +68,8 @@ if(depositShow){
     depositShow.querySelector("button").addEventListener("click", e => {
         depositShow.style.display = "none";
         depositForm.style.display = "block";
+        proInvestmentShow.style.display = "none";
+        console.log("Na here")
     })
 }
 
@@ -119,12 +121,15 @@ function showWithdrawal(index, ele){
     const redrawableAmount = ele.getAttribute("data-amount");
     if(redrawableAmount >= 10){
 
-
+        console.log("Jesus is Lord!")
         modelSubtitle.innerHTML = `Withdrawing from ${ index == 0 ? "Investment" : index == 1 ? "Ultra token" : "Referral Bonus"} Earnings`;
         modelSubtitle.setAttribute("data-from", index == 0 ? "invest" : index == 1 ? "ultra" : "referral");
         
         modalWithdraw.classList.add("showInnerModel");
         modalInvest.classList.remove("showInnerModel");
+        modalInvestPro.classList.remove("showInnerModel");
+        
+
         modal.classList.remove("hideModal");
     }else{
 
@@ -134,7 +139,6 @@ function showWithdrawal(index, ele){
             alert("Your available withdrawals balance is below the withdrawing limit")
         }
     }
-    console.log();
 }
 
 function showInvestment(index){

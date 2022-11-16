@@ -2,14 +2,16 @@
 @import "./mixins.scss";
 
 body{
+    background: $primaryWhiteColor;
     main{
 
         #loginFormFrame{
             max-width: calc(100% - 60px);
             width: 450px;
             padding: 40px 20px 30px 20px;
-            background: #203E7A;
+            background: $primaryColor;
             margin: 12vh auto 0 auto;
+            border-radius: 4px;
             .imgHolder{
                 width: 200px;
                 img{width: 100%;}
@@ -18,7 +20,6 @@ body{
             h2{ 
                 margin: 0; margin-bottom: 25px; 
                 color: $primaryWhiteColor; 
-
             }
     
     
@@ -32,8 +33,10 @@ body{
     
                     input{
                         @include input;
-                        color: $primaryWhiteColor;
+                        background: $primaryWhiteColor;
                         font-size: 20px;
+                        color: $primaryColor;
+                        border-radius: 4px;
 
                         @include Phone(){
                             font-size: 18px;
@@ -49,8 +52,6 @@ body{
                     }
                     button{
                         @include btn;
-                        font-size: 20px;
-
                     }
                 }
             }
@@ -60,7 +61,7 @@ body{
             // background: gray;
             padding-top:80px;
             text-align: center;
-            color: #203D79;
+            color: $primaryColor;
             font-weight: 700;
             font-size: 20px;
             @include Mobile(){
@@ -75,13 +76,14 @@ body{
     }
 
     @include Mobile(){
-        background: #203E7A;
+        background: $primaryColor;
         main{
 
             #loginFormFrame{
                 max-width: calc(100% - 20px);
                 padding: 30px 10px 20px 10px;
                 // background: red;
+                background: transparent;
                 margin: 6vh auto 0 auto;
             }
         }

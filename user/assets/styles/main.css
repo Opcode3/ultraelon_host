@@ -473,7 +473,7 @@ body #modal .coverFrame #modalInclude #modalInvest #depositForm p {
   margin-bottom: 10px;
 }
 body #modal .coverFrame #modalInclude #modalInvestPro {
-  display: block;
+  display: none;
   width: 96%;
   margin: 0 auto;
   padding-bottom: 25px;

@@ -1,11 +1,19 @@
 
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import "./mixins.scss";
 $textColor: #161719;
-$primaryWhiteColor: rgb(245, 253, 227);
+$primaryColor: #2D225B;
+$primaryBlackColor: #1F1C2D;
+// $primaryBlackColor: #141317;
+$primaryColor2: #332767;
+$primaryWhiteColor: #f3f2fa;
+$whiteColor: #fff;
 
+*{
+    font-family: 'Poppins', sans-serif;
+}
 body{
     padding: 0; margin: 0; font-size: 16px;
-    font-family: 'Poppins', sans-serif;
 }
 
 a{ text-decoration: none;}
@@ -20,17 +28,24 @@ ul{
 
 
 @mixin btn {
-    padding: 10px 20px;
+    padding: 16px 20px;
     outline: none;
     border: none;
     width: 100%;
     margin-top: 10px;
     border-radius: 4px;
-    color: #203E7A;
-    font-weight: 600;
+    color: $primaryColor;
+    font-weight: 800;
     background: #E04034;
     cursor: pointer;
-    transition: all 1.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+    font-size: 18px;
+    transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+    @include Phone(){
+        padding: 8px 10px;
+        font-size: 16px;
+        font-weight: 600;
+    }
 
     &:hover{
         background: rbga(#E04034, 0.9);
@@ -50,6 +65,6 @@ ul{
     font-weight: 300;
 
     &:focus{
-        background: rgba($textColor, 0.8);   
+        background: rgba($primaryWhiteColor, 0.8);   
     }
 }

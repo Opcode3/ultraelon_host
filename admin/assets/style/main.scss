@@ -39,18 +39,18 @@
             .logo{
                 height: 120px;
                 display: flex;
-                justify-content: center;
+                // justify-content: center;
                 align-items: center;
 
                 span{ 
                     display: none;
                 }
 
-                img{ width: 154px;}
+                img{ width: 194px;}
 
                 @include Tablet(){
                     justify-content: space-between;
-                    padding: 0 15px;
+                    padding: 0 15px 0 5px;
                     // background: green;
                     span{
                         display: flex;
@@ -58,12 +58,15 @@
                         align-items: center;
                         width: 36px; height: 36px;
                         border-radius: 50%;
-                        background: #98A2E3;
+                        background: rgba($primaryColor, 0.8);
 
                         svg{
-                            width: 19px; color: #fff;
+                            width: 32px; color: #fff;
                         }
                     }
+
+                    img{ width: 156px;}
+
 
 
                 }
@@ -82,12 +85,19 @@
                             justify-content: flex-start;
                             align-items: center;
                             padding: 15px 14px;
-
+                            transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
                             svg,span{
                                 color:#A1A4B6;
                                 font-size: 18px;
                                 font-weight: 500;
                                 text-transform: capitalize;
+                            }
+
+                            &:hover{
+                                span,svg{
+                                    font-weight: 600;
+                                    color: rgba($primaryColor, 0.8);
+                                }
                             }
                         }
 
@@ -95,7 +105,7 @@
                             background: white;
                             span,svg{
                                 font-weight: 600;
-                                color: #0F27BD;
+                                color: $primaryColor;
                             }
                         }
                     }
@@ -107,8 +117,8 @@
 
                 &>span{
                     text-transform: uppercase;
-                    font-weight: 600;
-                    color: #0F27BD;
+                    font-weight: 900;
+                    color: $primaryColor;
                     padding-bottom: 25px;
                     padding-left: 20px;
                     display: block;
@@ -131,6 +141,10 @@
         }
     }
 
+    .showAside{
+        display: block;
+    }
+
 
     main{ 
         // background: red;
@@ -141,8 +155,9 @@
         nav{
             display: none;
             justify-content: space-between;
-            padding: 20px 4%;
-            // background: green;
+            padding: 20px 4% 0px 4%; margin-bottom: 0;
+            background: red;
+            background: rgba($primaryColor, 0.2);
             align-items: center;
 
             img{ width: 154px;}
@@ -170,19 +185,19 @@
         menu{
             display: flex;
             justify-content: space-between;
-            margin: inherit 0; padding: 20px 4%;
+            margin:0; padding: 20px 4%;
+            background: rgba($primaryColor, 0.2);
             #title{
-                // background: green; 
                 span{
                     font-weight: 500;
                     font-size: 20px;
-                    color: #131418;
+                    color: $primaryColor;
                 }
                 h2{ 
                     margin: 0;
                     font-weight: 700;
+                    color: $primaryColor;
                     font-size: 28px;
-                    color: #131418;
                 }
             }
 
@@ -193,29 +208,425 @@
                 @include Mobile(){
                     display: none;
                 }
-                span{
+                span, a{
                     width: 60px; height: 60px;
                     background: #E7E9F8;
                     border-radius: 60px;
                     display: flex;
                     align-items: center;
                     justify-content: center;
+                }
 
-                    svg{ width: 30px; color: #717591;}
+                a{
+                    border-radius: 4px; height: 50px;
+                    width: fit-content; padding: 0 14px;
+                    gap: 10px; color: rgba($primaryColor, 0.8);
+                    transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+                    svg{ width: 25px;}
+                    box-shadow: 0 0 1px 2px #e77c7c,
+                                         0 0 1px 4px #E7E9F8;
+                    &:hover{
+                        background: #D41111; color: $whiteColor;
+                    }
                 }
             }
         }
 
         .mainContainer{
-            min-height: 100vh;
+            min-height: 80vh;
             // background: white;
 
             #homeShow{
-                font-size: 3.5rem; padding-top: 100px; width: 70%; margin: 0 auto;
-                font-weight: 500; text-align: center; color: #252730;
+                h3{
+                    font-size: 2.5rem; padding-top: 100px; width: 90%; 
+                    margin: 0 auto; max-width: 890px;
+                    font-weight: 500; text-align: center; 
+                    color: rgba($primaryColor, 0.8);
 
-                @include Mobile(){
-                    font-size: 1.5rem;
+                    @include Mobile(){ font-size: 1.95rem;  padding-top: 70px;  }
+                }
+                .statistics{
+                    display: grid;
+                    padding: 50px 5% 20px 5%; gap: 15px;
+                    max-width: 1000px; margin: 0 auto;
+                    justify-content: center;
+                    grid-template-columns: repeat(4, 1fr);
+
+                    @include MiniDesktop(){
+                        // grid-template-columns: repeat(3, 1fr);
+                        padding: 30px 2% 20px 3%;
+                        gap: 5px;
+                    }
+                    
+                    @include Tablet(){
+                        grid-template-columns: repeat(3, 1fr);
+                        padding: 30px 2% 20px 3%;
+                        gap: 10px;
+                    }
+                    @include Mobile(){
+                        grid-template-columns: repeat(2, 1fr);
+                    }
+
+
+                    label{
+
+                        width: calc(100% - 32px);
+                        display: flex; padding: 10px 16px;
+                        flex-direction: column; justify-content: center;
+                        align-items: center; border-radius: 4px;
+                        background: $primaryWhiteColor; cursor: pointer;
+                        color: rgba($primaryColor, 0.8);
+                        transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+
+
+                        span{
+                            width: fit-content; gap: 6px;
+                            display: flex; padding-bottom: 2px;
+                            align-items: center;
+                        
+                            svg{
+                                width: 30px; display: none;
+                            }
+
+                        }
+                        p{
+                            padding: 0; margin: 0; font-size: 1.93rem;
+                        }
+
+                        @include Tablet(){
+                            width: calc(100% - 12px); padding: 10px 6px;
+                        }
+
+                        @include Phone(){
+                            span{font-size: 14px;}
+                        }
+                        
+
+                        &:hover{
+                            background: rgba($primaryColor, 0.2);
+                            box-shadow: 0 0 1px 2px $primaryWhiteColor,
+                                         0 0 1px 4px rgba($primaryColor, 0.2);
+                        }
+                    }
+                }
+            }
+
+            #investmentFrame{
+                // background: red;
+                padding-top: 30px;
+
+                .subMenu{
+                    display: flex; justify-content: center;
+                    padding: 20px 0;
+                    span{
+                        width: fit-content;
+                        display: flex; padding: 5px;
+                        background: $primaryColor; 
+                        border-radius: 4px;
+                        a{ 
+                            height: 50px; width: fit-content;
+                            display: flex; //background: yellow;
+                            padding: 0 20px; align-items: center;
+                            color: $primaryWhiteColor;
+                            // border-radius: 4px;
+                            transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+
+                            &:hover{
+                                background: rgba($primaryWhiteColor, 0.4);
+                                // color: $primaryColor;
+                            }
+                        }
+
+                        .active{
+                            background: rgba($primaryWhiteColor, 0.9);
+                            color: $primaryColor;
+                        }
+                    }
+                }
+
+                .subContent{
+                    width: 90%; margin: 0 auto;
+                    background: $primaryWhiteColor;
+                    border-radius: 4px; overflow: hidden;
+                    box-shadow: 0 0 2px 1px rgba($primaryColor, 0.2), 
+                                0 0 1px 2px rgba($primaryColor, 0.4), 
+                                0 0 1px 3px rgba($primaryColor, 0.8);
+                    .overflowTable{
+                        overflow-x: auto;
+
+                        table{
+                            width: 100%;
+                            border-collapse: collapse;
+                            th, td{ 
+                                text-align: left;
+                                padding: 10px 4px;
+                            }
+                            thead{
+                                tr{
+                                    background: $primaryColor;
+                                    color: $primaryWhiteColor;
+
+                                    th{
+                                        min-width: 100px;
+                                        &:first-child{
+                                            min-width: 50px !important;
+                                            width: 55px;
+                                            padding-left: 10px;
+                                        }
+                                        &:nth-child(7){
+                                            min-width: 120px;
+                                            width: 130px;
+                                            padding-left: 10px;
+                                        }
+                                        &:last-child{
+                                            min-width: 80px;
+                                            width: 90px;
+                                            padding-left: 10px;
+                                        }
+                                    }
+                                }
+                            }
+                            tbody{
+                                
+                                tr{
+                                    &:nth-child(even){
+                                        background: $whiteColor;
+                                    }
+
+                                    td{
+                                        &:first-child{ padding-left: 10px;}
+                                    }
+
+                                    span{
+                                        background: $primaryColor; border-radius: 4px;
+                                        color: $primaryWhiteColor; 
+                                        font-size: 14px; padding: 4px 10px;
+                                    }
+                                    .paid{ background: green;}
+                                    .closed{ background: red;}
+
+                                }
+                            }
+                        }
+                    }
+
+                    @include Tablet(){
+                        width: 96%;
+                    }
+                }
+
+                #support{
+                    .overflowTable{
+                        overflow-x: auto;
+
+                        table{
+                            width: 100%;
+                            border-collapse: collapse;
+                            th, td{ 
+                                text-align: left;
+                                padding: 10px 4px;
+                            }
+                            thead{
+                                tr{
+                                    background: $primaryColor;
+                                    color: $primaryWhiteColor;
+
+                                    th{
+                                        min-width: 100px;
+                                        width: fit-content;
+                                        &:first-child{
+                                            min-width: 40px !important;
+                                            width: 45px;
+                                            padding-left: 10px;
+                                        }
+                                        &:nth-child(5){
+                                            width: 130px;
+                                            min-width: 125px;
+                                        }
+                                        &:last-child{
+                                            min-width: 115px;
+                                            width: 120px;
+                                            padding-left: 10px;
+                                        }
+                                    }
+                                }
+                            }
+                            tbody{
+                                
+                                tr{
+                                    
+                                    button{
+                                        background: $primaryColor; border-radius: 4px;
+                                        color: $primaryWhiteColor; outline: none;
+                                        border: none;
+                                        font-size: 14px; padding: 4px 10px;
+                                    }
+
+                                }
+                            }
+                        }
+                    }
+                }
+
+                #wallet{
+                    .overflowTable{
+                        overflow-x: auto;
+
+                        table{
+                            width: 100%;
+                            border-collapse: collapse;
+                            th, td{ 
+                                text-align: left;
+                                padding: 10px 4px;
+                            }
+                            thead{
+                                tr{
+                                    background: $primaryColor;
+                                    color: $primaryWhiteColor;
+
+                                    th{
+                                        min-width: 100px;
+                                        width: fit-content;
+                                        &:first-child{
+                                            min-width: 40px !important;
+                                            width: 45px;
+                                            padding-left: 10px;
+                                        }
+                                        &:nth-child(6){
+                                            width: 130px;
+                                            min-width: 125px;
+                                        }
+                                        &:last-child{
+                                            min-width: 95px;
+                                            width: 100px;
+                                            padding-left: 10px;
+                                        }
+                                    }
+                                }
+                            }
+                            tbody{
+                                
+                                tr{
+                                    
+                                    button{
+                                        border-radius: 4px;
+                                        color: $primaryWhiteColor; outline: none;
+                                        border: none;
+                                        font-size: 14px; padding: 4px 10px;
+                                        background: yellowgreen; margin-top: 10px;
+                                        
+                                    }
+
+                                }
+                            }
+                        }
+                    }
+                }
+
+                #withdraw{
+                    .overflowTable{
+                        overflow-x: auto;
+
+                        table{
+                            width: 100%;
+                            border-collapse: collapse;
+                            th, td{ 
+                                text-align: left;
+                                padding: 10px 4px;
+                            }
+                            thead{
+                                tr{
+                                    background: $primaryColor;
+                                    color: $primaryWhiteColor;
+
+                                    th{
+                                        min-width: 100px;
+                                        width: fit-content;
+                                        &:first-child{
+                                            min-width: 40px !important;
+                                            width: 45px;
+                                            padding-left: 10px;
+                                        }
+                                        &:nth-child(7){
+                                            width: 130px;
+                                            min-width: 125px;
+                                        }
+                                        &:last-child{
+                                            min-width: 85px;
+                                            width: 90px;
+                                            padding-left: 10px;
+                                        }
+                                    }
+                                }
+                            }
+                            tbody{
+                                
+                                tr{
+                                    
+                                    button{
+                                        background: $primaryColor; border-radius: 4px;
+                                        color: $primaryWhiteColor; outline: none;
+                                        border: none;
+                                        font-size: 14px; padding: 4px 10px;
+                                    }
+
+                                }
+                            }
+                        }
+                    }
+                }
+
+                #referrals{
+                    .overflowTable{
+                        overflow-x: auto;
+
+                        table{
+                            width: 100%;
+                            border-collapse: collapse;
+                            th, td{ 
+                                text-align: left;
+                                padding: 10px 4px;
+                            }
+                            thead{
+                                tr{
+                                    background: $primaryColor;
+                                    color: $primaryWhiteColor;
+
+                                    th{
+                                        min-width: 100px;
+                                        width: fit-content;
+                                        &:first-child{
+                                            min-width: 40px !important;
+                                            width: 45px;
+                                            padding-left: 10px;
+                                        }
+                                        &:nth-child(7){
+                                            width: 130px;
+                                            min-width: 125px;
+                                        }
+                                        &:last-child{
+                                            min-width: 85px;
+                                            width: 90px;
+                                            padding-left: 10px;
+                                        }
+                                    }
+                                }
+                            }
+                            tbody{
+                                
+                                tr{
+                                    
+                                    button{
+                                        background: $primaryColor; border-radius: 4px;
+                                        color: $primaryWhiteColor; outline: none;
+                                        border: none;
+                                        font-size: 14px; padding: 4px 10px;
+                                    }
+
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }

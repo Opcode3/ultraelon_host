@@ -1,5 +1,7 @@
 <?php
 
+use app\controller\ReferralController;
+
 session_start();
 
 if(
@@ -13,6 +15,9 @@ if(
     session_destroy();
     header("location: ./login.html");
 }
+
+    require_once("../vendor/autoload.php");
+    $referralController = new ReferralController();
 
 ?>
 <!DOCTYPE html>

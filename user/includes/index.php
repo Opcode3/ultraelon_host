@@ -2,6 +2,7 @@
     require_once("../vendor/autoload.php");
     use app\controller\InvestmentController;
 use app\controller\ReferralController;
+use app\helper\AddWalletFund;
 use app\helper\GetLockedCapital;
 
     $user_id = (int) $GLOBALS["user_id"];
@@ -77,12 +78,14 @@ use app\helper\GetLockedCapital;
                             <td><?php  echo date_format(date_create($value["createdAt"]), "D, d-M-Y");?></td>
                             <!-- <td>20-11-2023</td> -->
                             <td>1 day (24 Hours)</td>
-                            <td>$160.00</td>
-                            <td>29 ultra token</td>
+                            <td><?php echo "$".number_format(AddWalletFund::getInvestmentROI(floatval($value["invest_amount"]), strtolower($value["invest_plan"])), 2); ?></td>
+                            <td><?php echo number_format(AddWalletFund::getUltraProfit(floatval($value["invest_amount"]), strtolower($value["invest_plan"])), 2) ?> ultra token</td>
                             <td>
                                 <?php
                                     if($value["invest_status"] == 1){
-                                        echo '<span class="paid">Paid</span>';
+                                        echo '<span class="paid">Investing</span>';
+                                    }else if($value["invest_status"] == 2){
+                                        echo '<span class="settled">ROI Paid</span>';
                                     }else{
                                         echo '<span class="pending">Pending</span>';
                                     }

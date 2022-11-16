@@ -59,5 +59,14 @@ use app\services\impl\WithdrawServiceImpl;
             $response = $this->model->fetchWithdraws(1);
             return Response::json($response, 200);   
         }
+
+        function makePaymentToInvestor(int $withdraw_id): string
+        {
+            $response = $this->model->updateWithdrawStatus(1, $withdraw_id);
+            if($response){
+                return Response::json("true", 200);
+            }
+            return Response::json("Unable to locate and update the withdrawal information!");
+        }
     }
 ?>

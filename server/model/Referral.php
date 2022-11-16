@@ -33,6 +33,15 @@ use app\config\DatabaseHandler;
             return $response;
         }
 
+        // fetch all referrals information
+        function fetchAllReferrals(int $status){
+            $sql = "SELECT $this->table_name.*,m.user_username as referralUser, k.user_username as referredBy FROM $this->table_name LEFT JOIN users_tb as k ON $this->table_name.referral_referredby = k.user_id LEFT JOIN users_tb as m ON $this->table_name.referral_user_id = m.user_id WHERE referral_status = ?";
+            // $sql = "SELECT $this->table_name.*,m.user_username as referralUser, k.user_username as referredBy, investments_tb.invest_plan, investments_tb.invest_amount FROM $this->table_name LEFT JOIN users_tb as k ON $this->table_name.referral_referredby = k.user_id LEFT JOIN users_tb as m ON $this->table_name.referral_user_id = m.user_id LEFT JOIN investments_tb ON investments_tb.invest_id = $this->table_name.referral_investment_id WHERE referral_status = ?";
+            $response = $this->fetchMany($sql, [$status]);
+            return $response;
+        }
+
+
         
         // find all referrals
         function findAllReferrers(): array{
@@ -41,9 +50,16 @@ use app\config\DatabaseHandler;
             return $response;
         }
         // update referral status
-        function updateReferralStatus(int $status, string $slug): bool{
-            $sql = "UPDATE $this->table_name SET referral_status = ? WHERE referral_slug = ?";
-            $response = $this->update($sql, [$status, $slug]);
+        function updateReferralStatus(int $status, int $referral_id): bool{
+            $sql = "UPDATE $this->table_name SET referral_status = :status, updatedAt = :updatedAt WHERE referral_id = :id";
+            $response = $this->update($sql, array("status"=> $status, "id"=>$referral_id));
+            return $response;
+        }
+
+        // get referral by investment id
+        function getReferralbyInvestmentId(int $id){
+            $sql = "SELECT * FROM $this->table_name WHERE referral_investment_id=?";
+            $response = $this->fetch($sql, [$id]);
             return $response;
         }
         // delete referral

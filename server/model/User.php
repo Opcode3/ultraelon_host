@@ -30,7 +30,7 @@ use app\config\PasswordConfig;
         //fetch users
         function findAllUser(): array{
             $sql = "SELECT * FROM $this->table_name";
-            $response = $this->fetch($sql);
+            $response = $this->fetchMany($sql);
             return $response;
         }
 

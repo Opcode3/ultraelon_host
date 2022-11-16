@@ -10,11 +10,15 @@ use app\services\impl\InvestmentServiceImpl;
     class InvestmentService implements InvestmentServiceImpl{
         private $model;
         // private $userModel
+        private $referralService;
+        private $walletService;
 
         function __construct() 
         {
             $mysqlConnector = new MysqlDBH();
             $this->model = new Investment($mysqlConnector);
+            $this->referralService = new ReferralService();
+            $this->walletService = new WalletService();
         }
 
         function startAnInvestment(array $data): string
@@ -50,22 +54,32 @@ use app\services\impl\InvestmentServiceImpl;
         }
 
 
-        function updatePendingInvestment($user_id): string
+        function updatePendingInvestment(int $investmentId): string
         {
-            $response = $this->model->updateInvestmentStatus($user_id, 1);
+            $response = $this->model->updateInvestmentStatus($investmentId, 1);
             if($response){
+                // update referral if exist.
+                $res = $this->referralService->validateAndPayReferrer($investmentId);
+                if($res){
+                    return Response::json("User Investment Plan was updated successfully alongside the referrer", 200);
+                }
                 return Response::json("User Investment Plan was updated successfully", 200);
             }
             return Response::json("An error was encountered While trying to update user investment plan. Try again or notify the developer of this software.");
         }
 
-        function updatePaidInvestment(int $user_id): string
+        function updatePaidInvestment(int $investmentId, array $walletData): string
         {
-            $response = $this->model->updateInvestmentStatus($user_id, 2);
-            if($response){
-                return Response::json("User Investment Plan was updated successfully", 200);
+            // credit to investor wallet
+            $res = $this->walletService->depositFundIntoWallet($walletData);
+            if($res){
+                $response = $this->model->updateInvestmentStatus($investmentId, 2);
+                if($response){
+                    return Response::json("User Investment Plan was updated successfully", 200);
+                }
+                return Response::json("An error was encountered While trying to update user investment plan. Try again or notify the developer of this software.");
             }
-            return Response::json("An error was encountered While trying to update user investment plan. Try again or notify the developer of this software.");
+            return Response::json("Unable to deposit fund into investors account due to an error. Contact the developer.");
         }
     }
 ?>

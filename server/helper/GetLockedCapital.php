@@ -13,13 +13,28 @@
                 if($investStatus == 1){
                     if( $investPlan == "classic" ){
                         $amount += ((0.08 * $investAmount) + $investAmount);
-
                     }else if ($investPlan == "premium"){
-                        $amount += (0.2 * $investAmount);
+                        $amount += ((0.2 * $investAmount) + $investAmount);
                     }
                 }
             }
             return number_format($amount, 2);
+        }
+
+
+        static function getPaymentFromInvestment(int $amount, $plan): string{
+            $amt = 0; $ultra = 0;
+            if( $plan == "classic" ){
+                $amt += ((0.08 * $amount) + $amount);
+                $ultra += (0.02 * $amount);
+
+            }else if ($plan == "premium"){
+                $amt += ((0.2 * $amount) + $amount);
+                $ultra += (0.1 * $amount);
+            }
+            $profitInvest =  $amt;
+            $profitUltra =  $ultra;
+            return $profitInvest."&".$profitUltra;
         }
 
         static function ultra($request){

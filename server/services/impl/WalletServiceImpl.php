@@ -6,6 +6,7 @@
         function withdrawFundFromInvestmentAccount(int $id, int $amount);
         function withdrawFundFromUltraAccount(int $id, int $amount);
         function findAllWallet();
+        function depositFundIntoWallet(array $walletInformation): bool;
     }
 
 ?>

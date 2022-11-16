@@ -127,7 +127,7 @@ function showWithdrawal(index, ele){
         modelSubtitle.setAttribute("data-from", index == 0 ? "invest" : index == 1 ? "ultra" : "referral");
         
         modalWithdraw.classList.add("showInnerModel");
-        modalInvest.classList.remove("showInnerModel");
+        // modalInvest.classList.remove("showInnerModel");
         modalInvestPro.classList.remove("showInnerModel");
         
 
@@ -146,7 +146,7 @@ function showInvestment(index){
     if(index != 5){
         modelSubtitle.innerHTML = `Making payment for ${ index == 3 ? "Classic" : index == 4 ? "Premium" : "Pro"} Investment Plan`;
         modalInvest.classList.add("showInnerModel");
-        modalWithdraw.classList.remove("showInnerModel");
+        // modalWithdraw.classList.remove("showInnerModel");
         modalInvestPro.classList.remove("showInnerModel")
         modal.classList.remove("hideModal");
         depositForm.style.display = "none";
@@ -155,7 +155,7 @@ function showInvestment(index){
     }else{
         modelSubtitle.innerHTML = `Welcome message from Mr. Nicolas Gilot`;
         modalInvest.classList.remove("showInnerModel");
-        modalWithdraw.classList.remove("showInnerModel");
+        // modalWithdraw.classList.remove("showInnerModel");
         modalInvestPro.classList.add("showInnerModel")
         modal.classList.remove("hideModal");
         depositForm.style.display = "none";
@@ -184,7 +184,7 @@ if(withdrawForm){
 
         make_call( async () => {
             const response = await postRequest(`${api_url}withdraw.php`, withdraw_data);
-            console.log(response);
+            
             if(response.status_code == 201){
                 // modal.classList.add("hideModal")
                 // window.location.reload();
@@ -195,7 +195,6 @@ if(withdrawForm){
             }
             // if(data.status_code == 200 && data.message == "true"){
             // }
-            console.log("Stop loading api!!!")
         });
         // console.log(`Type: ${type}, JWT: ${jwt_token}, Amount: ${withdraw_amount}`)
     });

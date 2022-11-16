@@ -251,6 +251,7 @@
                     max-width: 1000px; margin: 0 auto;
                     justify-content: center;
                     grid-template-columns: repeat(4, 1fr);
+                    
 
                     @include MiniDesktop(){
                         // grid-template-columns: repeat(3, 1fr);
@@ -282,7 +283,7 @@
                         span{
                             width: fit-content; gap: 6px;
                             display: flex; padding-bottom: 2px;
-                            align-items: center;
+                            align-items: center; text-align: center;
                         
                             svg{
                                 width: 30px; display: none;
@@ -291,6 +292,7 @@
                         }
                         p{
                             padding: 0; margin: 0; font-size: 1.93rem;
+                            text-align: center;
                         }
 
                         @include Tablet(){

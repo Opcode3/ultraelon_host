@@ -37,8 +37,8 @@ use app\services\InvestmentService;
             return $this->investmentService->updatePendingInvestment($user_id);
         }
 
-        function updatePaidInvestmentPlan(int $user_id){
-            return $this->investmentService->updatePaidInvestment($user_id);
+        function updatePaidInvestmentPlan(int $user_id, array $walletProfit){
+            return $this->investmentService->updatePaidInvestment($user_id, $walletProfit);
         }
 
     }

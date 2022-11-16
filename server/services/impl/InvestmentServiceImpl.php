@@ -8,8 +8,8 @@
         function findAllPendingInvestment(): string;
         function findAllPaidInvestment(): string;
         function findAllClosedInvestment(): string;
-        function updatePendingInvestment(int $user_id): string;
-        function updatePaidInvestment(int $user_id): string;
+        function updatePendingInvestment(int $investmentId): string;
+        function updatePaidInvestment(int $investmentId, array $walletData): string;
     }
 
 ?>

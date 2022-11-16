@@ -7,10 +7,13 @@ use app\config\DatabaseHandler;
     class Wallet extends BaseModel{
 
         private $table_name = 'wallets_tb';
+        private $dbconnector;
 
         function __construct(DatabaseHandler $databaseHandler)
         {
             parent::__construct($databaseHandler);
+            $this->dbconnector = $databaseHandler->connection();
+
         }
 
         // new wallet
@@ -59,6 +62,25 @@ use app\config\DatabaseHandler;
                 }
             }
             return false;
+        }
+
+        function depositInvestmentFundForInvestor(array $data){ // both invest and ultra
+            $invest = floatval($data["wallet_invest"]);
+            $ultra = floatval($data["wallet_ultra"]);
+            $user_id = floatval($data["wallet_user_id"]);
+            $updatedAt = date("Y-m-d h:i:s");
+
+            $sql = "UPDATE $this->table_name SET wallet_invest = wallet_invest + ?,  wallet_ultra = wallet_ultra + ?, updatedAt=? WHERE wallet_user_id = ?";
+            $stmt = $this->dbconnector->prepare($sql);
+            $stmt->execute([$invest, $ultra, $updatedAt, $user_id]);
+            return ($stmt->rowCount() == 1);
+        }
+
+        // adding fund to referral 
+        function depositInvestmentFundIntoReferral(array $data){            
+            $sql = "UPDATE $this->table_name SET wallet_referral = wallet_referral + :referral, updatedAt = :updatedAt WHERE wallet_user_id = :user_id";
+            $res = $this->update($sql, $data);
+            return $res;
         }
         
         // find all wallet

@@ -46,6 +46,16 @@ use app\services\impl\WalletServiceImpl;
             return $response;
         }
 
+        function depositFundIntoWallet(array $walletInformation): bool{
+            $response = $this->model->depositInvestmentFundForInvestor($walletInformation);
+            return $response;
+        }
+
+        function depositFundIntoReferralWallet(array $walletInformation): bool{
+            $response = $this->model->depositInvestmentFundIntoReferral($walletInformation);
+            return $response;
+        }
+
         
     }
 ?>

@@ -26,9 +26,17 @@ use app\config\DatabaseHandler;
             return $response;
         }
 
-        function fetchWithdraws(int $id){
+        function fetchWithdraws(int $status){
             $sql = "SELECT $this->table_name.*, users_tb.user_username, wallets_tb.wallet_invest, wallets_tb.wallet_ultra, wallets_tb.wallet_referral FROM $this->table_name LEFT JOIN users_tb ON $this->table_name.withdraw_user_id = users_tb.user_id LEFT JOIN wallets_tb ON $this->table_name.withdraw_user_id = wallets_tb.wallet_user_id WHERE withdraw_status = ?";
-            $response = $this->fetchMany($sql, [$id]);
+            $response = $this->fetchMany($sql, [$status]);
+            return $response;
+        }
+
+
+        // update withdraw status
+        function updateWithdrawStatus(int $status, int $withdraw_id): bool{
+            $sql = "UPDATE $this->table_name SET withdraw_status = :status, updatedAt = :updatedAt WHERE withdraw_id = :id";
+            $response = $this->update($sql, array("status"=> $status, "id"=>$withdraw_id));
             return $response;
         }
 

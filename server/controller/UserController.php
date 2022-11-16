@@ -17,6 +17,10 @@ use Exception;
             $this->userService = new UserService();
         }
 
+        function fetchAllUsers(){
+            return $this->userService->getUsers();
+        }
+
         function createNewUserAccount(UserRequest $userRequest){
             // return Response::json($userRequest->get(),201);
             return $this->userService->newUser($userRequest->get());

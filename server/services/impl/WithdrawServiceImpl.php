@@ -7,6 +7,7 @@
         function findAllWithdrawalByUserId(int $id): string;
         function findAllPendingWithdrawal(): string;
         function findAllPaidWithdrawal(): string;
+        function makePaymentToInvestor(int $withdraw_id): string;
     }
 
 ?>

@@ -28,6 +28,10 @@ use app\services\WithdrawService;
         function getAllPaidWithdraws(){
             return $this->withdrawService->findAllPaidWithdrawal();
         }
+        
+        function payInvestors(int $withdrawQueryID){
+            return $this->withdrawService->makePaymentToInvestor($withdrawQueryID);
+        }
 
     }
 

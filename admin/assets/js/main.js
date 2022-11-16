@@ -70,9 +70,19 @@ const btnInvestmentClosed = document.querySelectorAll(".btnInvestmentClosed");
 if(btnInvestmentPending){
     for (let m = 0; m < btnInvestmentPending.length; m++) {
         btnInvestmentPending[m].addEventListener("click", function(){
-            const userID = this.getAttribute("data-id");
+            const userId = this.getAttribute("data-id");
             if(confirm("Hello Admin; You are about to approve payment. Hope this user has paid the investment capital as applied for; in this investment plan? ")){
-                alert(`User ID ${userID}`);
+                const form_data = {userId, type: "pendingInvestment"}
+                make_call( async () => {
+                    const data = await postRequest(`${api_url}adminInvestment.php`, JSON.stringify(form_data));
+                    if(data.status_code == 200){
+                        alert(data.message);
+                        setTimeout(()=>{ window.location.reload()}, 100);
+                    }else{
+                        alert(data.message)
+                    }
+                    console.log(data)
+                }); 
             }
         })
     }
@@ -82,9 +92,27 @@ if(btnInvestmentPending){
 if(btnInvestmentPaid){
     for (let m = 0; m < btnInvestmentPaid.length; m++) {
         btnInvestmentPaid[m].addEventListener("click", function(){
-            const userID = this.getAttribute("data-id");
+            const investId = this.getAttribute("data-id");
+            const userId = this.getAttribute("data-user");
+            const dataProfit = this.getAttribute("data-profit");
             if(confirm("Hello Admin; You are about to pay this user for investing on the specified investment plan. Hope this investment duration has elapsed. Your are about to remove his fund from locked savings into his wallet account. Say Okay if Yes or Cancel if No? ")){
-                alert(`User ID ${userID}`);
+                // alert(`User ID ${userID}`);
+                const investProfit = dataProfit.split("&");
+                const walletInvest = investProfit[0];
+                const walletUltra = investProfit[1];
+                const form_data = {investId, userId, walletInvest, walletUltra, type: "paidInvestment"}
+                // console.log(form_data)
+                // console.log(walletInvest)
+                make_call( async () => {
+                    const data = await postRequest(`${api_url}adminInvestment.php`, JSON.stringify(form_data));
+                    if(data.status_code == 200){
+                        alert(data.message);
+                        setTimeout(()=>{ window.location.reload()}, 100);
+                    }else{
+                        alert(data.message)
+                    }
+                    console.log(data)
+                }); 
             }
         })
     }
@@ -111,7 +139,17 @@ if(btnWithdrawPending){
         btnWithdrawPending[m].addEventListener("click", function(){
             const userId = this.getAttribute("data-id");
             if(confirm("Hellow Admin, before clicking this button; make sure you have successfully transferred the specified withdrawal fund to the user. If you wish to proceed, click Ok, if no click Cancel.")){
-                alert(`User ID: ${userId}`);       
+                const form_data = {userId, type: "withdraw"}
+                make_call( async () => {
+                    const data = await postRequest(`${api_url}adminWithdraw.php`, JSON.stringify(form_data));
+                    if(data.status_code == 200 && data.message == "true"){
+                        alert("Paid transaction was successful. Reloading page in a second...");
+                        setTimeout(()=>{ window.location.reload()}, 100);
+                    }else{
+                        alert(data.message)
+                    }
+                    console.log(data)
+                });     
             }
         });        
     }
@@ -135,8 +173,19 @@ if(btnReferralPaid){
     for (let m = 0; m < btnReferralPaid.length; m++) {
         btnReferralPaid[m].addEventListener("click", function(){
             const userId = this.getAttribute("data-id");
+            const referredBy = this.getAttribute("data-referred");
             if(confirm("Hello Admin, You are about to release the referral locked bonus. Are you sure you want to?")){
-                alert(`User Id: ${userId}`);
+                const form_data = {userId, referredBy, type: "referralPay"}
+                make_call( async () => {
+                    const data = await postRequest(`${api_url}adminReferral.php`, JSON.stringify(form_data));
+                    if(data.status_code == 200 && data.message == "true"){
+                        alert("Paid transaction was successful. Reloading page in a second...");
+                        setTimeout(()=>{ window.location.reload()}, 100);
+                    }else{
+                        alert(data.message)
+                    }
+                    console.log(data)
+                });
             }
         });
         
@@ -190,7 +239,6 @@ if(loginForm){
         console.log(data)
     });
 
-        console.log({username, password})
     })
 }
 

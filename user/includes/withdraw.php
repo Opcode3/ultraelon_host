@@ -2,9 +2,9 @@
     require_once("../vendor/autoload.php");
     use app\controller\WithdrawController;
 
-    $walletROI = (int) $GLOBALS["walletROI"];
-    $walletUltra = (int) $GLOBALS["walletUltra"];
-    $walletReferral = (int) $GLOBALS["walletReferral"];
+    $walletROI = floatval($GLOBALS["walletROI"]);
+    $walletUltra = floatval($GLOBALS["walletUltra"]);
+    $walletReferral =  floatval($GLOBALS["walletReferral"]);
     $user_id = (int) $GLOBALS["user_id"];
 
     $withdrawController = new WithdrawController();
@@ -13,7 +13,7 @@
         // var_dump($myWithdrawList);
     }
 
-    echo "User ID $user_id";
+    // echo "User ID $user_id";
 ?>
 <div class="withdrawals">
     <h2>Available Withdrawals</h2>
@@ -23,19 +23,19 @@
         <div class="cardGroup">
             <div class="card">
                 <span class="title">Investment</span>
-                <span class="amount"><?php echo "$".$walletROI; ?></span>
+                <span class="amount"><?php echo "$".number_format($walletROI, 2); ?></span>
                 <span class="link" data-amount="<?php echo $walletROI; ?>" id="modalInvestTrigger" >Click to withdraw fund</span>
             </div>
 
             <div class="card">
                 <span class="title">Ultra token</span>
-                <span class="amount"><?php echo "$".$walletUltra; ?></span>
+                <span class="amount"><?php echo "$".number_format($walletUltra, 2); ?></span>
                 <span class="link" data-amount="<?php echo $walletUltra; ?>" id="modalUltraTrigger">Click to withdraw fund</span>
             </div>
 
             <div class="card">
                 <span class="title">Referral Bonus</span>
-                <span class="amount"><?php echo "$".$walletReferral; ?></span>
+                <span class="amount"><?php echo "$".number_format($walletReferral, 2); ?></span>
                 <span class="link" data-amount="<?php echo $walletReferral; ?>" id="modalReferralTrigger">Click to withdraw fund</span>
             </div>
         </div>

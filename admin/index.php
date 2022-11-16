@@ -1,5 +1,9 @@
 <?php
 
+use app\controller\UserController;
+use app\controller\WalletController;
+use app\helper\AddWalletFund;
+
     session_start();
 
     if(
@@ -13,6 +17,24 @@
         session_destroy();
         header("location: ./login.html");
     }
+    require_once("../vendor/autoload.php");
+
+
+    $userController = new UserController();
+    $walletController = new WalletController();
+
+    $userRes = json_decode($userController->fetchAllUsers(), true);
+    $walletRes = json_decode($walletController->getAllWallets(), true);
+
+    $totalUsers = count($userRes["message"]);
+
+    // var_dump($userRes["message"]);
+    $wallets = $walletRes["message"];
+    $totalIvest = AddWalletFund::getInvestTotal($walletRes["message"]);
+    $totalUltra = AddWalletFund::getUltraTotal($walletRes["message"]);
+    $totalReferral = AddWalletFund::getReferralTotal($walletRes["message"]);
+    
+    // var_dump($userRes)
 
 ?>
 
@@ -127,30 +149,30 @@
                     </h3>
                     <div class="statistics">
                         <label>
-                            <p>$56,830</p>
+                            <p><?php echo $totalUsers; ?></p>
                             <span>                            
                                 Total Investors
                             </span>    
                         </label>
                         <label>
-                            <p>$16,830</p>
+                            <p><?php echo $totalIvest; ?></p>
                             <span>
-                                Total Withdraws
+                                Total ROI Fund in Wallet
                             </span>
                         </label>
     
                         <label>
-                            <p>$6,830</p>
+                            <p><?php echo $totalUltra; ?></p>
                             <span>
-                                Total Referrals
+                                Total Ultra Fund in Wallet
                             </span>
                         </label>
     
     
                         <label>
-                            <p>$90,239.50</p>
+                            <p><?php echo $totalReferral; ?></p>
                             <span>
-                                Total Locked Savings
+                                Total Referral Fund in Wallet
                             </span>
                         </label>
                     </div>

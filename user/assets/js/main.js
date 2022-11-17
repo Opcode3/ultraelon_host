@@ -95,13 +95,13 @@ if(depositForm){
                     console.log(response);
                     if(response.status_code == 201){
                         startNotifier(response.message, "success");
-                        setTimeout(()=>{ window.location.reload()}, 1000);
+                        setTimeout(()=>{ window.location.reload()}, 2000);
                     }else{
                         startNotifier(response.message)
                     }
                     console.log("Stop loading api!!!")
                 });
-                startNotifier("Make Investment!"+investmentType, "success");
+                // startNotifier("Make Investment!"+investmentType, "success");
             }else{
                 startNotifier("Your depositing amount is either above or below your selected investment plan!")
             }
@@ -209,6 +209,7 @@ if(withdrawForm){
 function startNotifier(message, type = "error"){
     if(type == "success"){
         notifier.classList.add("success");
+        console.log(message)
     }else{
         notifier.classList.add("error");
     }

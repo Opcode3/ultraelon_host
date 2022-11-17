@@ -16,21 +16,21 @@ use app\config\DatabaseHandler;
 
         // new Investment
         function createInvestmentAccount(array $data){
-            $sql = "INSERT INTO $this->table_name(invest_slug, invest_amount, invest_depositor_address, invest_depositor_account_type, invest_user_id, invest_plan) 
+            $sql0 = "INSERT INTO $this->table_name(invest_slug, invest_amount, invest_depositor_address, invest_depositor_account_type, invest_user_id, invest_plan) 
                         VALUES(:invest_slug, :invest_amount, :invest_depositor_address, :invest_depositor_account_type, :invest_user_id, :invest_plan)";
             $data["invest_slug"] = uniqid(time());
-            $stmt = $this->dbconnector->prepare($sql);
-            $stmt->execute($data);
-            if($stmt->rowCount() == 1){
-                $sql = "SELECT * from referrals_tb WHERE referral_user_id = ? AND referral_status = ? AND referral_investment_id = ?";
-                $stmt = $this->fetch($sql, [$data["invest_user_id"], 0, 0]);
-                if(count($stmt) > 4){
+            $stmt0 = $this->dbconnector->prepare($sql0);
+            $stmt0->execute($data);
+            if($stmt0->rowCount() == 1){
+                $sql1 = "SELECT * from referrals_tb WHERE referral_user_id = ? AND referral_status = ? AND referral_investment_id = ?";
+                $stmt1 = $this->fetch($sql1, [$data["invest_user_id"], 0, 0]);
+                if(count($stmt1) > 4){
                     // update referral field
-                    $referralId = $stmt["referral_id"];
-                    $sql = "SELECT * FROM $this->table_name WHERE invest_slug = ?";
-                    $stmt = $this->fetch($sql, [$data["invest_slug"]]);
-                    if(count($stmt) > 3){
-                        $investId = (int) $stmt["invest_id"];
+                    $referralId = $stmt1["referral_id"];
+                    $sql2 = "SELECT * FROM $this->table_name WHERE invest_slug = ?";
+                    $stmt2 = $this->fetch($sql2, [$data["invest_slug"]]);
+                    if(count($stmt2) > 3){
+                        $investId = (int) $stmt2["invest_id"];
                         $sql = "UPDATE referrals_tb SET referral_investment_id= :investId, updatedAt= :updatedAt WHERE referral_id= :referId";
                         $stmt = $this->update($sql, array( "investId"=>$investId, "referId" => $referralId));
                         if($stmt){

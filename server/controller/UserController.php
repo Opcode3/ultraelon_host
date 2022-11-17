@@ -35,11 +35,20 @@ use Exception;
         }
 
 
+        function adminLoginAuthentication($username, $password){
+            return $this->userService->adminAuthentication($username, $password);
+        }
+
+
 
         // contact form
 
         function postSupportQueryForm(array $request){
             return $this->userService->createSupportRequest($request);
+        }
+        
+        function fetchAllSupportQuery(){
+            return $this->userService->getAllSupportRequest();
         }
 
     }

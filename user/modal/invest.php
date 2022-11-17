@@ -36,6 +36,16 @@
     </div>
 
     <div class="formControl">
+        <select id="account_type" required>
+            <option value="">Select a depositor account type</option>
+            <option value="Bitcoin">Bitcoin</option>
+            <option value="Ethereum">Ethereum</option>
+            <option value="BNB">BNB</option>
+            <option value="USDT">USDT</option>
+        </select>
+    </div>
+
+    <div class="formControl">
         <button>Proceed</button>
     </div>
     <div class="modalNotifier">

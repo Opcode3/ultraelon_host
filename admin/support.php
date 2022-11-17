@@ -1,3 +1,27 @@
+<?php
+session_start();
+
+if(
+    !(
+        
+        isset($_SESSION["admin_auth"]) && is_bool($_SESSION["admin_auth"]) &&
+        isset($_SESSION["admin_username"]) && strlen(trim($_SESSION["admin_username"])) > 6 &&
+        isset($_SESSION["admin_scratchToken"]) && strlen(trim($_SESSION["admin_scratchToken"])) > 12
+    )
+){
+    session_destroy();
+    header("location: ./login.html");
+}
+use app\controller\UserController;
+
+    require_once("../vendor/autoload.php");
+
+
+    $userController = new UserController();
+
+    $response = json_decode($userController->fetchAllSupportQuery(), true);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -118,22 +142,33 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Classic</td>
-                                        <td>Classic</td>
-                                        <td>$46,300.00</td>
-                                        <td><?php echo date("D d-m-Y") ?></td>
-                                        <td><button>View Request</button></td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Premium</td>
-                                        <td>Premium</td>
-                                        <td>$46,300.00</td>
-                                        <td><?php echo date("D d-m-Y") ?></td>
-                                        <td><button>View Request</button></td>
-                                    </tr>
+                                    <?php
+                                        if(is_array($response["message"]) && count($response["message"])){
+                                            foreach($response["message"] as $key => $supportRequest){
+                                                ?>
+                                                <tr>
+                                                    <td><?php echo ($key + 1); ?></td>
+                                                    <td><?php echo $supportRequest["contact_name"]; ?></td>
+                                                    <td><?php echo $supportRequest["contact_email"]; ?></td>
+                                                    <td><?php echo $supportRequest["contact_subject"]; ?></td>
+                                                    <td><?php echo date("D, d-M-Y", strtotime($supportRequest["createdAt"]));?></td>
+                                                    <?php
+                                                        $h2 = "<h2>".$supportRequest['contact_name']." <small> ".$supportRequest["contact_email"]."</small></h2>";
+                                                        $request = "<div id='requestInfo'> <p id='subject'>".$supportRequest["contact_subject"]."</p><p>".$supportRequest["contact_message"]."</p></div>";
+                                                        $a = "<a target='_blank' href='mailto:".$supportRequest["contact_email"]."'>Reply request</a>";
+
+                                                        $shomResponse = $h2.$request.$a;
+                                                    ?>
+                                                    <td><button data-json="<?php  echo $shomResponse; ?>" class="btnModelViewSupportRequest">View Request</button></td>
+                                                </tr>
+                                                <?php
+                                            }
+                                        }else{
+                                            ?>
+                                            <tr><td colspan="6">No support request has been sent yet by the general public.</td></tr>
+                                            <?php
+                                        }
+                                    ?>
                                 </tbody>
                             </table>
                         </div>
@@ -141,6 +176,24 @@
                 </div>
             </div>
         </main>
+    </div>
+
+    <div id="modalFrame">
+        <div id="modalContainer">
+            <svg fill="none" id="modalCancelButton" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            <div id="supportContent">
+                <h2>
+                    Joseph Emmanuel Emeka 
+                    <small>Opcode@gmail.com</small>
+                </h2>
+                <div id="requestInfo">
+                    <p id="subject">Enter Subject Here</p>
+                    <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo magni tenetur quae provident, obcaecati iure et pariatur itaque non incidunt fugiat mollitia.</p>
+                    <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo magni tenetur quae provident, obcaecati iure et ad facilis error ab autem velit consectetur qui, pariatur itaque non incidunt fugiat mollitia.</p>
+                </div>
+                <a href="mailto:">Reply request</a>
+            </div>
+        </div>
     </div>
 
     <!-- Ensure that you are filling the correct and up-to-date information. -->

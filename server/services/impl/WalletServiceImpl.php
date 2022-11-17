@@ -5,6 +5,7 @@
         function withdrawFundFromReferralAccount(int $id, int $amount);
         function withdrawFundFromInvestmentAccount(int $id, int $amount);
         function withdrawFundFromUltraAccount(int $id, int $amount);
+        function findAllWallet();
     }
 
 ?>

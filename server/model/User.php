@@ -48,6 +48,13 @@ use app\config\PasswordConfig;
             return $response;
         }
 
+        //fetch user
+        function findAdminByUsername(string $username): array{
+            $sql = "SELECT * FROM admins_tb WHERE admin_username=?";
+            $response = $this->fetch($sql, [$username]);
+            return $response;
+        }
+
         // add new admin
         // update user
         function updateUserAccountSetting(array $updateUser){
@@ -95,6 +102,13 @@ use app\config\PasswordConfig;
         function newSupportQuery(array $query){
             $sql = "INSERT INTO contacts_tb(contact_slug, contact_name, contact_email, contact_subject, contact_message) VALUES(:contact_slug, :contact_name, :contact_email, :contact_subject, :contact_message)";
             $response = $this->insert($sql, $query, "contact_slug");
+            return $response;
+        }
+
+        // fetch all contact form
+        function findAllSupportQuery(){
+            $sql = "SELECT * FROM contacts_tb";
+            $response = $this->fetchMany($sql);
             return $response;
         }
        

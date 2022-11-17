@@ -84,6 +84,19 @@ use app\services\impl\UserServiceImpl;
         }
 
 
+        function adminAuthentication(string $username, string $password): string{
+            $response = $this->model->findAdminByUsername($username);
+            if(count($response) == 4){
+                $passwordHash = $response["admin_password"];
+                if(PasswordConfig::decodePassword($password, $passwordHash)){
+                    return Response::json($response, 200);
+                }
+                return Response::json("Your password is not recognized!");
+            }
+            return Response::json("Your username is not recognized!");
+        }
+
+
         // for contact form functionalities
         function createSupportRequest(array $supportRequest): string
         {
@@ -93,6 +106,16 @@ use app\services\impl\UserServiceImpl;
             }
             return Response::json("An error was encountered while trying to submit support. Please try again later.");
         }
+
+        function getAllSupportRequest(): string
+        {
+            $response = $this->model->findAllSupportQuery();
+            return Response::json($response, 200);
+        }
+
+
+
+
 
         private function getUserIDByUsername(string $username){
             $response = $this->model->findUserIdFromUsername($username);

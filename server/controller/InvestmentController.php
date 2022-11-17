@@ -21,6 +21,26 @@ use app\services\InvestmentService;
             return $this->investmentService->findAllInvestmentByUserId($id);
         }
 
+        function getAllPendingInvestment(){
+            return $this->investmentService->findAllPendingInvestment();
+        }
+        
+        function getAllPaidInvestment(){
+            return $this->investmentService->findAllPaidInvestment();
+        }
+
+        function getAllClosedInvestment(){
+            return $this->investmentService->findAllClosedInvestment();
+        }
+
+        function updatePendingInvestmentPlan(int $user_id){
+            return $this->investmentService->updatePendingInvestment($user_id);
+        }
+
+        function updatePaidInvestmentPlan(int $user_id){
+            return $this->investmentService->updatePaidInvestment($user_id);
+        }
+
     }
 
 ?>

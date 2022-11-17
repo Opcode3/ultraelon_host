@@ -1,3 +1,25 @@
+<?php
+session_start();
+
+if(
+    !(
+        
+        isset($_SESSION["admin_auth"]) && is_bool($_SESSION["admin_auth"]) &&
+        isset($_SESSION["admin_username"]) && strlen(trim($_SESSION["admin_username"])) > 6 &&
+        isset($_SESSION["admin_scratchToken"]) && strlen(trim($_SESSION["admin_scratchToken"])) > 12
+    )
+){
+    session_destroy();
+    header("location: ./login.html");
+}
+use app\controller\WalletController;
+
+    require_once("../vendor/autoload.php");
+
+    $walletController = new WalletController();
+    $response  = json_decode($walletController->getAllWallets(), true);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -119,28 +141,40 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Classic</td>
-                                        <td>$46,300.00</td>
-                                        <td>$46,300.00</td>
-                                        <td>$46,300.00</td>
-                                        <td><?php echo date("D d-m-Y") ?></td>
-                                        <td> 
-                                            <button>See Profile</button> 
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Premium</td>
-                                        <td>$46,300.00</td>
-                                        <td>$46,300.00</td>
-                                        <td>$46,300.00</td>
-                                        <td><?php echo date("D d-m-Y") ?></td>
-                                        <td> 
-                                            <button>See Profile</button> 
-                                        </td>
-                                    </tr>
+
+                                    <?php
+                                        if(is_array($response["message"]) && count($response["message"]) > 0){
+                                            foreach($response["message"] as $key => $wallet){
+                                                ?>
+                                                <tr>
+                                                    <td><?php echo ($key + 1); ?></td>
+                                                    <td><?php echo $wallet["user_username"]; ?></td>
+                                                    <td><?php echo "$".number_format($wallet["wallet_invest"], 2); ?></td>
+                                                    <td><?php echo "$".number_format($wallet["wallet_ultra"], 2); ?></td>
+                                                    <td><?php echo "$".number_format($wallet["wallet_referral"], 2); ?></td>
+                                                    <td><?php echo date("D, d-M-Y", strtotime($wallet["createdAt"]));?></td>
+                                                    <?php
+                                                        $h2 = "<h2> ".$wallet["user_username"]."'s Profile <small> ".date('D, d-M-Y', strtotime($wallet["createdAt"]))."</small></h2>";
+                                                        $profile = "<div id='requestInfo'><p> <b>Name: </b> ".$wallet["user_username"]."</p>";
+                                                        $profile .= "<p> <b>Email: </b>".$wallet["user_email"]."</p> <p> <b>Bitcoin Address: </b> ".$wallet["user_bitcoin"]."</p>";
+                                                        $profile .= "<p> <b>Etheruem Address: </b> ".$wallet["user_eth"]."</p> <p> <b>UltraToken Address: </b> ".$wallet["user_ultra"]."</p>";
+                                                        $profile .= "<p> <b>BNB Address: </b> ".$wallet["user_bnb"]."</p> <p> <b>USDT Address: </b> ".$wallet["user_usdt"]."</p></div>";
+                                                        $h3 = "<h3>".$wallet["user_username"]."'s Wallet Information </h3>";
+                                                        $walletInfo = "<div id='walletInfo'><span><b>$".number_format($wallet["wallet_invest"], 2)."</b> Investment Wallet</span>";
+                                                        $walletInfo .= "<span><b>$".number_format($wallet["wallet_ultra"], 2)."</b> UltraToken Wallet</span>";
+                                                        $walletInfo .= "<span><b>$".number_format($wallet["wallet_referral"], 2)."</b> Referral Wallet</span>";
+                                                        $neResponse = $h2.$profile.$h3.$walletInfo;
+                                                    ?>
+                                                    <td><button data-json="<?php echo $neResponse; ?>" class="btnModelViewProfile">See Profile</button></td>
+                                                </tr>
+                                                <?php
+                                            }
+                                        }else{
+                                            ?>
+                                            <tr><td colspan="7">No user has logged into their account.</td></tr>
+                                            <?php
+                                        }
+                                    ?>
                                 </tbody>
                             </table>
                         </div>
@@ -148,6 +182,42 @@
                 </div>
             </div>
         </main>
+    </div>
+
+    <div id="modalFrame">
+        <div id="modalContainer">
+            <svg fill="none" id="modalCancelButton" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            <div id="walletContent">
+                <h2> Joseph's Profile 
+                    <small>Sun, 23-May-2011</small>
+                </h2>
+                <div id="requestInfo">
+                    <p> <b>Name: </b> Enter Subject Here</p>
+                    <p> <b>Email: </b> Enter Subject Here</p>
+                    <p> <b>Bitcoin Address: </b> bc1qpjdnn63hmjq7h9q4n7204zr30jnmwttlkr85rl</p>
+                    <p> <b>Etheruem Address: </b> bc1qpjdnn63hmjq7h9q4n7204zr30jnmwttlkr85rl</p>
+                    <p> <b>UltraToken Address: </b> bc1qpjdnn63hmjq7h9q4n7204zr30jnmwttlkr85rl</p>
+                    <p> <b>BNB Address: </b> bc1qpjdnn63hmjq7h9q4n7204zr30jnmwttlkr85rl</p>
+                    <p> <b>USDT Address: </b> bc1qpjdnn63hmjq7h9q4n7204zr30jnmwttlkr85rl</p>
+                </div>
+                <h3> Joseph's Wallet Information </h3>
+                <div id="walletInfo">
+                    <span>
+                        <b>$93,392.00</b>
+                        Investment Wallet
+                    </span>
+                    <span>
+                        <b>$93,392.00</b>
+                        UltraToken Wallet
+                    </span>
+                    <span>
+                        <b>$93,392.00</b>
+                        Referral Wallet
+                    </span>
+                </div>
+                <!-- <a href="mailto:">Reply request</a> -->
+            </div>
+        </div>
     </div>
 
     <!-- Ensure that you are filling the correct and up-to-date information. -->

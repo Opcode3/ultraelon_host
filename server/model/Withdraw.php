@@ -25,6 +25,13 @@ use app\config\DatabaseHandler;
             $response = $this->fetchMany($sql, [$id]);
             return $response;
         }
+
+        function fetchWithdraws(int $id){
+            $sql = "SELECT $this->table_name.*, users_tb.user_username, wallets_tb.wallet_invest, wallets_tb.wallet_ultra, wallets_tb.wallet_referral FROM $this->table_name LEFT JOIN users_tb ON $this->table_name.withdraw_user_id = users_tb.user_id LEFT JOIN wallets_tb ON $this->table_name.withdraw_user_id = wallets_tb.wallet_user_id WHERE withdraw_status = ?";
+            $response = $this->fetchMany($sql, [$id]);
+            return $response;
+        }
+
         // find all withdrawals
         // update withdrawals
     }

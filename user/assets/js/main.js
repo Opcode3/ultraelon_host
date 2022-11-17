@@ -78,6 +78,7 @@ if(depositForm){
         e.preventDefault();
         const depositors_amount = el_value(this, "#depositors_amount");
         const depositors_address = el_value(this, "#depositors_address");
+        const account_type = el_value(this, "#account_type");
         const depositors_plan = investmentType == 3 ? "classic" : 
                                    investmentType == 4 ? "premium" : "pro";
         if(investmentType != 5){        
@@ -86,7 +87,7 @@ if(depositForm){
             if(depositors_amount >= min && depositors_amount <= max){
                 const investmentPayload = JSON.stringify({
                     amount: depositors_amount, address: depositors_address,
-                    plan: depositors_plan, from: "invest_1"
+                    plan: depositors_plan, type: account_type, from: "invest_1"
                 });
                 // console.log(investmentPayload);
                 make_call( async () => {
@@ -100,7 +101,7 @@ if(depositForm){
                     }
                     console.log("Stop loading api!!!")
                 });
-                // startNotifier("Make Investment!"+investmentType, "success");
+                startNotifier("Make Investment!"+investmentType, "success");
             }else{
                 startNotifier("Your depositing amount is either above or below your selected investment plan!")
             }

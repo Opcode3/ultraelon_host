@@ -14,8 +14,8 @@ use app\config\DatabaseHandler;
 
         // new Investment
         function createInvestmentAccount(array $data){
-            $sql = "INSERT INTO $this->table_name(invest_slug, invest_amount, invest_depositor_address, invest_user_id, invest_plan) 
-                        VALUES(:invest_slug, :invest_amount, :invest_depositor_address, :invest_user_id, :invest_plan)";
+            $sql = "INSERT INTO $this->table_name(invest_slug, invest_amount, invest_depositor_address, invest_depositor_account_type, invest_user_id, invest_plan) 
+                        VALUES(:invest_slug, :invest_amount, :invest_depositor_address, :invest_depositor_account_type, :invest_user_id, :invest_plan)";
             $insert = $this->insert($sql, $data, "invest_slug");
             return $insert;
         }
@@ -26,13 +26,18 @@ use app\config\DatabaseHandler;
             return $response;
         }
         // find all investment
-        function fetchAllInvestments(){
-            $sql = "SELECT * FROM $this->table_name";
-            $response = $this->fetchMany($sql);
+        function fetchAllInvestments(int $status){
+            $sql = "SELECT $this->table_name.*, users_tb.user_username FROM $this->table_name LEFT JOIN users_tb ON $this->table_name.invest_user_id = users_tb.user_id WHERE invest_status=?";
+            $response = $this->fetchMany($sql, [$status]);
             return $response;
         }
 
         // update investment
+        function updateInvestmentStatus($investorId, $status){
+            $sql = "UPDATE $this->table_name SET invest_status=? WHERE invest_user_id=?";
+            $response = $this->update($sql, [$status, $investorId]);
+            return $response;
+        }
     }
 
 

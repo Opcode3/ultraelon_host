@@ -29,7 +29,7 @@
                     <td>$46,300.00</td>
                     <td>$46.00</td>
                     <td><?php echo date("D d-m-Y") ?></td>
-                    <td> <span class="pending">Pending</span> </td>
+                    <td> <span class="pending btnReferralPending">Pending</span> </td>
                 </tr>
                 <tr>
                     <td>2</td>
@@ -39,7 +39,7 @@
                     <td>$46,300.00</td>
                     <td>$46.00</td>
                     <td><?php echo date("D d-m-Y") ?></td>
-                    <td> <span class="pending">Pending</span> </td>
+                    <td> <span class="pending btnReferralPending">Pending</span> </td>
                 </tr>
             </tbody>
         </table>

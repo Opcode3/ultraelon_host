@@ -411,6 +411,7 @@ ul li {
   background: #2D225B;
   border-radius: 4px;
   color: #f3f2fa;
+  cursor: pointer;
   font-size: 14px;
   padding: 4px 10px;
 }
@@ -496,8 +497,8 @@ ul li {
   padding-left: 10px;
 }
 .container main .mainContainer #investmentFrame #wallet .overflowTable table thead tr th:nth-child(6) {
-  width: 130px;
-  min-width: 125px;
+  width: 160px;
+  min-width: 150px;
 }
 .container main .mainContainer #investmentFrame #wallet .overflowTable table thead tr th:last-child {
   min-width: 95px;
@@ -601,6 +602,177 @@ ul li {
   border: none;
   font-size: 14px;
   padding: 4px 10px;
+}
+
+#modalFrame {
+  background: rgba(31, 28, 45, 0.7);
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 30;
+  top: 0;
+  display: none;
+}
+#modalFrame #modalContainer {
+  background: #f3f2fa;
+  min-height: 200px;
+  width: 540px;
+  border-radius: 10px;
+  margin: 10vh auto 20px auto;
+  padding: 20px;
+}
+@media screen and (max-width: 780px) {
+  #modalFrame #modalContainer {
+    padding: 12px 10px;
+    max-width: calc(96% - 20px);
+  }
+}
+@media screen and (max-width: 480px) {
+  #modalFrame #modalContainer {
+    padding: 10px 6px;
+    max-width: calc(98% - 12px);
+  }
+}
+#modalFrame #modalContainer > svg {
+  width: 25px;
+  height: 25px;
+  color: #1F1C2D;
+  float: right;
+}
+#modalFrame #modalContainer #supportContent {
+  margin: 20px 0 10px 0;
+}
+#modalFrame #modalContainer #supportContent h2, #modalFrame #modalContainer #supportContent p {
+  margin: 0;
+  color: rgba(31, 28, 45, 0.7);
+}
+#modalFrame #modalContainer #supportContent h2 {
+  font-size: 1.6rem;
+}
+#modalFrame #modalContainer #supportContent h2 small {
+  font-size: 1rem;
+  display: block;
+}
+#modalFrame #modalContainer #supportContent #requestInfo {
+  padding: 16px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+#modalFrame #modalContainer #supportContent #requestInfo p {
+  font-size: 15px;
+}
+#modalFrame #modalContainer #supportContent #requestInfo #subject {
+  font-size: 17px;
+  font-weight: 500;
+}
+#modalFrame #modalContainer #supportContent a {
+  height: 60px;
+  background: #2D225B;
+  color: #f3f2fa;
+  font-weight: 600;
+  font-size: 20px;
+  display: flex;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  align-items: center;
+  padding: 0 20px;
+  border-radius: 6px;
+  transition: all 1.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+#modalFrame #modalContainer #supportContent a:hover {
+  background: rgba(45, 34, 91, 0.2);
+  box-shadow: 0 0 1px 2px #f3f2fa, 0 0 1px 4px rgba(45, 34, 91, 0.2);
+}
+#modalFrame #modalContainer #walletContent {
+  margin: 20px 0 10px 0;
+}
+#modalFrame #modalContainer #walletContent h2, #modalFrame #modalContainer #walletContent h3, #modalFrame #modalContainer #walletContent p, #modalFrame #modalContainer #walletContent span {
+  margin: 0;
+  color: rgba(31, 28, 45, 0.7);
+}
+#modalFrame #modalContainer #walletContent h2 {
+  font-size: 1.6rem;
+  gap: 10px;
+  display: flex;
+  align-items: center;
+}
+#modalFrame #modalContainer #walletContent h2 small {
+  font-size: 0.6rem;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  background: #2D225B;
+  color: #f3f2fa;
+  border-radius: 30px;
+  padding: 2px 6px;
+  font-weight: 300;
+}
+#modalFrame #modalContainer #walletContent #requestInfo {
+  padding: 16px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+#modalFrame #modalContainer #walletContent #requestInfo p {
+  font-size: 15px;
+  overflow-wrap: break-word;
+}
+#modalFrame #modalContainer #walletContent #requestInfo p b {
+  font-weight: 600;
+  color: rgba(31, 28, 45, 0.9);
+}
+#modalFrame #modalContainer #walletContent #requestInfo #subject {
+  font-size: 17px;
+  font-weight: 500;
+}
+#modalFrame #modalContainer #walletContent #walletInfo {
+  display: grid;
+  padding: 20px 0 10px 0;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+@media screen and (max-width: 480px) {
+  #modalFrame #modalContainer #walletContent #walletInfo {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3px;
+    padding: 14px 0 7px 0;
+  }
+}
+#modalFrame #modalContainer #walletContent #walletInfo span {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 14px;
+  background: #f3f2fa;
+  padding: 10px 6px;
+}
+#modalFrame #modalContainer #walletContent #walletInfo span b {
+  font-size: 17px;
+}
+#modalFrame #modalContainer #walletContent a {
+  height: 60px;
+  background: #2D225B;
+  color: #f3f2fa;
+  font-weight: 600;
+  font-size: 20px;
+  display: flex;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  align-items: center;
+  padding: 0 20px;
+  border-radius: 6px;
+  transition: all 1.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+#modalFrame #modalContainer #walletContent a:hover {
+  background: rgba(45, 34, 91, 0.2);
+  box-shadow: 0 0 1px 2px #f3f2fa, 0 0 1px 4px rgba(45, 34, 91, 0.2);
+}
+
+.showModel {
+  display: block !important;
 }
 
 ::-webkit-scrollbar {

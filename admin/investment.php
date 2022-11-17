@@ -1,3 +1,27 @@
+<?php
+
+use app\controller\InvestmentController;
+
+    session_start();
+
+    if(
+        !(
+        
+            isset($_SESSION["admin_auth"]) && is_bool($_SESSION["admin_auth"]) &&
+            isset($_SESSION["admin_username"]) && strlen(trim($_SESSION["admin_username"])) > 6 &&
+            isset($_SESSION["admin_scratchToken"]) && strlen(trim($_SESSION["admin_scratchToken"])) > 12
+        )
+    ){
+        session_destroy();
+        header("location: ./login.html");
+    }
+
+    require_once("../vendor/autoload.php");
+
+    $investmentController = new InvestmentController();
+    
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

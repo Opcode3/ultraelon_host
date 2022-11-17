@@ -47,5 +47,17 @@ use app\services\impl\WithdrawServiceImpl;
             $response = $this->model->fetchWithdrawsByUserId($id);
             return Response::json($response, 200);
         }
+
+        function findAllPendingWithdrawal(): string
+        {
+            $response = $this->model->fetchWithdraws(0);
+            return Response::json($response, 200);   
+        }
+
+        function findAllPaidWithdrawal(): string
+        {
+            $response = $this->model->fetchWithdraws(1);
+            return Response::json($response, 200);   
+        }
     }
 ?>

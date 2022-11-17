@@ -22,6 +22,12 @@ use app\services\impl\WalletServiceImpl;
             return Response::json($response, 200);
         }
 
+        function findAllWallet()
+        {
+            $response = $this->model->fetchAllWallet();
+            return Response::json($response, 200);
+        }
+
         function withdrawFundFromInvestmentAccount(int $id, int $amount)
         {
             $response = $this->model->reduceWalletAccount($id, $amount, "wallet_invest");

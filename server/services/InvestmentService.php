@@ -9,6 +9,7 @@ use app\services\impl\InvestmentServiceImpl;
 
     class InvestmentService implements InvestmentServiceImpl{
         private $model;
+        // private $userModel
 
         function __construct() 
         {
@@ -28,6 +29,43 @@ use app\services\impl\InvestmentServiceImpl;
         {
             $response = $this->model->fetchInvestmentsByUserId($id);
             return Response::json($response, 200);
+        }
+
+        function findAllPendingInvestment(): string
+        {
+            $response = $this->model->fetchAllInvestments(0);
+            return Response::json($response, 200);
+        }
+
+        function findAllPaidInvestment(): string
+        {
+            $response = $this->model->fetchAllInvestments(1);
+            return Response::json($response, 200);
+        }
+
+        function findAllClosedInvestment(): string
+        {
+            $response = $this->model->fetchAllInvestments(2);
+            return Response::json($response, 200);
+        }
+
+
+        function updatePendingInvestment($user_id): string
+        {
+            $response = $this->model->updateInvestmentStatus($user_id, 1);
+            if($response){
+                return Response::json("User Investment Plan was updated successfully", 200);
+            }
+            return Response::json("An error was encountered While trying to update user investment plan. Try again or notify the developer of this software.");
+        }
+
+        function updatePaidInvestment(int $user_id): string
+        {
+            $response = $this->model->updateInvestmentStatus($user_id, 2);
+            if($response){
+                return Response::json("User Investment Plan was updated successfully", 200);
+            }
+            return Response::json("An error was encountered While trying to update user investment plan. Try again or notify the developer of this software.");
         }
     }
 ?>

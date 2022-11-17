@@ -35,6 +35,13 @@ use app\config\DatabaseHandler;
             return $this->fetch($sql, [$id]);
         }
 
+
+        // find all wallet
+        function fetchAllWallet(){
+            $sql = "SELECT users_tb.*, $this->table_name.wallet_invest, $this->table_name.wallet_ultra, $this->table_name.wallet_referral FROM $this->table_name LEFT JOIN users_tb ON users_tb.user_id = $this->table_name.wallet_user_id";
+            return $this->fetchMany($sql);
+        }
+
         // reduce account from::::::
         function reduceWalletAccount(int $id, int $amount, string $from){
             $sql = "SELECT $from from $this->table_name WHERE wallet_user_id = ?";

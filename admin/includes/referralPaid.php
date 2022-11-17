@@ -30,7 +30,7 @@
                     <td>$46,300.00</td>
                     <td>$46.00</td>
                     <td><?php echo date("D d-m-Y") ?></td>
-                    <td> <span class="paid">Paid</span> </td>
+                    <td> <span data-id="1" class="paid btnReferralPaid">Paid</span> </td>
                 </tr>
                 <tr>
                     <td>2</td>
@@ -40,7 +40,7 @@
                     <td>$46,300.00</td>
                     <td>$46.00</td>
                     <td><?php echo date("D d-m-Y") ?></td>
-                    <td> <span class="paid">Paid</span> </td>
+                    <td> <span data-id="2" class="paid btnReferralPaid">Paid</span> </td>
                 </tr>
             </tbody>
         </table>

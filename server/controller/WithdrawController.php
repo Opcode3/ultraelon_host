@@ -21,6 +21,14 @@ use app\services\WithdrawService;
             return $this->withdrawService->findAllWithdrawalByUserId($id);
         }
 
+        function getAllPendingWithdraws(){
+            return $this->withdrawService->findAllPendingWithdrawal();
+        }
+
+        function getAllPaidWithdraws(){
+            return $this->withdrawService->findAllPaidWithdrawal();
+        }
+
     }
 
 ?>

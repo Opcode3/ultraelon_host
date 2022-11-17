@@ -24,13 +24,14 @@ header("Access-Control-Max-Age: 3600");
                 $amount = (int) $request_data["amount"];
                 $address = $request_data["address"];
                 $plan = $request_data["plan"];
+                $type = $request_data["type"];
                 $user_id = (int) $_SESSION["userDetails"]["user_id"]; 
 
                 if($user_id > 0){
                     $investPayload = array(
                         "invest_user_id" => $user_id, "invest_amount" => $amount,
                         "invest_depositor_address" => $address, 
-                        "invest_plan" => $plan
+                        "invest_plan" => $plan, "invest_depositor_account_type" => $type
                     );
                     // echo Response::json($investPayload, 201);
                     $investmentController = new InvestmentController();

@@ -17,6 +17,10 @@ use app\services\WalletService;
             return $this->walletService->findUserWalletById($user_id);
         }
 
+        function getAllWallets(){
+            return $this->walletService->findAllWallet();
+        }
+
     }
 
 ?>

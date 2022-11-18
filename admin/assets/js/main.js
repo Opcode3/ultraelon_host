@@ -222,26 +222,47 @@ const loginForm = document.querySelector("#loginForm");
 if(loginForm){
     loginForm.addEventListener("submit", function(e){
         e.preventDefault();
+        const btnLoader = startBtnLoader(this.querySelector("button"))
         const username = this.querySelector("#username").value;
         const password = this.querySelector("#password").value;
 
         const form_data = {username: username, password: password, type: "jwtAuth"}
     // console.log(form_data)
 
-    make_call( async () => {
-        const data = await postRequest(`${api_url}adminAuth.php`, JSON.stringify(form_data));
-        if(data.status_code == 200 && data.message == "true"){
-            alert("Redirecting you to your dashboard...");
-            setTimeout(()=>{ window.location.href = "./" }, 500);
-        }else{
-            alert(data.message)
-        }
-        console.log(data)
-    });
+        make_call( async () => {
+            const data = await postRequest(`${api_url}adminAuth.php`, JSON.stringify(form_data));
+            if(data.status_code == 200 && data.message == "true"){
+                alert("Redirecting you to your dashboard...");
+                setTimeout(()=>{ window.location.href = "./" }, 500);
+            }else{
+                alert(data.message)
+            }
+            console.log(data)
+            stopBtnLoader(btnLoader);
+        });
 
     })
 }
 
+function stopBtnLoader(metaData){
+    setTimeout(()=>{
+        clearInterval(metaData[0]);
+        metaData[1].innerHTML = metaData[2];
+        console.log("Okay Cleared!")
+    }, 200)
+}
+
+
+function startBtnLoader(element){
+    const loadScreen = ["Loading", "Loading.", "Loading..", "Loading..."];
+    const btnDefaultValue = element.innerHTML;
+    let iteration = 0;
+    let mInterval = setInterval(()=> {
+        element.innerHTML = loadScreen[iteration++];
+        if(iteration == 4) iteration = 0;
+    }, 400);
+    return [mInterval, element, btnDefaultValue];
+}
 
 function make_call(callback){
     callback();

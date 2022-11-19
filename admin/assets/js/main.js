@@ -257,10 +257,11 @@ function startBtnLoader(element){
     const loadScreen = ["Loading", "Loading.", "Loading..", "Loading..."];
     const btnDefaultValue = element.innerHTML;
     let iteration = 0;
+    element.innerHTML = loadScreen[iteration++];
     let mInterval = setInterval(()=> {
         element.innerHTML = loadScreen[iteration++];
         if(iteration == 4) iteration = 0;
-    }, 400);
+    }, 200);
     return [mInterval, element, btnDefaultValue];
 }
 

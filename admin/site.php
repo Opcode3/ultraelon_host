@@ -1,7 +1,7 @@
 <?php
 
     session_start();
-    require_once("../vendor/autoload.php");
+    // require_once("../vendor/autoload.php");
 
     // if(
     //     !(
@@ -128,8 +128,120 @@
             </menu>
 
             <div class="mainContainer">
-                <div id="investmentFrame">
-                    
+                <div id="settingFrame">
+                    <div class="item">
+                        <a href="./site.php?tab=home" class="itemHeader">Home Page</a>
+                        <?php
+                            if((isset($_GET["tab"]) && $_GET["tab"] == "home") || !isset($_GET["tab"])){
+                        ?>
+                        <div class="itemContent">
+                            <h3>Our Total Records::</h3>
+                            <form method="post" id="total">
+                                <div class="formControl">
+                                    <label for="investor">Total Investors</label>
+                                    <input type="number" name="" placeholder="Enter total investors" id="investor">
+                                </div>
+                                <div class="formControl">
+                                    <label for="deposits">Total Deposits</label>
+                                    <input type="number" name="" placeholder="Enter total deposits" id="deposits">
+                                </div>
+                                <div class="formControl">
+                                    <label for="withdrawals">Total Withdrawal</label>
+                                    <input type="number" name="" placeholder="Enter total withdrawals" id="withdrawals">
+                                </div>
+                                <div class="formControl">
+                                    <button type="submit">Submit Totals</button>
+                                </div>
+                            </form>
+                            <h3>Our Statistics::</h3>
+                            <form method="post" id="statistics">
+                                <div class="formControl">
+                                    <label for="type">Select Statistic Type</label>
+                                    <select name="type" id="type">
+                                        <option value="deposit">Latest Deposit</option>
+                                        <option value="withdrawal">Latest Withdrawal</option>
+                                    </select>
+                                </div>
+                                <div class="formControl">
+                                    <label for="wallet">Select Wallet Type</label>
+                                    <select name="wallet" id="wallet">
+                                        <option value="bitcoin">Bitcoin</option>
+                                        <option value="eth">Ethereum</option>
+                                        <option value="bnb">BNB</option>
+                                        <option value="usdt">USDT</option>
+                                        <option value="usdt">Ultra</option>
+                                    </select>
+                                </div>
+                                <div class="formControl">
+                                    <label for="amount">Amount</label>
+                                    <input type="number" name="" placeholder="Enter amount invested" id="amount">
+                                </div>
+                                <div class="formControl">
+                                    <label for="name">Investors Name</label>
+                                    <input type="text" name="name" placeholder="Enter investors name" id="name">
+                                </div>
+                                <div class="formControl">
+                                    <button type="submit" name="btnTotal">Submit Totals</button>
+                                </div>
+                            </form>
+                        </div>
+                        <?php } ?>
+                    </div>
+                    <div class="item">
+                        <a href="./site.php?tab=faqs" class="itemHeader">FAQs Widgets</a>
+                        <?php
+                            if(isset($_GET["tab"]) && $_GET["tab"] == "faqs"){
+                        ?>
+                        <div class="itemContent">
+                            <form method="post" id="faqForm">
+                                <div class="formControl">
+                                    <label for="isAffiliate" id="affiliate">
+                                        <input type="checkbox" name="isAffiliate" placeholder="Enter total investors" id="isAffiliate">
+                                        Is the content relating to affiliate?
+                                    </label>
+                                </div>
+                                <div class="formControl">
+                                    <label for="faqTitle">FAQ Title</label>
+                                    <input type="text" name="faqTitle" placeholder="Enter FAQ Title" id="faqTitle">
+                                </div>
+                                <div class="formControl">
+                                    <label for="faqContent">FAQ Content</label>
+                                    <textarea name="faqContent" id="faqContent" placeholder="Main FAQ Content " cols="30" rows="10"></textarea>
+                                </div>
+                                <div class="formControl">
+                                    <button type="submit" name="btnFAQ">Submit FAQs</button>
+                                </div>
+                            </form>
+                        </div>
+                        <?php } ?>
+                    </div>
+                    <div class="item">
+                        <a href="./site.php?tab=contact" class="itemHeader">Our Contacts</a>
+                        <?php
+                            if(isset($_GET["tab"]) && $_GET["tab"] == "contact"){
+                        ?>
+                        <div class="itemContent">
+                        <form method="post" id="contact">
+                                
+                                <div class="formControl">
+                                    <label for="address">Address</label>
+                                    <input type="text" name="address" placeholder="Enter Contact Address" id="address">
+                                </div>
+                                <div class="formControl">
+                                    <label for="email">Email</label>
+                                    <input type="email" name="email" placeholder="Enter Contact Email" id="email">
+                                </div>
+                                <div class="formControl">
+                                    <label for="whatsapp">Whatsapp</label>
+                                    <input type="number" name="whatsapp" placeholder="Enter Whatsapp contact" id="whatsapp">
+                                </div>
+                                <div class="formControl">
+                                    <button type="submit" name="btnContact">Submit Contact</button>
+                                </div>
+                            </form>
+                        </div>
+                        <?php } ?>
+                    </div>
                 </div>
             </div>
         </main>

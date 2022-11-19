@@ -605,6 +605,152 @@ ul li {
   font-size: 14px;
   padding: 4px 10px;
 }
+.container main .mainContainer #settingFrame {
+  display: flex;
+  width: 97%;
+  margin: 20px auto 30px auto;
+  flex-direction: column;
+  gap: 0;
+}
+.container main .mainContainer #settingFrame .item {
+  min-height: -webkit-fit-content;
+  min-height: -moz-fit-content;
+  min-height: fit-content;
+  margin-bottom: 2px;
+  transition: all 1.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+  overflow: hidden;
+  border-radius: 4px;
+}
+.container main .mainContainer #settingFrame .item .itemHeader {
+  background: #2D225B;
+  color: #f3f2fa;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 10px 20px;
+  display: block;
+}
+.container main .mainContainer #settingFrame .item .itemHeader:hover, .container main .mainContainer #settingFrame .item .itemHeader:focus {
+  background: rgba(45, 34, 91, 0.9);
+}
+.container main .mainContainer #settingFrame .item .itemContent {
+  padding-top: 20px;
+  margin: 0px 1% 20px 1%;
+}
+.container main .mainContainer #settingFrame .item .itemContent h3 {
+  color: #2D225B;
+  margin-bottom: 5px;
+}
+.container main .mainContainer #settingFrame .item .itemContent .formControl {
+  display: flex;
+  flex-direction: column;
+}
+.container main .mainContainer #settingFrame .item .itemContent .formControl input, .container main .mainContainer #settingFrame .item .itemContent .formControl select, .container main .mainContainer #settingFrame .item .itemContent .formControl textarea {
+  border: none;
+  outline: none;
+  background-color: rgba(45, 34, 91, 0.2);
+  padding: 8px 12px;
+  font-weight: 500;
+  font-size: 1.12rem;
+  transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+  color: #1F1C2D;
+  min-width: 150px;
+  width: calc(99% - 22px);
+}
+.container main .mainContainer #settingFrame .item .itemContent .formControl input:focus, .container main .mainContainer #settingFrame .item .itemContent .formControl input:hover, .container main .mainContainer #settingFrame .item .itemContent .formControl select:focus, .container main .mainContainer #settingFrame .item .itemContent .formControl select:hover, .container main .mainContainer #settingFrame .item .itemContent .formControl textarea:focus, .container main .mainContainer #settingFrame .item .itemContent .formControl textarea:hover {
+  background: rgba(243, 242, 250, 0.9);
+}
+.container main .mainContainer #settingFrame .item .itemContent .formControl select {
+  width: 100%;
+}
+.container main .mainContainer #settingFrame .item .itemContent .formControl label {
+  color: rgba(45, 34, 91, 0.8);
+  font-size: 1rem;
+}
+.container main .mainContainer #settingFrame .item .itemContent .formControl button {
+  border: none;
+  outline: none;
+  background: #2D225B;
+  border-radius: 4px;
+  color: #f3f2fa;
+  font-size: 1.4rem;
+  padding: 10px 15px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  transition: all 1.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+  cursor: pointer;
+}
+.container main .mainContainer #settingFrame .item .itemContent .formControl button:hover {
+  background: rgba(45, 34, 91, 0.9);
+}
+@media screen and (max-width: 780px) {
+  .container main .mainContainer #settingFrame .item .itemContent .formControl button {
+    font-size: 1.2rem;
+    padding: 7px 10px;
+  }
+  .container main .mainContainer #settingFrame .item .itemContent .formControl input, .container main .mainContainer #settingFrame .item .itemContent .formControl select, .container main .mainContainer #settingFrame .item .itemContent .formControl textarea {
+    font-size: 1rem;
+  }
+  .container main .mainContainer #settingFrame .item .itemContent .formControl label {
+    font-size: 0.9rem;
+  }
+}
+.container main .mainContainer #settingFrame .item .itemContent #contact, .container main .mainContainer #settingFrame .item .itemContent #total {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(3, 1fr);
+}
+.container main .mainContainer #settingFrame .item .itemContent #contact .formControl:last-child, .container main .mainContainer #settingFrame .item .itemContent #total .formControl:last-child {
+  grid-column: 1/span 3;
+}
+@media screen and (max-width: 780px) {
+  .container main .mainContainer #settingFrame .item .itemContent #contact, .container main .mainContainer #settingFrame .item .itemContent #total {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .container main .mainContainer #settingFrame .item .itemContent #contact .formControl:last-child, .container main .mainContainer #settingFrame .item .itemContent #total .formControl:last-child {
+    grid-column: 1/span 2;
+  }
+}
+@media screen and (max-width: 480px) {
+  .container main .mainContainer #settingFrame .item .itemContent #contact, .container main .mainContainer #settingFrame .item .itemContent #total {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .container main .mainContainer #settingFrame .item .itemContent #contact .formControl:last-child, .container main .mainContainer #settingFrame .item .itemContent #total .formControl:last-child {
+    grid-column: 1/span 1;
+  }
+}
+.container main .mainContainer #settingFrame .item .itemContent #total {
+  margin-bottom: 20px;
+}
+.container main .mainContainer #settingFrame .item .itemContent #statistics {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(2, 1fr);
+}
+.container main .mainContainer #settingFrame .item .itemContent #statistics .formControl:last-child {
+  grid-column: 1/span 2;
+}
+@media screen and (max-width: 480px) {
+  .container main .mainContainer #settingFrame .item .itemContent #statistics {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .container main .mainContainer #settingFrame .item .itemContent #statistics .formControl:last-child {
+    grid-column: 1/span 1;
+  }
+}
+.container main .mainContainer #settingFrame .item .itemContent #faqForm {
+  display: grid;
+  gap: 10px;
+}
+.container main .mainContainer #settingFrame .item .itemContent #faqForm #affiliate input {
+  max-width: -webkit-fit-content;
+  max-width: -moz-fit-content;
+  max-width: fit-content;
+  min-width: -webkit-fit-content;
+  min-width: -moz-fit-content;
+  min-width: fit-content;
+}
 
 #modalFrame {
   background: rgba(31, 28, 45, 0.7);

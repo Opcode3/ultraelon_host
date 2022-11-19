@@ -631,6 +631,133 @@
                     }
                 }
             }
+
+            #settingFrame{
+                // background: green;
+                display: flex;
+                width: 97%; margin: 20px auto 30px auto;
+                flex-direction: column; gap: 0;
+                .item{
+                    // height: 400px;
+                    min-height: fit-content;
+                    margin-bottom: 2px;
+                    transition: all 1.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+                    overflow: hidden; border-radius: 4px;
+
+                    .itemHeader{
+                        background: $primaryColor;
+                        color: $primaryWhiteColor; cursor: pointer;
+                        font-size: 18px; font-weight: 600;
+                        padding: 10px 20px; display: block;
+
+                        &:hover, &:focus{
+                            background: rgba($primaryColor, 0.9);
+                        }
+                    }
+
+                    .itemContent{
+                        padding-top: 20px; //margin-bottom: 20px; 
+                        margin: 0px 1% 20px 1%;
+                        h3{ color: $primaryColor; margin-bottom:5px ;}
+                        .formControl{
+                            display: flex; flex-direction: column;
+
+                            input, select, textarea{
+                                border:none; outline: none;
+                                background-color: rgba($primaryColor, 0.2);
+                                padding: 8px 12px; font-weight: 500; font-size: 1.12rem;
+                                transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+                                color: $primaryBlackColor; min-width: 150px; width: calc(99% - 22px);
+                                &:focus, &:hover{
+                                    background: rgba($primaryWhiteColor, 0.9);
+                                }
+                            }
+
+                            select{
+                                width: 100%;
+                            }
+
+                            label{
+                                color: rgba($primaryColor, 0.8); font-size: 1rem;
+                            }
+
+                            button{
+                                border:none; outline: none;
+                                background: $primaryColor; border-radius: 4px;
+                                color: $primaryWhiteColor; font-size: 1.4rem;
+                                padding: 10px 15px; width: fit-content;
+                                transition: all 1.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+                                cursor: pointer;
+                                &:hover{
+                                    background: rgba($primaryColor, 0.9);
+                                }
+                            }
+
+                            @include Mobile(){
+                                button{
+                                    font-size: 1.2rem; padding: 7px 10px;
+                                }
+                                input, select, textarea{ font-size: 1rem;}
+                                label{ font-size: 0.9rem;}
+                            }
+                        }
+
+                        #contact, #total{
+                            display: grid; gap: 10px;
+                            grid-template-columns: repeat(3, 1fr);
+
+                            .formControl:last-child{
+                                grid-column: 1 / span 3;
+                            }
+
+                            @include Mobile(){
+                                grid-template-columns: repeat(2, 1fr);
+
+                                .formControl:last-child{
+                                    grid-column: 1 / span 2;
+                                }
+                            }
+
+                            @include Phone(){
+                                grid-template-columns: repeat(1, 1fr);
+
+                                .formControl:last-child{
+                                    grid-column: 1 / span 1;
+                                }
+                            }
+                        }
+
+                        #total{
+                            margin-bottom: 20px;
+                        }
+
+                        #statistics{
+                            display: grid; gap: 10px;
+                            grid-template-columns: repeat(2, 1fr);
+
+                            .formControl:last-child{
+                                grid-column: 1 / span 2;
+                            }
+
+                            @include Phone(){
+                                grid-template-columns: repeat(1, 1fr);
+
+                                .formControl:last-child{
+                                    grid-column: 1 / span 1;
+                                }
+                            }
+                        }
+
+                        #faqForm{
+                            display: grid; gap: 10px;
+
+                            #affiliate{
+                                input{ max-width: fit-content; min-width: fit-content;}
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 

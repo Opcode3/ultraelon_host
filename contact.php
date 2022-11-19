@@ -1,22 +1,22 @@
 <?php
-require_once("./vendor/autoload.php");
-use app\controller\UserController;
+// require_once("./vendor/autoload.php");
+// use app\controller\UserController;
 
-    if(isset($_POST["submit"]) && isset($_POST["email"]) && strlen(trim($_POST["email"])) > 9){
-        $name = $_POST["name"];
-        $subject = $_POST["subject"];
-        $email = $_POST["email"];
-        $message = $_POST["message"];
+//     if(isset($_POST["submit"]) && isset($_POST["email"]) && strlen(trim($_POST["email"])) > 9){
+//         $name = $_POST["name"];
+//         $subject = $_POST["subject"];
+//         $email = $_POST["email"];
+//         $message = $_POST["message"];
 
-        $requestPayload = array(
-            "contact_name" => $name, "contact_email" => $email, 
-            "contact_subject" => $subject, "contact_message" => $message,
-        );
-        $userController = new UserController();
-        $response = json_decode($userController->postSupportQueryForm($requestPayload), true);
-        echo "<script> alert('".$response["message"]."'); </script>";
-        unset($_POST);
-    }
+//         $requestPayload = array(
+//             "contact_name" => $name, "contact_email" => $email, 
+//             "contact_subject" => $subject, "contact_message" => $message,
+//         );
+//         $userController = new UserController();
+//         $response = json_decode($userController->postSupportQueryForm($requestPayload), true);
+//         echo "<script> alert('".$response["message"]."'); </script>";
+//         unset($_POST);
+//     }
 
 ?>
 <!DOCTYPE html>

@@ -43,13 +43,13 @@ use app\config\DatabaseHandler;
         // create all modal
 
         function newStatistics(array $statistic){
-            if( $this->isStatisticExist($statistic["title"]) ){
-                $sql = "INSERT INTO statistic_site_tb(statistic_slug, statistic_type, statistic_wallet_type, statistic_amount, statistic_investor_name) 
-                        VALUES(:slug, :type, :wallet_type, :amount, :investor_name)";
-                $response = $this->insert($sql, $statistic, "slug");
-                return $response;
-            }
-            return "exist";
+            // if( $this->isStatisticExist($statistic["title"]) ){
+            $sql = "INSERT INTO statistic_site_tb(statistic_slug, statistic_type, statistic_wallet_type, statistic_amount, statistic_investor_name) 
+                    VALUES(:slug, :type, :wallet_type, :amount, :investor_name)";
+            $response = $this->insert($sql, $statistic, "slug");
+            return $response;
+            // }
+            // return "exist";
         }
 
         function newFaq(array $faq){
@@ -89,6 +89,11 @@ use app\config\DatabaseHandler;
             return $this->fetchMany($sql);
         }
 
+        function fetchFaqsForWithdrawal(){
+            $sql = "SELECT * FROM faq_site_tb WHERE faq_affiliate=1";
+            return $this->fetchMany($sql);
+        }
+
 
 
 
@@ -98,7 +103,7 @@ use app\config\DatabaseHandler;
             $sql = "SELECT statistic_slug from statistic_site_tb WHERE statistic_title = ?";
             $stmt = $this->query($sql, [$statisticTitle]);
             return $stmt->rowCount() == 0; 
-        }
+        } // not necessary
 
         private function isFaqExist(string $faqTitle): bool{
             $sql = "SELECT faq_slug from faq_site_tb WHERE faq_title = ?";

@@ -1,8 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-    <?php 
+    <?php
+
+use app\controller\SiteController;
+
         $title = "Affiliate Program";
         require_once("./include/header.inc.php"); 
+        require_once("./vendor/autoload.php");
+
+        $siteController = new SiteController();
+        $faq = json_decode($siteController->getFaqsByWithdraws(),true);
+
+        $faqResponse = $faq["message"];
+        $counter = count($faqResponse);
+        $halve = $counter / 2;
     ?>
     <!-- breadcrumb content begin -->
     <div class="uk-section uk-padding-remove-vertical in-equity-breadcrumb">
@@ -136,73 +147,118 @@
                         <p class="uk-margin-small-top uk-text-large uk-text-center">Do you have any question</p>
                     </div>
                     <div class="uk-width-1-1@m">
+                        <?php
+                            if($counter > 0){
+                        ?>
                         <div class="uk-grid uk-child-width-1-2@m uk-margin-medium-top" data-uk-grid>
                             <div>
                                 <ul class="in-faq-2" data-uk-accordion>
-                                <li>
-                                        <a class="uk-accordion-title" href="#">
-                                            <div class="uk-card uk-card-default uk-card-body uk-border-rounded">
-                                                Do you offer an affiliate program?
-                                            </div>
-                                        </a>
-                                        <div class="uk-accordion-content uk-card uk-card-default uk-card-body uk-border-rounded">
-                                            <p>
-                                                Yes. We offer our customers an affiliate program with a favorable 8%,3%,1% commission for
-                                                each deposit received from your referrals. This includes both the initial and any additional
-                                                deposits made by your referrals.
-                                            </p>
-                                        </div>
-                                    </li>
+                                    <?php
 
-                                    <li>
-                                        <a class="uk-accordion-title" href="#">
-                                            <div class="uk-card uk-card-default uk-card-body uk-border-rounded">
-                                                How does the affiliate program works?
-                                            </div>
-                                        </a>
-                                        <div class="uk-accordion-content uk-card uk-card-default uk-card-body uk-border-rounded">
-                                            <p>
-                                                The partnership program aims to attract as many clients as possible. Being a partner, you
-                                                get 8%,3%,1% bonus from each deposit made by your referral. The more referrals you
-                                                attract, the more they deposit, the more bonuses you will receive.
-                                            </p>
-                                        </div>
-                                    </li>
+                                        for($m = 0; $m < $halve; $m++){
+                                            $faq = $faqResponse[$m];
+                                            ?>
+                                            <li>
+                                                <a class="uk-accordion-title" href="#">
+                                                    <div class="uk-card uk-card-default uk-card-body uk-border-rounded">
+                                                        <?php echo $faq["faq_title"]; ?>
+                                                    </div>
+                                                </a>
+                                                <div class="uk-accordion-content uk-card uk-card-default uk-card-body uk-border-rounded">
+                                                    <p>
+                                                        <?php echo $faq["faq_content"]; ?>
+                                                    </p>
+                                                </div>
+                                            </li>
+
+                                            <?php
+                                        }
+
+                                    ?>
                                 </ul>
                             </div>
                             <div>
                                 <ul class="in-faq-2" data-uk-accordion>
-                    
-                                    <li>
-                                        <a class="uk-accordion-title" href="#">
-                                            <div class="uk-card uk-card-default uk-card-body uk-border-rounded">
-                                                What is necessary to have an opportunity to earn the partner reward?
-                                            </div>
-                                        </a>
-                                        <div class="uk-accordion-content uk-card uk-card-default uk-card-body uk-border-rounded">
-                                            <p>
-                                                To have an opportunity to earn the partner reward, you just need to create a personal
-                                                account in our program; to have the own investments in the program is not necessarily.
-                                            </p>
-                                        </div>
-                                    </li>
+                                <?php
 
-                                    <li>
-                                        <a class="uk-accordion-title" href="#">
-                                            <div class="uk-card uk-card-default uk-card-body uk-border-rounded">
-                                                Why can't I withdraw?
+                                    for($m = $halve; $m < $counter; $m++){
+                                        $faq = $faqResponse[$m];
+                                        ?>
+                                        <li>
+                                            <a class="uk-accordion-title" href="#">
+                                                <div class="uk-card uk-card-default uk-card-body uk-border-rounded">
+                                                    <?php echo $faq["faq_title"]; ?>
+                                                </div>
+                                            </a>
+                                            <div class="uk-accordion-content uk-card uk-card-default uk-card-body uk-border-rounded">
+                                                <p>
+                                                    <?php echo $faq["faq_content"]; ?>
+                                                </p>
                                             </div>
-                                        </a>
-                                        <div class="uk-accordion-content uk-card uk-card-default uk-card-body uk-border-rounded">
-                                            <p>
-                                                Well this is because here at UltraElon we've set a specific withdrawal limit due to your
-                                                investment package
-                                            </p>
-                                        </div>
-                                    </li>
+                                        </li>
+
+                                        <?php
+                                        }
+                                        ?>
                                 </ul>
                             </div>
                         </div>
+                        <?php
+                            }else{
+                                ?>
+                                <div class="uk-grid uk-child-width-1-2@m uk-margin-medium-top" data-uk-grid>
+                                    <div>
+                                        <ul class="in-faq-2" data-uk-accordion>
+                                            <li>
+                                                <a class="uk-accordion-title" href="#">
+                                                    <div class="uk-card uk-card-default uk-card-body uk-border-rounded">
+                                                        How does the affiliate program works?
+                                                    </div>
+                                                </a>
+                                                <div class="uk-accordion-content uk-card uk-card-default uk-card-body uk-border-rounded">
+                                                    <p>
+                                                        The partnership program aims to attract as many clients as possible. Being a partner, you
+                                                        get 8%,3%,1% bonus from each deposit made by your referral. The more referrals you
+                                                        attract, the more they deposit, the more bonuses you will receive.
+                                                    </p>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <ul class="in-faq-2" data-uk-accordion>
+                                            <li>
+                                                <a class="uk-accordion-title" href="#">
+                                                    <div class="uk-card uk-card-default uk-card-body uk-border-rounded">
+                                                        What is necessary to have an opportunity to earn the partner reward?
+                                                    </div>
+                                                </a>
+                                                <div class="uk-accordion-content uk-card uk-card-default uk-card-body uk-border-rounded">
+                                                    <p>
+                                                        To have an opportunity to earn the partner reward, you just need to create a personal
+                                                        account in our program; to have the own investments in the program is not necessarily.
+                                                    </p>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <a class="uk-accordion-title" href="#">
+                                                    <div class="uk-card uk-card-default uk-card-body uk-border-rounded">
+                                                        Why can't I withdraw?
+                                                    </div>
+                                                </a>
+                                                <div class="uk-accordion-content uk-card uk-card-default uk-card-body uk-border-rounded">
+                                                    <p>
+                                                        Well this is because here at UltraElon we've set a specific withdrawal limit due to your
+                                                        investment package
+                                                    </p>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <?php
+                            }
+                        ?>
                     </div>
                 </div>
             </div>

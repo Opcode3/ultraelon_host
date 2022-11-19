@@ -1,22 +1,32 @@
 <?php
-// require_once("./vendor/autoload.php");
-// use app\controller\UserController;
+require_once("./vendor/autoload.php");
 
-//     if(isset($_POST["submit"]) && isset($_POST["email"]) && strlen(trim($_POST["email"])) > 9){
-//         $name = $_POST["name"];
-//         $subject = $_POST["subject"];
-//         $email = $_POST["email"];
-//         $message = $_POST["message"];
+use app\controller\SiteController;
+use app\controller\UserController;
 
-//         $requestPayload = array(
-//             "contact_name" => $name, "contact_email" => $email, 
-//             "contact_subject" => $subject, "contact_message" => $message,
-//         );
-//         $userController = new UserController();
-//         $response = json_decode($userController->postSupportQueryForm($requestPayload), true);
-//         echo "<script> alert('".$response["message"]."'); </script>";
-//         unset($_POST);
-//     }
+    if(isset($_POST["submit"]) && isset($_POST["email"]) && strlen(trim($_POST["email"])) > 9){
+        $name = $_POST["name"];
+        $subject = $_POST["subject"];
+        $email = $_POST["email"];
+        $message = $_POST["message"];
+
+        $requestPayload = array(
+            "contact_name" => $name, "contact_email" => $email, 
+            "contact_subject" => $subject, "contact_message" => $message,
+        );
+        $userController = new UserController();
+        $response = json_decode($userController->postSupportQueryForm($requestPayload), true);
+        echo "<script> alert('".$response["message"]."'); </script>";
+        unset($_POST);
+    }
+
+
+    $siteController = new SiteController();
+    $contactResponse = json_decode($siteController->getContact(), true);
+
+    $contactAddress = $contactResponse["message"]["contact_address"];
+    $contactEmail = $contactResponse["message"]["contact_email"];
+    $contactWhatsapp = $contactResponse["message"]["contact_whatsapp"];
 
 ?>
 <!DOCTYPE html>
@@ -49,16 +59,17 @@
                         <div class="uk-grid uk-child-width-1-3@m uk-margin-medium-top uk-text-center" data-uk-grid>
                             <div>
                                 <h5 class="uk-margin-remove-bottom"><i class="fas fa-map-marker-alt fa-sm uk-margin-small-right"></i>Address</h5>
-                                <p class="uk-margin-small-top">1 Frederick Place London, N8 8AF United Kingdom.</p>
+                                <p class="uk-margin-small-top"><?php echo $contactAddress; ?></p>
+                                <!-- <p class="uk-margin-small-top">1 Frederick Place London, N8 8AF United Kingdom.</p> -->
                             </div>
                             <div>
                                 <h5 class="uk-margin-remove-bottom"><i class="fas fa-envelope fa-sm uk-margin-small-right"></i>Email</h5>
-                                <p class="uk-margin-small-top uk-margin-remove-bottom">halo@ultraelon.com</p>
+                                <p class="uk-margin-small-top uk-margin-remove-bottom"><?php echo $contactEmail; ?></p>
                                 <p class="uk-text-small uk-text-muted uk-text-uppercase">for public inquiries</p>
                             </div>
                             <div>
                                 <h5 class="uk-margin-remove-bottom"><i class="fa fa-whatsapp-square fa-sm uk-margin-small-right"></i>Whatsapp</h5>
-                                <p class="uk-margin-small-top uk-margin-remove-bottom">+1(301)372-9072</p>
+                                <p class="uk-margin-small-top uk-margin-remove-bottom"><?php echo $contactWhatsapp; ?></p>
                                 <p class="uk-text-small uk-text-muted uk-text-uppercase">Mon - Fri, 9am - 5pm</p>
                             </div>
                         </div>

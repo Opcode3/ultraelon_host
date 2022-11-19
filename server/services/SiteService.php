@@ -44,7 +44,10 @@ use app\services\impl\SiteServiceImpl;
         function createStatistic(array $new): string
         {
             $res = $this->model->newStatistics($new);
-            return $res ? Response::json("New statistics has been created!", 201) : Response::json("Unable to create statistics.");
+            if(is_bool($res)){
+                return $res ? Response::json("New statistics has been created!", 201) : Response::json("Unable to create statistics.");
+            }
+            return Response::json("This statistics has already been created!", 200);
         }
 
         function findStatistics(): string
@@ -56,12 +59,21 @@ use app\services\impl\SiteServiceImpl;
         function createFaq(array $new): string
         {
             $res = $this->model->newFaq($new);
-            return $res ? Response::json("New frequently asked question has been created!", 201) : Response::json("Unable to create faq.");
+            if(is_bool($res)){
+                return $res ? Response::json("New frequently asked question has been created!", 201) : Response::json("Unable to create faq.");
+            }
+            return Response::json("This frequently asked question has already been created!", 200);
         }
 
         function findFaqs(): string
         {
             $res = $this->model->fetchFaqs();
+            return Response::json($res, 200);
+        }
+
+        function findFaqsByAffiliate(): string
+        {
+            $res = $this->model->fetchFaqsForWithdrawal();
             return Response::json($res, 200);
         }
 

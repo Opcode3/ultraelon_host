@@ -1,19 +1,94 @@
 <?php
 
+use app\controller\SiteController;
+
     session_start();
-    // require_once("../vendor/autoload.php");
+    require_once("../vendor/autoload.php");
 
-    // if(
-    //     !(
-    //         isset($_SESSION["admin_auth"]) && is_bool($_SESSION["admin_auth"]) &&
-    //         isset($_SESSION["admin_username"]) && strlen(trim($_SESSION["admin_username"])) > 6 &&
-    //         isset($_SESSION["admin_scratchToken"]) && strlen(trim($_SESSION["admin_scratchToken"])) > 12
-    //     )
-    // ){
-    //     session_destroy();
-    //     header("location: ./login.html");
-    // }
+    if(
+        !(
+            isset($_SESSION["admin_auth"]) && is_bool($_SESSION["admin_auth"]) &&
+            isset($_SESSION["admin_username"]) && strlen(trim($_SESSION["admin_username"])) > 6 &&
+            isset($_SESSION["admin_scratchToken"]) && strlen(trim($_SESSION["admin_scratchToken"])) > 12
+        )
+    ){
+        session_destroy();
+        header("location: ./login.html");
+    }
 
+    $siteController = new SiteController();
+
+    //submit form
+
+    if(isset($_POST["record_btn"])){
+        $investor = $_POST["record_investor"];
+        $deposit = $_POST["record_deposit"];
+        $withdraw = $_POST["record_withdraw"];
+
+        $payload = array(
+            "investor" => $investor, "deposit" => $deposit, "withdrawal" => $withdraw,
+            "id" => 1
+        );
+
+        $updateRecord = json_decode($siteController->setRecord($payload), true);
+        echo "<script> alert('".$updateRecord['message']."'); </script>";
+    }
+
+
+    if(isset($_POST["btnContact"])){
+        $address = $_POST["contact_address"];
+        $email = $_POST["contact_email"];
+        $whatsapp = $_POST["contact_whatsapp"];
+
+        $payload = array(
+            "address" => $address, "email" => $email, "whatsapp" => $whatsapp,
+            "id" => 1
+        );
+        $updateRecord = json_decode($siteController->setContact($payload), true);
+        echo "<script> alert('".$updateRecord['message']."'); </script>";
+    }
+
+    if(isset($_POST["btnFAQ"])){
+
+        $faqTitle = $_POST["faqTitle"];
+        $faqContent = $_POST["faqContent"];
+
+
+        $payload = array("title" => $faqTitle, "content"=> $faqContent, "affiliate" => 0);
+
+        if(isset($_POST["isAffiliate"]) && strlen(trim($_POST["isAffiliate"])) > 0){
+            $payload["affiliate"] = 1;   
+        }
+        $newFaq = json_decode($siteController->setFaq($payload), true);
+        echo "<script> alert('".$newFaq['message']."'); </script>";
+    }
+
+    if(isset($_POST["statistic_btn"])){
+        
+        $type = $_POST["statistic_type"];
+        $wallet = $_POST["statistic_wallet"];
+        $amount = $_POST["statistic_amount"];
+        $name = $_POST["statistic_name"];
+
+        $payload = array(
+            "type" => $type, "wallet_type"=> $wallet, "amount" => $amount,
+            "investor_name" => $name
+        );
+        $newStatistic = json_decode($siteController->setStatistic($payload), true);
+        echo "<script> alert('".$newStatistic['message']."'); </script>";
+    }
+
+    // Records
+    $recordResponse = json_decode($siteController->getRecord(), true);
+    $contactResponse = json_decode($siteController->getContact(), true);
+    
+    $investorRecord = $recordResponse["message"]["record_investor"];
+    $depositRecord = $recordResponse["message"]["record_deposit"];
+    $withdrawRecord = $recordResponse["message"]["record_withdrawal"];
+
+    $contactAddress = $contactResponse["message"]["contact_address"];
+    $contactEmail = $contactResponse["message"]["contact_email"];
+    $contactWhatsapp = $contactResponse["message"]["contact_whatsapp"];
 
 ?>
 <!DOCTYPE html>
@@ -132,39 +207,39 @@
                     <div class="item">
                         <a href="./site.php?tab=home" class="itemHeader">Home Page</a>
                         <?php
-                            if((isset($_GET["tab"]) && $_GET["tab"] == "home") || !isset($_GET["tab"])){
+                            if(isset($_GET["tab"]) && $_GET["tab"] == "home"){
                         ?>
                         <div class="itemContent">
                             <h3>Our Total Records::</h3>
                             <form method="post" id="total">
                                 <div class="formControl">
                                     <label for="investor">Total Investors</label>
-                                    <input type="number" name="" placeholder="Enter total investors" id="investor">
+                                    <input type="number" required value="<?php echo $investorRecord; ?>" name="record_investor" placeholder="Enter total investors" id="investor">
                                 </div>
                                 <div class="formControl">
                                     <label for="deposits">Total Deposits</label>
-                                    <input type="number" name="" placeholder="Enter total deposits" id="deposits">
+                                    <input type="number" required value="<?php echo $depositRecord; ?>" name="record_deposit" placeholder="Enter total deposits" id="deposits">
                                 </div>
                                 <div class="formControl">
                                     <label for="withdrawals">Total Withdrawal</label>
-                                    <input type="number" name="" placeholder="Enter total withdrawals" id="withdrawals">
+                                    <input type="number" required value="<?php echo $withdrawRecord; ?>" name="record_withdraw" placeholder="Enter total withdrawals" id="withdrawals">
                                 </div>
                                 <div class="formControl">
-                                    <button type="submit">Submit Totals</button>
+                                    <button type="submit" name="record_btn">Submit Totals</button>
                                 </div>
                             </form>
                             <h3>Our Statistics::</h3>
                             <form method="post" id="statistics">
                                 <div class="formControl">
                                     <label for="type">Select Statistic Type</label>
-                                    <select name="type" id="type">
+                                    <select name="statistic_type" id="type">
                                         <option value="deposit">Latest Deposit</option>
                                         <option value="withdrawal">Latest Withdrawal</option>
                                     </select>
                                 </div>
                                 <div class="formControl">
                                     <label for="wallet">Select Wallet Type</label>
-                                    <select name="wallet" id="wallet">
+                                    <select name="statistic_wallet" id="wallet">
                                         <option value="bitcoin">Bitcoin</option>
                                         <option value="eth">Ethereum</option>
                                         <option value="bnb">BNB</option>
@@ -174,14 +249,14 @@
                                 </div>
                                 <div class="formControl">
                                     <label for="amount">Amount</label>
-                                    <input type="number" name="" placeholder="Enter amount invested" id="amount">
+                                    <input type="number" required min="10" name="statistic_amount" placeholder="Enter amount invested" id="amount">
                                 </div>
                                 <div class="formControl">
                                     <label for="name">Investors Name</label>
-                                    <input type="text" name="name" placeholder="Enter investors name" id="name">
+                                    <input type="text" name="statistic_name" minlength="3" required placeholder="Enter investors name" id="name">
                                 </div>
                                 <div class="formControl">
-                                    <button type="submit" name="btnTotal">Submit Totals</button>
+                                    <button type="submit" name="statistic_btn">Submit Totals</button>
                                 </div>
                             </form>
                         </div>
@@ -202,11 +277,11 @@
                                 </div>
                                 <div class="formControl">
                                     <label for="faqTitle">FAQ Title</label>
-                                    <input type="text" name="faqTitle" placeholder="Enter FAQ Title" id="faqTitle">
+                                    <input type="text" required minlength="6" name="faqTitle" placeholder="Enter FAQ Title" id="faqTitle">
                                 </div>
                                 <div class="formControl">
                                     <label for="faqContent">FAQ Content</label>
-                                    <textarea name="faqContent" id="faqContent" placeholder="Main FAQ Content " cols="30" rows="10"></textarea>
+                                    <textarea name="faqContent" required minlength="10" id="faqContent" placeholder="Main FAQ Content " cols="30" rows="10"></textarea>
                                 </div>
                                 <div class="formControl">
                                     <button type="submit" name="btnFAQ">Submit FAQs</button>
@@ -218,22 +293,21 @@
                     <div class="item">
                         <a href="./site.php?tab=contact" class="itemHeader">Our Contacts</a>
                         <?php
-                            if(isset($_GET["tab"]) && $_GET["tab"] == "contact"){
+                            if((isset($_GET["tab"]) && $_GET["tab"] == "contact") || !isset($_GET["tab"])){
                         ?>
                         <div class="itemContent">
                         <form method="post" id="contact">
-                                
                                 <div class="formControl">
                                     <label for="address">Address</label>
-                                    <input type="text" name="address" placeholder="Enter Contact Address" id="address">
+                                    <input type="text" value="<?php echo $contactAddress; ?>" name="contact_address" placeholder="Enter Contact Address" id="address">
                                 </div>
                                 <div class="formControl">
                                     <label for="email">Email</label>
-                                    <input type="email" name="email" placeholder="Enter Contact Email" id="email">
+                                    <input type="email" value="<?php echo $contactEmail; ?>" name="contact_email" placeholder="Enter Contact Email" id="email">
                                 </div>
                                 <div class="formControl">
                                     <label for="whatsapp">Whatsapp</label>
-                                    <input type="number" name="whatsapp" placeholder="Enter Whatsapp contact" id="whatsapp">
+                                    <input type="text" value="<?php echo $contactWhatsapp; ?>" name="contact_whatsapp" placeholder="Enter Whatsapp contact" id="whatsapp">
                                 </div>
                                 <div class="formControl">
                                     <button type="submit" name="btnContact">Submit Contact</button>

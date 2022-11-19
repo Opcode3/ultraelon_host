@@ -1,8 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-    <?php 
+    <?php
+
+use app\controller\SiteController;
+
         $title = "Home";
         require_once("./include/header.inc.php");
+        require_once("./vendor/autoload.php");
+        $siteController = new SiteController();
+
+        $recordResponse = json_decode($siteController->getRecord(), true);
+        $statisticResponse = $siteController->getStatistics();
+        $investorRecord = $recordResponse["message"]["record_investor"];
+        $depositRecord = $recordResponse["message"]["record_deposit"];
+        $withdrawRecord = $recordResponse["message"]["record_withdrawal"];
+
+        print_r($statisticResponse);
+        // var_dump($recordResponse);
     ?>
     <main>
         <!-- slideshow content begin -->
@@ -403,7 +417,7 @@
                             <div>
                                 <h6>Total Investors</h6>
                                 <p class="provider">since consception</p>
-                                <p class="year">219+</p>
+                                <p class="year"><?php echo $investorRecord; ?>+</p>
                             </div>
                         </div>
                     </div>
@@ -415,7 +429,7 @@
                             <div>
                                 <h6>Total Deposits</h6>
                                 <p class="provider">since consception</p>
-                                <p class="year">$ 102,020</p>
+                                <p class="year"><?php echo "$".number_format(floatval($depositRecord), 2); ?></p>
                             </div>
                         </div>
                     </div>
@@ -427,7 +441,7 @@
                             <div>
                                 <h6>Total Withdrawal</h6>
                                 <p class="provider">since consception</p>
-                                <p class="year">$ 152,021</p>
+                                <p class="year"><?php echo "$".number_format(floatval($withdrawRecord), 2); ?></p>
                             </div>
                         </div>
                     </div>

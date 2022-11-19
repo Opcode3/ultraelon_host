@@ -14,6 +14,7 @@
 
         function createFaq(array $new): string;
         function findFaqs(): string;
+        function findFaqsByAffiliate(): string;
         function editFaqs(array $new): string;
     }
 

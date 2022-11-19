@@ -655,7 +655,7 @@ ul li {
   transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
   color: #1F1C2D;
   min-width: 150px;
-  width: calc(99% - 22px);
+  width: calc(100% - 24px);
 }
 .container main .mainContainer #settingFrame .item .itemContent .formControl input:focus, .container main .mainContainer #settingFrame .item .itemContent .formControl input:hover, .container main .mainContainer #settingFrame .item .itemContent .formControl select:focus, .container main .mainContainer #settingFrame .item .itemContent .formControl select:hover, .container main .mainContainer #settingFrame .item .itemContent .formControl textarea:focus, .container main .mainContainer #settingFrame .item .itemContent .formControl textarea:hover {
   background: rgba(243, 242, 250, 0.9);

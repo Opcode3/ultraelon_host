@@ -16,17 +16,28 @@ use app\services\SiteService;
         function getRecord(){return $this->siteService->findRecord();}
         function getContact(){ return $this->siteService->findContact();}
         function getFaqs(){ return $this->siteService->findFaqs();}
+        function getFaqsByWithdraws(){ return $this->siteService->findFaqsByAffiliate();}
         function getStatistics(){ return $this->siteService->findStatistics();}
 
         function setRecord(array $data){
-            if(count($data) == 4){
-
-            }
-            // record_investor = :investor, record_deposit = :deposit, record_withdrawal = :withdrawal, 
-            //         updatedAt = :updatedAt WHERE record_id = :id";
+            return $this->siteService->editRecord($data);
         }
 
+        function setContact(array $data){
+            return $this->siteService->editContact($data);
+        }
 
+        function setFaq(array $data){
+            return $this->siteService->createFaq($data);
+        }
+
+        function setStatistic(array $data){
+            return $this->siteService->createStatistic($data);
+        }
+
+        function updateFaq(array $data){ // update
+            return $this->siteService->editFaqs($data);
+        }
     }
 
 ?>

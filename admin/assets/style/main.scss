@@ -667,7 +667,7 @@
                                 background-color: rgba($primaryColor, 0.2);
                                 padding: 8px 12px; font-weight: 500; font-size: 1.12rem;
                                 transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
-                                color: $primaryBlackColor; min-width: 150px; width: calc(99% - 22px);
+                                color: $primaryBlackColor; min-width: 150px; width: calc(100% - 24px);
                                 &:focus, &:hover{
                                     background: rgba($primaryWhiteColor, 0.9);
                                 }

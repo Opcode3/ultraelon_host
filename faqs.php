@@ -1,8 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-    <?php 
+    <?php
+
+use app\controller\SiteController;
+
         $title = "FAQs";
         require_once("./include/header.inc.php"); 
+        require_once("./vendor/autoload.php");
+        
+        $siteController = new SiteController();
+
+        $faq = json_decode($siteController->getFaqs(),true);
+
+        $faqResponse = $faq["message"];
+        $counter = count($faqResponse);
+        $halve = $counter / 2;
     ?>
     <!-- breadcrumb content begin -->
     <div class="uk-section uk-padding-remove-vertical in-equity-breadcrumb">
@@ -28,6 +40,64 @@
                         <p class="uk-margin-small-top uk-text-large uk-text-center">Do you have any question</p>
                     </div>
                     <div class="uk-width-1-1@m">
+                    <?php
+                            if($counter > 0){
+                        ?>
+                        <div class="uk-grid uk-child-width-1-2@m uk-margin-medium-top" data-uk-grid>
+                            <div>
+                                <ul class="in-faq-2" data-uk-accordion>
+                                    <?php
+
+                                        for($m = 0; $m < $halve; $m++){
+                                            $faq = $faqResponse[$m];
+                                            ?>
+                                            <li>
+                                                <a class="uk-accordion-title" href="#">
+                                                    <div class="uk-card uk-card-default uk-card-body uk-border-rounded">
+                                                        <?php echo $faq["faq_title"]; ?>
+                                                    </div>
+                                                </a>
+                                                <div class="uk-accordion-content uk-card uk-card-default uk-card-body uk-border-rounded">
+                                                    <p>
+                                                        <?php echo $faq["faq_content"]; ?>
+                                                    </p>
+                                                </div>
+                                            </li>
+
+                                            <?php
+                                        }
+
+                                    ?>
+                                </ul>
+                            </div>
+                            <div>
+                                <ul class="in-faq-2" data-uk-accordion>
+                                <?php
+
+                                    for($m = $halve; $m < $counter; $m++){
+                                        $faq = $faqResponse[$m];
+                                        ?>
+                                        <li>
+                                            <a class="uk-accordion-title" href="#">
+                                                <div class="uk-card uk-card-default uk-card-body uk-border-rounded">
+                                                    <?php echo $faq["faq_title"]; ?>
+                                                </div>
+                                            </a>
+                                            <div class="uk-accordion-content uk-card uk-card-default uk-card-body uk-border-rounded">
+                                                <p>
+                                                    <?php echo $faq["faq_content"]; ?>
+                                                </p>
+                                            </div>
+                                        </li>
+
+                                        <?php
+                                        }
+                                        ?>
+                                </ul>
+                            </div>
+                        </div>
+                        <?php
+                            }else{ ?>
                         <div class="uk-grid uk-child-width-1-2@m uk-margin-medium-top" data-uk-grid>
                             <div>
                                 <ul class="in-faq-2" data-uk-accordion>
@@ -150,6 +220,7 @@
                                 </ul>
                             </div>
                         </div>
+                        <?php } ?>
                     </div>
                 </div>
             </div>

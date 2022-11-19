@@ -13,6 +13,8 @@
         $active = 4;
     }else if($title == "Contact"){
         $active = 5;
+    }else if($title == "Our Investors"){
+        $active = 6;
     }
 ?> 
 <head>
@@ -82,6 +84,7 @@ performed by qualified professional traders.">
                                         <ul class="uk-nav uk-navbar-dropdown-nav">
                                             <li class="<?php echo $active == 4 ? "uk-active" : ""; ?>"><a href="./faqs.php">FAQs</a></li>
                                             <li class="<?php echo $active == 5 ? "uk-active" : ""; ?>"><a href="./contact.php">Contact Us</a></li>
+                                            <li class="<?php echo $active == 6 ? "uk-active" : ""; ?>"><a href="./investors.php">Testimonials</a></li>
                                         </ul>
                                     </div>
                                 </li>

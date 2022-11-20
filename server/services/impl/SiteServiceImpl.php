@@ -16,6 +16,10 @@
         function findFaqs(): string;
         function findFaqsByAffiliate(): string;
         function editFaqs(array $new): string;
+
+        function createTestimony(array $new): string;
+        function findTestimony(): string;
+
     }
 
 ?>

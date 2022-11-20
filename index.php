@@ -2,21 +2,27 @@
 <html lang="en">
     <?php
 
-use app\controller\SiteController;
+
+        // use app\controller\SiteController;
 
         $title = "Home";
         require_once("./include/header.inc.php");
-        require_once("./vendor/autoload.php");
-        $siteController = new SiteController();
+        // require_once("./vendor/autoload.php");
+        // $siteController = new SiteController();
 
-        $recordResponse = json_decode($siteController->getRecord(), true);
-        $statisticResponse = $siteController->getStatistics();
-        $investorRecord = $recordResponse["message"]["record_investor"];
-        $depositRecord = $recordResponse["message"]["record_deposit"];
-        $withdrawRecord = $recordResponse["message"]["record_withdrawal"];
+        // $recordResponse = json_decode($siteController->getRecord(), true);
+        // $statisticResponse = $siteController->getStatistics();
+        // $investorRecord = $recordResponse["message"]["record_investor"];
+        // $depositRecord = $recordResponse["message"]["record_deposit"];
+        // $withdrawRecord = $recordResponse["message"]["record_withdrawal"];
 
-        print_r($statisticResponse);
+        $investorRecord = 209;
+        $depositRecord = 5940.89;
+        $withdrawRecord = 409322.90;
+
+        // print_r($statisticResponse);
         // var_dump($recordResponse);
+
     ?>
     <main>
         <!-- slideshow content begin -->
@@ -247,7 +253,7 @@ use app\controller\SiteController;
                                             <th class="tableHead" colspan="3"> <span class="uk-text-large in-highlight">Our Latest Deposit</span> </th>
                                         </tr>
                                     </thead>
-                                    <tbody class="tbody">
+                                    <tbody class="tbody" id="depositStatistic">
                                         <tr>
                                             <td><span class="in-icon icon-btc">BTC</span></td>
                                             <td>$3,500</td>
@@ -279,16 +285,13 @@ use app\controller\SiteController;
                         </div>
                         <div class="uk-width-1-1 uk-width-1-2@m uk-margin-large-top uk-margin-remove-top uk-card uk-card-body uk-border-rounded uk-box-shadow-large">
                             <div class="uk-overflow-auto">
-                                 <!-- <span class="uk-text-large in-highlight">Our Latest Withdrawals</span> -->
-
-                                <!-- <marquee behavior="alternate" direction="up"> -->
                                     <table class="uk-table">
                                         <thead>
                                             <tr>
                                                 <th class="tableHead" colspan="4"> <span class="uk-text-large in-highlight">Our Latest Withdrawals</span> </th>
                                             </tr>
                                         </thead>
-                                        <tbody class="tbody">
+                                        <tbody class="tbody" id="withdrawStatistic">
                                             <tr>
                                                 <td><span class="in-icon icon-btc">BTC</span></td>
                                                 <td>$3,500</td>
@@ -354,56 +357,6 @@ use app\controller\SiteController;
                 </div>
             </div>
         </div>
-        <!-- section content end -->
-        <!-- section content begin -->
-        <!-- <div class="uk-section in-equity-4">
-            <div class="uk-container uk-margin-top uk-margin-medium-bottom">
-                <div class="uk-grid uk-child-width-1-2@m in-testimonial-2" data-uk-grid>
-                    <div class="uk-width-1-1@m uk-text-center">
-                        <h1>More than <span class="in-highlight">23,000</span> traders joined</h1>
-                    </div>
-                    <div>
-                        <div class="uk-background-contain uk-background-top-left" data-src="assets/img/in-equity-4-blob-1.svg" data-uk-img>
-                            <div class="uk-flex uk-flex-middle">
-                                <div class="uk-margin-right">
-                                    <div class="uk-background-primary uk-border-pill">
-                                        <img class="uk-align-center uk-border-pill" src="assets/img/in-lazy.gif" data-src="assets/img/blockit/in-team-1.png" alt="client-1" width="100" height="100" data-uk-img>
-                                    </div>
-                                </div>
-                                <div>
-                                    <h5 class="uk-margin-remove-bottom">Angela Nannenhorn</h5>
-                                    <p class="uk-text-muted uk-margin-remove-top">from United Kingdom</p>
-                                </div>
-                            </div>
-                            <blockquote>
-                                <p>Very convenience for trader, spread for gold is relatively low compare to other broker</p>
-                            </blockquote>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="uk-background-contain uk-background-top-left" data-src="assets/img/in-equity-4-blob-2.svg" data-uk-img>
-                            <div class="uk-flex uk-flex-middle">
-                                <div class="uk-margin-right">
-                                    <div class="uk-background-primary uk-border-pill">
-                                        <img class="uk-align-center uk-border-pill" src="assets/img/in-lazy.gif" data-src="assets/img/blockit/in-team-8.png" alt="client-2" width="100" height="100" data-uk-img>
-                                    </div>
-                                </div>
-                                <div>
-                                    <h5 class="uk-margin-remove-bottom">Wade Palmer</h5>
-                                    <p class="uk-text-muted uk-margin-remove-top">from Germany</p>
-                                </div>
-                            </div>
-                            <blockquote>
-                                <p>One of the best FX brokers, I have been using! their trading conditions are excellent</p>
-                            </blockquote>
-                        </div>
-                    </div>
-                    <div class="uk-width-1-1@m uk-text-center">
-                        <a href="#" class="uk-button uk-button-text">See more traders stories from all over the world<i class="fas fa-arrow-circle-right uk-margin-small-left"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div> -->
         <!-- section content end -->
         <!-- section content begin -->
         <div class="uk-section in-equity-5">
@@ -480,5 +433,76 @@ use app\controller\SiteController;
     <script src="assets/js/config-theme.js"></script>
     <script src="https://widgets.coingecko.com/coingecko-coin-list-widget.js"></script>
 
+
+    <script>
+
+        // loading statistics data
+        const withdrawStatistic = document.querySelector("#withdrawStatistic");
+        const depositStatistic = document.querySelector("#depositStatistic");
+
+        
+
+        if(withdrawStatistic){
+            fetch("http://127.0.0.1:3000/include/withdraw.php", {method: "GET"})
+                .then(res => res.json())
+                .then(data => {
+                    // console.log(data);
+                    makeChanges(withdrawStatistic, data["message"]);
+                }).catch(error => {
+                    console.log("An error was encountered!")
+                    // console.log(error)
+                });
+
+        }
+
+        if(depositStatistic){
+            fetch("http://127.0.0.1:3000/include/deposit.php", {method: "GET"})
+                .then(res => res.json())
+                .then(data => {
+                    // console.log(data);
+                    makeChanges(depositStatistic, data["message"]);
+                }).catch(error => {
+                    console.log("An error was encountered!")
+                    // console.log(error)
+                });
+
+        }
+
+        function makeChanges(element, arraydata){
+            let countInterim = Math.floor(arraydata.length % 5);
+            let countIndex = 0;
+            setInterval(() => {
+                element.innerHTML = "";
+                for(let count = 0; count < 5; count++){
+                    const tr = document.createElement("tr");
+                    const [style, text ] = reformWalletType(arraydata[(countIndex + count)].statistic_wallet_type);
+                    tr.innerHTML = `<td><span class="in-icon icon-${style}">${text}</span></td><td>$${arraydata[(countIndex + count)].statistic_amount}</td><td>${arraydata[(countIndex + count)].statistic_investor_name}</td>`;
+                    element.append(tr); 
+                }
+                if(countIndex <= countInterim){
+                    countIndex++;
+                }else{
+                    countIndex = 0;
+                }
+            }, 4000);
+        }
+
+        function reformWalletType(wallet){
+            switch(wallet){
+                case "eth": return ["eth","ETH"];
+                case "bitcoin": return ["btc","BTC"];
+                case "ultra": return ["ultra","Ultra Token"];
+                case "usdt": return ["usdt","USDT"];
+                case "bnb": return ["bnb","BNB"];
+            }
+        }
+        // end of loading statistics data
+    </script>
+
+<!-- <tr>
+    <td><span class="in-icon icon-btc">BTC</span></td>
+    <td>$3,500</td>
+    <td>Bolbina Jesse</td>
+</tr> -->
 </body>
 </html>

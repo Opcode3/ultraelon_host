@@ -83,6 +83,21 @@ use app\services\impl\SiteServiceImpl;
             return $res ? Response::json("Platform contact was successfully updated!", 200) : Response::json("Platform contact was not updated.");
         }
 
+        function createTestimony(array $new): string
+        {
+            $res = $this->model->newTestimony($new);
+            if(is_bool($res)){
+                return $res ? Response::json("A new testimony has been created!", 201) : Response::json("Unable to create testmony.");
+            }
+            return Response::json("This testimony has already been created!", 200);
+        }
+
+        function findTestimony(): string
+        {
+            $res = $this->model->fetchTestimony();
+            return Response::json($res, 200);
+        }
+
     }
 
 ?>

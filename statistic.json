@@ -34,6 +34,306 @@
       "statistic_id": 4,
       "statistic_slug": "166887696863790aa86f8af",
       "statistic_type": "deposit",
+      "statistic_wallet_type": "ultra",
+      "statistic_amount": "300.00",
+      "statistic_investor_name": "Daniel Lonard",
+      "createdAt": "2022-11-19 16:56:08",
+      "updatedAt": "2022-11-19 16:56:08"
+    },
+    {
+      "statistic_id": 2,
+      "statistic_slug": "166887687863790a4ef186f",
+      "statistic_type": "withdrawal",
+      "statistic_wallet_type": "eth",
+      "statistic_amount": "500.00",
+      "statistic_investor_name": "Blessing Yusuf",
+      "createdAt": "2022-11-19 16:54:38",
+      "updatedAt": "2022-11-19 16:54:38"
+    },
+    {
+      "statistic_id": 3,
+      "statistic_slug": "166887689863790a62e028c",
+      "statistic_type": "withdrawal",
+      "statistic_wallet_type": "bitcoin",
+      "statistic_amount": "1000.00",
+      "statistic_investor_name": "Akash Ismail",
+      "createdAt": "2022-11-19 16:54:58",
+      "updatedAt": "2022-11-19 16:54:58"
+    },
+    {
+      "statistic_id": 4,
+      "statistic_slug": "166887696863790aa86f8af",
+      "statistic_type": "deposit",
+      "statistic_wallet_type": "ultra",
+      "statistic_amount": "300.00",
+      "statistic_investor_name": "Daniel Lonard",
+      "createdAt": "2022-11-19 16:56:08",
+      "updatedAt": "2022-11-19 16:56:08"
+    },
+    {
+      "statistic_id": 2,
+      "statistic_slug": "166887687863790a4ef186f",
+      "statistic_type": "withdrawal",
+      "statistic_wallet_type": "eth",
+      "statistic_amount": "500.00",
+      "statistic_investor_name": "Blessing Yusuf",
+      "createdAt": "2022-11-19 16:54:38",
+      "updatedAt": "2022-11-19 16:54:38"
+    },
+    {
+      "statistic_id": 3,
+      "statistic_slug": "166887689863790a62e028c",
+      "statistic_type": "withdrawal",
+      "statistic_wallet_type": "bitcoin",
+      "statistic_amount": "1000.00",
+      "statistic_investor_name": "Akash Ismail",
+      "createdAt": "2022-11-19 16:54:58",
+      "updatedAt": "2022-11-19 16:54:58"
+    },
+    {
+      "statistic_id": 4,
+      "statistic_slug": "166887696863790aa86f8af",
+      "statistic_type": "deposit",
+      "statistic_wallet_type": "ultra",
+      "statistic_amount": "300.00",
+      "statistic_investor_name": "Daniel Lonard",
+      "createdAt": "2022-11-19 16:56:08",
+      "updatedAt": "2022-11-19 16:56:08"
+    },
+    {
+      "statistic_id": 2,
+      "statistic_slug": "166887687863790a4ef186f",
+      "statistic_type": "withdrawal",
+      "statistic_wallet_type": "eth",
+      "statistic_amount": "500.00",
+      "statistic_investor_name": "Blessing Yusuf",
+      "createdAt": "2022-11-19 16:54:38",
+      "updatedAt": "2022-11-19 16:54:38"
+    },
+    {
+      "statistic_id": 3,
+      "statistic_slug": "166887689863790a62e028c",
+      "statistic_type": "withdrawal",
+      "statistic_wallet_type": "bitcoin",
+      "statistic_amount": "1000.00",
+      "statistic_investor_name": "Akash Ismail",
+      "createdAt": "2022-11-19 16:54:58",
+      "updatedAt": "2022-11-19 16:54:58"
+    },
+    {
+      "statistic_id": 4,
+      "statistic_slug": "166887696863790aa86f8af",
+      "statistic_type": "deposit",
+      "statistic_wallet_type": "usdt",
+      "statistic_amount": "300.00",
+      "statistic_investor_name": "Daniel Lonard",
+      "createdAt": "2022-11-19 16:56:08",
+      "updatedAt": "2022-11-19 16:56:08"
+    },
+    {
+      "statistic_id": 2,
+      "statistic_slug": "166887687863790a4ef186f",
+      "statistic_type": "withdrawal",
+      "statistic_wallet_type": "eth",
+      "statistic_amount": "500.00",
+      "statistic_investor_name": "Blessing Yusuf",
+      "createdAt": "2022-11-19 16:54:38",
+      "updatedAt": "2022-11-19 16:54:38"
+    },
+    {
+      "statistic_id": 3,
+      "statistic_slug": "166887689863790a62e028c",
+      "statistic_type": "withdrawal",
+      "statistic_wallet_type": "bitcoin",
+      "statistic_amount": "1000.00",
+      "statistic_investor_name": "Akash Ismail",
+      "createdAt": "2022-11-19 16:54:58",
+      "updatedAt": "2022-11-19 16:54:58"
+    },
+    {
+      "statistic_id": 4,
+      "statistic_slug": "166887696863790aa86f8af",
+      "statistic_type": "deposit",
+      "statistic_wallet_type": "usdt",
+      "statistic_amount": "300.00",
+      "statistic_investor_name": "Daniel Lonard",
+      "createdAt": "2022-11-19 16:56:08",
+      "updatedAt": "2022-11-19 16:56:08"
+    },
+    {
+      "statistic_id": 2,
+      "statistic_slug": "166887687863790a4ef186f",
+      "statistic_type": "withdrawal",
+      "statistic_wallet_type": "eth",
+      "statistic_amount": "500.00",
+      "statistic_investor_name": "Blessing Yusuf",
+      "createdAt": "2022-11-19 16:54:38",
+      "updatedAt": "2022-11-19 16:54:38"
+    },
+    {
+      "statistic_id": 3,
+      "statistic_slug": "166887689863790a62e028c",
+      "statistic_type": "withdrawal",
+      "statistic_wallet_type": "bitcoin",
+      "statistic_amount": "1000.00",
+      "statistic_investor_name": "Akash Ismail",
+      "createdAt": "2022-11-19 16:54:58",
+      "updatedAt": "2022-11-19 16:54:58"
+    },
+    {
+      "statistic_id": 4,
+      "statistic_slug": "166887696863790aa86f8af",
+      "statistic_type": "deposit",
+      "statistic_wallet_type": "usdt",
+      "statistic_amount": "300.00",
+      "statistic_investor_name": "Daniel Lonard",
+      "createdAt": "2022-11-19 16:56:08",
+      "updatedAt": "2022-11-19 16:56:08"
+    },
+    {
+      "statistic_id": 2,
+      "statistic_slug": "166887687863790a4ef186f",
+      "statistic_type": "withdrawal",
+      "statistic_wallet_type": "eth",
+      "statistic_amount": "500.00",
+      "statistic_investor_name": "Blessing Yusuf",
+      "createdAt": "2022-11-19 16:54:38",
+      "updatedAt": "2022-11-19 16:54:38"
+    },
+    {
+      "statistic_id": 3,
+      "statistic_slug": "166887689863790a62e028c",
+      "statistic_type": "withdrawal",
+      "statistic_wallet_type": "bitcoin",
+      "statistic_amount": "1000.00",
+      "statistic_investor_name": "Akash Ismail",
+      "createdAt": "2022-11-19 16:54:58",
+      "updatedAt": "2022-11-19 16:54:58"
+    },
+    {
+      "statistic_id": 4,
+      "statistic_slug": "166887696863790aa86f8af",
+      "statistic_type": "deposit",
+      "statistic_wallet_type": "usdt",
+      "statistic_amount": "300.00",
+      "statistic_investor_name": "Daniel Lonard",
+      "createdAt": "2022-11-19 16:56:08",
+      "updatedAt": "2022-11-19 16:56:08"
+    },
+    {
+      "statistic_id": 2,
+      "statistic_slug": "166887687863790a4ef186f",
+      "statistic_type": "withdrawal",
+      "statistic_wallet_type": "eth",
+      "statistic_amount": "500.00",
+      "statistic_investor_name": "Blessing Yusuf",
+      "createdAt": "2022-11-19 16:54:38",
+      "updatedAt": "2022-11-19 16:54:38"
+    },
+    {
+      "statistic_id": 3,
+      "statistic_slug": "166887689863790a62e028c",
+      "statistic_type": "withdrawal",
+      "statistic_wallet_type": "bitcoin",
+      "statistic_amount": "1000.00",
+      "statistic_investor_name": "Akash Ismail",
+      "createdAt": "2022-11-19 16:54:58",
+      "updatedAt": "2022-11-19 16:54:58"
+    },
+    {
+      "statistic_id": 4,
+      "statistic_slug": "166887696863790aa86f8af",
+      "statistic_type": "deposit",
+      "statistic_wallet_type": "usdt",
+      "statistic_amount": "300.00",
+      "statistic_investor_name": "Daniel Lonard",
+      "createdAt": "2022-11-19 16:56:08",
+      "updatedAt": "2022-11-19 16:56:08"
+    },
+    {
+      "statistic_id": 2,
+      "statistic_slug": "166887687863790a4ef186f",
+      "statistic_type": "withdrawal",
+      "statistic_wallet_type": "eth",
+      "statistic_amount": "500.00",
+      "statistic_investor_name": "Blessing Yusuf",
+      "createdAt": "2022-11-19 16:54:38",
+      "updatedAt": "2022-11-19 16:54:38"
+    },
+    {
+      "statistic_id": 3,
+      "statistic_slug": "166887689863790a62e028c",
+      "statistic_type": "withdrawal",
+      "statistic_wallet_type": "bitcoin",
+      "statistic_amount": "1000.00",
+      "statistic_investor_name": "Akash Ismail",
+      "createdAt": "2022-11-19 16:54:58",
+      "updatedAt": "2022-11-19 16:54:58"
+    },
+    {
+      "statistic_id": 4,
+      "statistic_slug": "166887696863790aa86f8af",
+      "statistic_type": "deposit",
+      "statistic_wallet_type": "usdt",
+      "statistic_amount": "300.00",
+      "statistic_investor_name": "Daniel Lonard",
+      "createdAt": "2022-11-19 16:56:08",
+      "updatedAt": "2022-11-19 16:56:08"
+    },
+    {
+      "statistic_id": 2,
+      "statistic_slug": "166887687863790a4ef186f",
+      "statistic_type": "withdrawal",
+      "statistic_wallet_type": "eth",
+      "statistic_amount": "500.00",
+      "statistic_investor_name": "Blessing Yusuf",
+      "createdAt": "2022-11-19 16:54:38",
+      "updatedAt": "2022-11-19 16:54:38"
+    },
+    {
+      "statistic_id": 3,
+      "statistic_slug": "166887689863790a62e028c",
+      "statistic_type": "withdrawal",
+      "statistic_wallet_type": "bitcoin",
+      "statistic_amount": "1000.00",
+      "statistic_investor_name": "Akash Ismail",
+      "createdAt": "2022-11-19 16:54:58",
+      "updatedAt": "2022-11-19 16:54:58"
+    },
+    {
+      "statistic_id": 4,
+      "statistic_slug": "166887696863790aa86f8af",
+      "statistic_type": "deposit",
+      "statistic_wallet_type": "usdt",
+      "statistic_amount": "300.00",
+      "statistic_investor_name": "Daniel Lonard",
+      "createdAt": "2022-11-19 16:56:08",
+      "updatedAt": "2022-11-19 16:56:08"
+    },
+    {
+      "statistic_id": 2,
+      "statistic_slug": "166887687863790a4ef186f",
+      "statistic_type": "withdrawal",
+      "statistic_wallet_type": "eth",
+      "statistic_amount": "500.00",
+      "statistic_investor_name": "Blessing Yusuf",
+      "createdAt": "2022-11-19 16:54:38",
+      "updatedAt": "2022-11-19 16:54:38"
+    },
+    {
+      "statistic_id": 3,
+      "statistic_slug": "166887689863790a62e028c",
+      "statistic_type": "withdrawal",
+      "statistic_wallet_type": "bitcoin",
+      "statistic_amount": "1000.00",
+      "statistic_investor_name": "Akash Ismail",
+      "createdAt": "2022-11-19 16:54:58",
+      "updatedAt": "2022-11-19 16:54:58"
+    },
+    {
+      "statistic_id": 4,
+      "statistic_slug": "166887696863790aa86f8af",
+      "statistic_type": "deposit",
       "statistic_wallet_type": "usdt",
       "statistic_amount": "300.00",
       "statistic_investor_name": "Daniel Lonard",

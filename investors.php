@@ -21,33 +21,12 @@
             <div class="uk-container">
                 <div class="uk-grid uk-flex uk-flex-center">
                     <div class="uk-width-3-4@m">
-                        <div data-uk-grid>
-                            <div class="uk-width-1-2@s uk-width-2-3@m">
+                        <div class="uk-width-1-1 uk-flex uk-flex-center">
+                            <div class="uk-width-4-5@m uk-text-center">
                                 <h1 class="uk-margin-remove">We <span class="in-highlight">help</span> our customers.</h1>
-                                <p class="uk-text-lead uk-text-muted uk-margin-small-top">To engage investors so their companies can grow</p>
-                                <p>Our customers look to us as guides, and we weave our deep legal and technical experience into our software and services.</p>
-                            </div>
-                            <div class="uk-width-1-2@s uk-width-expand@m">
-                                <ul class="uk-list uk-list-large uk-list-divider">
-                                    <li>
-                                        <div class="uk-flex uk-flex-middle">
-                                            <i class="fas fa-paper-plane fa-lg in-icon-wrap primary-color uk-margin-right"></i>
-                                            <div>
-                                                <h2 class="uk-margin-remove-bottom count" data-counter-end="35817">0</h2>
-                                                <span class="uk-label in-label-small">Business launch</span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="uk-flex uk-flex-middle">
-                                            <i class="fas fa-user-tie fa-lg in-icon-wrap primary-color uk-margin-right"></i>
-                                            <div>
-                                                <h2 class="uk-margin-remove-bottom count" data-counter-end="4400">0</h2>
-                                                <span class="uk-label in-label-small">Investor engaged</span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
+                                    <p class="uk-text-lead uk-text-muted uk-margin-small-top">To engage investors so their companies can grow</p>
+                                    <p>Our customers look to us as guides, and we weave our deep legal and technical experience into our software and services.</p>
+                                <!-- <p class="uk-text-lead uk-text-muted uk-margin-small-top">For more than 30 years, we’ve been empowering clients by helping them take control of their financial lives.</p> -->
                             </div>
                         </div>
                     </div>

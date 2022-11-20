@@ -1,22 +1,22 @@
 <?php
 
-use app\controller\SiteController;
+// use app\controller\SiteController;
 
     session_start();
-    require_once("../vendor/autoload.php");
+    // require_once("../vendor/autoload.php");
 
-    if(
-        !(
-            isset($_SESSION["admin_auth"]) && is_bool($_SESSION["admin_auth"]) &&
-            isset($_SESSION["admin_username"]) && strlen(trim($_SESSION["admin_username"])) > 6 &&
-            isset($_SESSION["admin_scratchToken"]) && strlen(trim($_SESSION["admin_scratchToken"])) > 12
-        )
-    ){
-        session_destroy();
-        header("location: ./login.html");
-    }
+    // if(
+    //     !(
+    //         isset($_SESSION["admin_auth"]) && is_bool($_SESSION["admin_auth"]) &&
+    //         isset($_SESSION["admin_username"]) && strlen(trim($_SESSION["admin_username"])) > 6 &&
+    //         isset($_SESSION["admin_scratchToken"]) && strlen(trim($_SESSION["admin_scratchToken"])) > 12
+    //     )
+    // ){
+    //     session_destroy();
+    //     header("location: ./login.html");
+    // }
 
-    $siteController = new SiteController();
+    // $siteController = new SiteController();
 
     //submit form
 
@@ -78,17 +78,34 @@ use app\controller\SiteController;
         echo "<script> alert('".$newStatistic['message']."'); </script>";
     }
 
-    // Records
-    $recordResponse = json_decode($siteController->getRecord(), true);
-    $contactResponse = json_decode($siteController->getContact(), true);
-    
-    $investorRecord = $recordResponse["message"]["record_investor"];
-    $depositRecord = $recordResponse["message"]["record_deposit"];
-    $withdrawRecord = $recordResponse["message"]["record_withdrawal"];
+    if(isset($_POST["btnTestimony"])){
+        
+        $country = $_POST["test_country"];
+        $name = $_POST["test_name"];
+        $message = $_POST["test_message"];
 
-    $contactAddress = $contactResponse["message"]["contact_address"];
-    $contactEmail = $contactResponse["message"]["contact_email"];
-    $contactWhatsapp = $contactResponse["message"]["contact_whatsapp"];
+        $payload = array( 
+            "message" => $message, "name"=> $name, "country" => $country
+        );
+        $newTestimony = json_decode($siteController->setTestimony($payload), true);
+        echo "<script> alert('".$newTestimony['message']."'); </script>";
+    }
+
+    
+
+    // // Records
+    // $recordResponse = json_decode($siteController->getRecord(), true);
+    // $contactResponse = json_decode($siteController->getContact(), true);
+    
+    // $investorRecord = $recordResponse["message"]["record_investor"];
+    // $depositRecord = $recordResponse["message"]["record_deposit"];
+    // $withdrawRecord = $recordResponse["message"]["record_withdrawal"];
+
+    // $contactAddress = $contactResponse["message"]["contact_address"];
+    // $contactEmail = $contactResponse["message"]["contact_email"];
+    // $contactWhatsapp = $contactResponse["message"]["contact_whatsapp"];
+
+
 
 ?>
 <!DOCTYPE html>
@@ -244,7 +261,7 @@ use app\controller\SiteController;
                                         <option value="eth">Ethereum</option>
                                         <option value="bnb">BNB</option>
                                         <option value="usdt">USDT</option>
-                                        <option value="usdt">Ultra</option>
+                                        <option value="ultra">Ultra</option>
                                     </select>
                                 </div>
                                 <div class="formControl">
@@ -281,7 +298,7 @@ use app\controller\SiteController;
                                 </div>
                                 <div class="formControl">
                                     <label for="faqContent">FAQ Content</label>
-                                    <textarea name="faqContent" required minlength="10" id="faqContent" placeholder="Main FAQ Content " cols="30" rows="10"></textarea>
+                                    <textarea name="faqContent" required minlength="10" id="faqContent" placeholder="Main FAQ Content " cols="30" rows="5"></textarea>
                                 </div>
                                 <div class="formControl">
                                     <button type="submit" name="btnFAQ">Submit FAQs</button>
@@ -293,7 +310,7 @@ use app\controller\SiteController;
                     <div class="item">
                         <a href="./site.php?tab=contact" class="itemHeader">Our Contacts</a>
                         <?php
-                            if((isset($_GET["tab"]) && $_GET["tab"] == "contact") || !isset($_GET["tab"])){
+                            if(isset($_GET["tab"]) && $_GET["tab"] == "contact"){
                         ?>
                         <div class="itemContent">
                         <form method="post" id="contact">
@@ -311,6 +328,32 @@ use app\controller\SiteController;
                                 </div>
                                 <div class="formControl">
                                     <button type="submit" name="btnContact">Submit Contact</button>
+                                </div>
+                            </form>
+                        </div>
+                        <?php } ?>
+                    </div>
+                    <div class="item">
+                        <a href="./site.php?tab=testimony" class="itemHeader">Testimonial</a>
+                        <?php
+                            if((isset($_GET["tab"]) && $_GET["tab"] == "testimony") || !isset($_GET["tab"])){
+                        ?>
+                        <div class="itemContent">
+                            <form method="post" id="testimonial">
+                                <div class="formControl">
+                                    <label for="test_country">Investor Province/Country</label>
+                                    <input type="text" name="test_country" required placeholder="Enter Investor Province" id="test_country">
+                                </div>
+                                <div class="formControl">
+                                    <label for="test_name">Investor Name</label>
+                                    <input type="text" name="test_name" required placeholder="Enter Investor Name" id="test_name">
+                                </div>
+                                <div class="formControl">
+                                    <label for="test_message">Message</label>
+                                    <textarea name="test_message" required minlength="10" id="test_message" placeholder="Testimonial message " rows="6"></textarea>
+                                </div>
+                                <div class="formControl">
+                                    <button type="submit" name="btnTestimony">Submit Testimonial</button>
                                 </div>
                             </form>
                         </div>

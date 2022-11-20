@@ -61,7 +61,6 @@ function loginHandler(e){
     });
 }
 
-
 function make_call(callback){
     callback();
 }

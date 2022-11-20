@@ -18,6 +18,8 @@ use app\services\SiteService;
         function getFaqs(){ return $this->siteService->findFaqs();}
         function getFaqsByWithdraws(){ return $this->siteService->findFaqsByAffiliate();}
         function getStatistics(){ return $this->siteService->findStatistics();}
+        function getTestimonies(){ return $this->siteService->findTestimony();}
+
 
         function setRecord(array $data){
             return $this->siteService->editRecord($data);
@@ -33,6 +35,10 @@ use app\services\SiteService;
 
         function setStatistic(array $data){
             return $this->siteService->createStatistic($data);
+        }
+
+        function setTestimony(array $data){
+            return $this->siteService->createTestimony($data);
         }
 
         function updateFaq(array $data){ // update

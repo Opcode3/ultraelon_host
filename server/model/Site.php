@@ -62,6 +62,16 @@ use app\config\DatabaseHandler;
             return "exist";
         }
 
+        function newTestimony(array $testimony){
+            if( $this->isTestimonyExist($testimony["name"], $testimony["country"]) ){
+                $sql = "INSERT INTO testimony_site_tb(testimony_slug, testimony_name, testimony_country, testimony_message) 
+                        VALUES(:slug, :name, :country, :message)";
+                $response = $this->insert($sql, $testimony, "slug");
+                return $response;
+            }
+            return "exist";
+        }
+
         // delete all
 
         function deleteFaq(int $faqId){
@@ -89,6 +99,11 @@ use app\config\DatabaseHandler;
             return $this->fetchMany($sql);
         }
 
+        function fetchTestimony(){
+            $sql = "SELECT * FROM testimony_site_tb";
+            return $this->fetchMany($sql);
+        }
+
         function fetchFaqsForWithdrawal(){
             $sql = "SELECT * FROM faq_site_tb WHERE faq_affiliate=1";
             return $this->fetchMany($sql);
@@ -109,7 +124,13 @@ use app\config\DatabaseHandler;
             $sql = "SELECT faq_slug from faq_site_tb WHERE faq_title = ?";
             $stmt = $this->query($sql, [$faqTitle]);
             return $stmt->rowCount() == 0; 
-        }        
+        }
+        
+        private function isTestimonyExist(string $name, string $country): bool{
+            $sql = "SELECT testimony_slug from testimony_site_tb WHERE testimony_country = ? AND testimony_name = ?";
+            $stmt = $this->query($sql, [$country, $name]);
+            return $stmt->rowCount() == 0; 
+        }  
        
     }
 

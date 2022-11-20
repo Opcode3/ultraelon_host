@@ -423,7 +423,7 @@ body #modal .coverFrame #modalInclude #modalInvest #depositShow #walletFrame {
   flex-direction: column;
   margin-top: 20px;
   border: 2px dashed #2D225B;
-  padding: 20px;
+  padding: 10px 10px;
 }
 body #modal .coverFrame #modalInclude #modalInvest #depositShow #walletFrame .item {
   text-align: center;

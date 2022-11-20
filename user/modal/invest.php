@@ -7,19 +7,23 @@
     <div id="walletFrame">
         <div class="item">
             <span>Bitcoin Deposit Address</span>
-            <p>bc1qpjdnn63hmjq7h9q4n7204zr30jnmwttlkr85rl</p>
+            <p>bc1q96mj8zeuy3yfxeykldfxqah8jqmum2lycne7cg</p>
         </div>
         <div class="item">
             <span>Ethereum Deposit Address</span>
-            <p>bc1qpjdnn63hmjq7h9q4n7204zr30jnmwttlkr85rl</p>
+            <p>0xE43A77c87E31CabC3c52Faf8D53eBBbbb7ABf90b</p>
         </div>
         <div class="item">
-            <span>BNB Deposit Address</span>
-            <p>bc1qpjdnn63hmjq7h9q4n7204zr30jnmwttlkr85rl</p>
+            <span>BNB Beacon Chain Deposit Address</span>
+            <p>bnb1z88vch99e307wkdfper7rhecz3krag7vqfjmge</p>
+        </div>
+        <div class="item">
+            <span>BNB Smart Chain Deposit Address</span>
+            <p>0xE43A77c87E31CabC3c52Faf8D53eBBbbb7ABf90b</p>
         </div>
         <div class="item">
             <span>USDT Deposit Address</span>
-            <p>bc1qpjdnn63hmjq7h9q4n7204zr30jnmwttlkr85rl</p>
+            <p>0xE43A77c87E31CabC3c52Faf8D53eBBbbb7ABf90b</p>
         </div>
     </div>
     <p class="know">Make payment to any of the above addresses and click continue below.</p>

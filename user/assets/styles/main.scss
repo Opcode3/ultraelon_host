@@ -448,8 +448,7 @@ body{
                             // background: yellow;
                             border: 2px dashed $primaryColor;
                             // border-style:dashed;
-                            padding: 20px;
-                            
+                            padding: 10px 10px;
                             .item{
                                 text-align: center;
                                 span{ 
@@ -465,7 +464,6 @@ body{
                                     font-size: 18px; font-weight: 400;
                                     color: rgba($primaryBlackColor, 0.7);
                                     overflow-wrap: break-word;
-
                                     @include phone(){ font-size: 16px; }
                                     @include smallPhone(){ font-size: 14px; }
 

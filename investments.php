@@ -34,7 +34,7 @@
                                     <p class="uk-text-lead uk-text-muted uk-margin-remove-top">Lots of our investors begins with this plan</p>
                                     <hr>
                                     <ul class="uk-list uk-list-bullet in-list-check">
-                                        <li> <b>Minimum:</b> 5</li>
+                                        <li> <b>Minimum:</b> 50</li>
                                         <li> <b>Maximum:</b> 500</li>
                                         <li><b>ROI Profit:</b>  8%</li>
                                         <li><b>Ultra Profit:</b>  2%</li>
@@ -50,8 +50,8 @@
                                     <p class="uk-text-lead uk-text-muted uk-margin-remove-top">Most sorted plan for almost every medium investors</p>
                                     <hr>
                                     <ul class="uk-list uk-list-bullet in-list-check">
-                                        <li> <b>Minimum:</b> 500</li>
-                                        <li> <b>Maximum:</b> 3000</li>
+                                        <li> <b>Minimum:</b> 1000</li>
+                                        <li> <b>Maximum:</b> 5000</li>
                                         <li><b>ROI Profit:</b>  20%</li>
                                         <li><b>Ultra Profit:</b>  10%</li>
                                         <li><b>Duration:</b> 24 Hours</li>

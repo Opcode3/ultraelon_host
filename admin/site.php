@@ -1,22 +1,22 @@
 <?php
 
-// use app\controller\SiteController;
+use app\controller\SiteController;
 
     session_start();
-    // require_once("../vendor/autoload.php");
+    require_once("../vendor/autoload.php");
 
-    // if(
-    //     !(
-    //         isset($_SESSION["admin_auth"]) && is_bool($_SESSION["admin_auth"]) &&
-    //         isset($_SESSION["admin_username"]) && strlen(trim($_SESSION["admin_username"])) > 6 &&
-    //         isset($_SESSION["admin_scratchToken"]) && strlen(trim($_SESSION["admin_scratchToken"])) > 12
-    //     )
-    // ){
-    //     session_destroy();
-    //     header("location: ./login.html");
-    // }
+    if(
+        !(
+            isset($_SESSION["admin_auth"]) && is_bool($_SESSION["admin_auth"]) &&
+            isset($_SESSION["admin_username"]) && strlen(trim($_SESSION["admin_username"])) > 6 &&
+            isset($_SESSION["admin_scratchToken"]) && strlen(trim($_SESSION["admin_scratchToken"])) > 12
+        )
+    ){
+        session_destroy();
+        header("location: ./login.html");
+    }
 
-    // $siteController = new SiteController();
+    $siteController = new SiteController();
 
     //submit form
 
@@ -94,16 +94,16 @@
     
 
     // // Records
-    // $recordResponse = json_decode($siteController->getRecord(), true);
-    // $contactResponse = json_decode($siteController->getContact(), true);
+    $recordResponse = json_decode($siteController->getRecord(), true);
+    $contactResponse = json_decode($siteController->getContact(), true);
     
-    // $investorRecord = $recordResponse["message"]["record_investor"];
-    // $depositRecord = $recordResponse["message"]["record_deposit"];
-    // $withdrawRecord = $recordResponse["message"]["record_withdrawal"];
+    $investorRecord = $recordResponse["message"]["record_investor"];
+    $depositRecord = $recordResponse["message"]["record_deposit"];
+    $withdrawRecord = $recordResponse["message"]["record_withdrawal"];
 
-    // $contactAddress = $contactResponse["message"]["contact_address"];
-    // $contactEmail = $contactResponse["message"]["contact_email"];
-    // $contactWhatsapp = $contactResponse["message"]["contact_whatsapp"];
+    $contactAddress = $contactResponse["message"]["contact_address"];
+    $contactEmail = $contactResponse["message"]["contact_email"];
+    $contactWhatsapp = $contactResponse["message"]["contact_whatsapp"];
 
 
 
@@ -205,7 +205,7 @@
             </nav>
             <menu>
                 <div id="title">
-                    <span> Hey Nora👋🏾  </span>
+                    <span> Welcome Back👋🏾  </span>
                     <h2>Exploring Basic Site Information</h2>
                 </div>
                 <div id="profiling">
@@ -221,6 +221,9 @@
 
             <div class="mainContainer">
                 <div id="settingFrame">
+                    <div id="navigator">
+                        <a href="./siteview.php">View Site Setting</a>
+                    </div>
                     <div class="item">
                         <a href="./site.php?tab=home" class="itemHeader">Home Page</a>
                         <?php

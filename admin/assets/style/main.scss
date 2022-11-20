@@ -763,6 +763,67 @@
                                 input{ max-width: fit-content; min-width: fit-content;}
                             }
                         }
+
+
+                        .overflow{
+                            table{
+                                border-collapse: collapse; overflow: hidden;
+                                width: 100%; border-radius: 6px;
+                                td,th{ padding: 10px 12px; text-align: left;}
+                                .delete, .view{
+                                    background: $primaryColor; color: $primaryWhiteColor; padding: 4px 7px;
+                                    font-size: 15px; border-radius: 4px; cursor: pointer; 
+                                    transition: all 1.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+                                    &:hover{
+                                        background: rgba($primaryColor, 0.7);
+                                    }
+                                }
+
+                                .delete{ 
+                                    background: rgb(232, 38, 38); color: rgb(255, 239, 239);
+                                    display: inline-block;
+                                    &:hover{
+                                        background:rgba(232, 38, 38, 0.7);
+                                    }
+                                }
+                                thead{
+
+                                    tr{
+                                        background: rgba($primaryColor, 0.2);
+                                        th{
+                                            &:first-child{
+                                                width: 30px;
+                                            }
+                                            &:last-child{
+                                                width: 140px;
+                                            }
+                                        }
+                                    }
+                                }
+                                tbody{
+                                    tr{
+                                        &:nth-child(even){
+                                            background: $primaryWhiteColor;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                #navigator{
+                    padding-bottom: 13px;
+                    text-align: right;
+
+                    a{
+                        padding: 3px 6px; border-radius: 4px; background: rgba($primaryColor, 0.2);
+                        width: fit-content; font-size: 15px; transition: all 1.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+
+                        &:hover{
+                            background:  rgba($primaryColor, 0.4);
+                            color: $primaryWhiteColor;
+                        }
                     }
                 }
             }

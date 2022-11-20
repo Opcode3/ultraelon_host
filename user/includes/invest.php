@@ -24,7 +24,7 @@ use app\helper\AddWalletFund;
             <div class="investCard">
                 <span class="title">Classic Plan</span>
                 <div class="pricing">
-                    <span class="minimum">$5</span>
+                    <span class="minimum">$50</span>
                     <span class="maximum">$500</span>
                 </div>
                 <p>8% and 2% ultra token after 24hrs</p>
@@ -34,8 +34,8 @@ use app\helper\AddWalletFund;
             <div class="investCard">
                 <span class="title">Premium Plan</span>
                 <div class="pricing">
-                    <span class="minimum">$500</span>
-                    <span class="maximum">$3000</span>
+                    <span class="minimum">$1000</span>
+                    <span class="maximum">$5000</span>
                 </div>
                 <p>20% and 10% Ultra token after 24hrs</p>
                 <span class="link" id="premiumInvestTrigger">Click to invest</span>

@@ -1,32 +1,33 @@
 <?php
-session_start();
 
-if(
-    !(
-        
-        isset($_SESSION["admin_auth"]) && is_bool($_SESSION["admin_auth"]) &&
-        isset($_SESSION["admin_username"]) && strlen(trim($_SESSION["admin_username"])) > 6 &&
-        isset($_SESSION["admin_scratchToken"]) && strlen(trim($_SESSION["admin_scratchToken"])) > 12
-    )
-){
-    session_destroy();
-    header("location: ./login.html");
-}
-use app\controller\WalletController;
+use app\controller\SiteController;
 
+    session_start();
     require_once("../vendor/autoload.php");
 
-    $walletController = new WalletController();
-    $response  = json_decode($walletController->getAllWallets(), true);
-?>
+    if(
+        !(
+            isset($_SESSION["admin_auth"]) && is_bool($_SESSION["admin_auth"]) &&
+            isset($_SESSION["admin_username"]) && strlen(trim($_SESSION["admin_username"])) > 6 &&
+            isset($_SESSION["admin_scratchToken"]) && strlen(trim($_SESSION["admin_scratchToken"])) > 12
+        )
+    ){
+        session_destroy();
+        header("location: ./login.html");
+    }
 
+    $siteController = new SiteController();
+
+    $faqs = json_decode($siteController->getFaqs(), true);
+    $testimonies = json_decode($siteController->getTestimonies(), true);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manage Investors Wallets - UltraElon Investment Platform</title>
+    <title>Manage Site Information - UltraElon Investment Platform</title>
     <link rel="stylesheet" href="./assets/style/main.css">
     <link rel="shortcut icon" href="../assets/img/favicon.png" type="image/x-icon">
 </head>
@@ -71,7 +72,7 @@ use app\controller\WalletController;
                             </a>
                         </li>
                         <li>
-                            <a href="./wallet.php"  class="active">
+                            <a href="./wallet.php">
                                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
                                 <span> Wallets</span>
                             </a>
@@ -85,7 +86,7 @@ use app\controller\WalletController;
                         </li>
 
                         <li>
-                            <a href="./site.php">
+                            <a href="./site.php" class="active">
                                 <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg>
                                 <span> Site Settings</span>
                             </a>
@@ -118,7 +119,7 @@ use app\controller\WalletController;
             <menu>
                 <div id="title">
                     <span> Welcome Back👋🏾  </span>
-                    <h2>Exploring Investors Wallet</h2>
+                    <h2>Exploring Basic Site Information</h2>
                 </div>
                 <div id="profiling">
                     <span>
@@ -132,99 +133,100 @@ use app\controller\WalletController;
             </menu>
 
             <div class="mainContainer">
-                <div id="investmentFrame">
-                    <div class="subContent" id="wallet">
-                        <div class="overflowTable">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>Sn</th>
-                                        <th>Username</th>
-                                        <th>Investment</th>
-                                        <th>Ultra Token</th>
-                                        <th>Referral</th>
-                                        <th>Last Updated</th>
-                                        <th>Status</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-
-                                    <?php
-                                        if(is_array($response["message"]) && count($response["message"]) > 0){
-                                            foreach($response["message"] as $key => $wallet){
-                                                ?>
+                <div id="settingFrame">
+                    <div id="navigator">
+                        <a href="./site.php">Add Site Setting</a>
+                    </div>
+                    <div class="item">
+                        <a href="./siteview.php?tab=faqs" class="itemHeader">FAQs Widgets</a>
+                        <?php
+                            if(isset($_GET["tab"]) && $_GET["tab"] == "faqs"){
+                        ?>
+                        <div class="itemContent">
+                            <div class="overflow">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Sn</th>
+                                            <th>Question</th>
+                                            <th>...</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                            if(is_array($faqs["message"]) && count($faqs["message"]) > 0){
+                                                foreach ($faqs["message"] as $key => $value) {
+                                        ?>
                                                 <tr>
                                                     <td><?php echo ($key + 1); ?></td>
-                                                    <td><?php echo $wallet["user_username"]; ?></td>
-                                                    <td><?php echo "$".number_format($wallet["wallet_invest"], 2); ?></td>
-                                                    <td><?php echo "$".number_format($wallet["wallet_ultra"], 2); ?></td>
-                                                    <td><?php echo "$".number_format($wallet["wallet_referral"], 2); ?></td>
-                                                    <td><?php echo date("D, d-M-Y", strtotime($wallet["createdAt"]));?></td>
-                                                    <?php
-                                                        $h2 = "<h2> ".$wallet["user_username"]."'s Profile <small> ".date('D, d-M-Y', strtotime($wallet["createdAt"]))."</small></h2>";
-                                                        $profile = "<div id='requestInfo'><p> <b>Name: </b> ".$wallet["user_username"]."</p>";
-                                                        $profile .= "<p> <b>Email: </b>".$wallet["user_email"]."</p> <p> <b>Bitcoin Address: </b> ".$wallet["user_bitcoin"]."</p>";
-                                                        $profile .= "<p> <b>Etheruem Address: </b> ".$wallet["user_eth"]."</p> <p> <b>UltraToken Address: </b> ".$wallet["user_ultra"]."</p>";
-                                                        $profile .= "<p> <b>BNB Address: </b> ".$wallet["user_bnb"]."</p> <p> <b>USDT Address: </b> ".$wallet["user_usdt"]."</p></div>";
-                                                        $h3 = "<h3>".$wallet["user_username"]."'s Wallet Information </h3>";
-                                                        $walletInfo = "<div id='walletInfo'><span><b>$".number_format($wallet["wallet_invest"], 2)."</b> Investment Wallet</span>";
-                                                        $walletInfo .= "<span><b>$".number_format($wallet["wallet_ultra"], 2)."</b> UltraToken Wallet</span>";
-                                                        $walletInfo .= "<span><b>$".number_format($wallet["wallet_referral"], 2)."</b> Referral Wallet</span>";
-                                                        $neResponse = $h2.$profile.$h3.$walletInfo;
-                                                    ?>
-                                                    <td><button data-json="<?php echo $neResponse; ?>" class="btnModelViewProfile">See Profile</button></td>
+                                                    <td><?php echo $value["faq_title"]; ?></td>
+                                                    <td>
+                                                        <span class="view viewFaq" data-title="<?php echo $value["faq_title"]; ?>" data-value="<?php echo $value["faq_content"]; ?>" >View</span>
+                                                        <span class="delete delFaq" data-value="<?php echo $value["faq_slug"]; ?>">Delete</span>
+                                                    </td>
                                                 </tr>
+                                        <?php
+                                                }
+                                            }else{
+                                                ?>
+                                                <tr><td colspan="3"> No frequently asked questions has been registered!</td></tr>
                                                 <?php
                                             }
-                                        }else{
-                                            ?>
-                                            <tr><td colspan="7">No user has logged into their account.</td></tr>
-                                            <?php
-                                        }
-                                    ?>
-                                </tbody>
-                            </table>
+                                        ?>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
+                        <?php } ?>
+                    </div>
+                    <div class="item">
+                        <a href="./siteview.php?tab=testimony" class="itemHeader">Testimonial</a>
+                        <?php
+                            if((isset($_GET["tab"]) && $_GET["tab"] == "testimony") || !isset($_GET["tab"])){
+                        ?>
+                        <div class="itemContent">
+                            <div class="overflow">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Sn</th>
+                                            <th>Investor Name</th>
+                                            <th>Country</th>
+                                            <th>...</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    <?php
+                                            if(is_array($testimonies["message"]) && count($testimonies["message"]) > 0){
+                                                foreach ($testimonies["message"] as $key => $value) {
+                                        ?>
+                                                <tr>
+                                                    <td><?php echo ($key + 1); ?></td>
+                                                    <td><?php echo $value["testimony_name"]; ?></td>
+                                                    <td><?php echo $value["testimony_country"]; ?></td>
+                                                    <td>
+                                                        <span class="view viewTestimony" data-value="<?php echo $value["testimony_message"]; ?>" >View</span>
+                                                        <span class="delete delTestimony" data-value="<?php echo $value["testimony_slug"]; ?>" >Delete</span>
+                                                    </td>
+                                                </tr>
+                                        <?php
+                                                }
+                                            }else{
+                                                ?>
+                                                <tr><td colspan="3"> No tesimony has been registered!</td></tr>
+                                                <?php
+                                            }
+                                        ?>
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <?php } ?>
                     </div>
                 </div>
             </div>
         </main>
-    </div>
-
-    <div id="modalFrame">
-        <div id="modalContainer">
-            <svg fill="none" id="modalCancelButton" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-            <div id="walletContent">
-                <h2> Joseph's Profile 
-                    <small>Sun, 23-May-2011</small>
-                </h2>
-                <div id="requestInfo">
-                    <p> <b>Name: </b> Enter Subject Here</p>
-                    <p> <b>Email: </b> Enter Subject Here</p>
-                    <p> <b>Bitcoin Address: </b> bc1qpjdnn63hmjq7h9q4n7204zr30jnmwttlkr85rl</p>
-                    <p> <b>Etheruem Address: </b> bc1qpjdnn63hmjq7h9q4n7204zr30jnmwttlkr85rl</p>
-                    <p> <b>UltraToken Address: </b> bc1qpjdnn63hmjq7h9q4n7204zr30jnmwttlkr85rl</p>
-                    <p> <b>BNB Address: </b> bc1qpjdnn63hmjq7h9q4n7204zr30jnmwttlkr85rl</p>
-                    <p> <b>USDT Address: </b> bc1qpjdnn63hmjq7h9q4n7204zr30jnmwttlkr85rl</p>
-                </div>
-                <h3> Joseph's Wallet Information </h3>
-                <div id="walletInfo">
-                    <span>
-                        <b>$93,392.00</b>
-                        Investment Wallet
-                    </span>
-                    <span>
-                        <b>$93,392.00</b>
-                        UltraToken Wallet
-                    </span>
-                    <span>
-                        <b>$93,392.00</b>
-                        Referral Wallet
-                    </span>
-                </div>
-                <!-- <a href="mailto:">Reply request</a> -->
-            </div>
-        </div>
     </div>
 
     <!-- Ensure that you are filling the correct and up-to-date information. -->

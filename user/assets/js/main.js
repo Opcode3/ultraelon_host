@@ -82,8 +82,8 @@ if(depositForm){
         const depositors_plan = investmentType == 3 ? "classic" : 
                                    investmentType == 4 ? "premium" : "pro";
         if(investmentType != 5){        
-            const min = depositors_plan == "classic" ? 5 : 500;
-            const max = depositors_plan == "classic" ? 500 : 3000;
+            const min = depositors_plan == "classic" ? 50 : 1000;
+            const max = depositors_plan == "classic" ? 500 : 5000;
             if(depositors_amount >= min && depositors_amount <= max){
                 const investmentPayload = JSON.stringify({
                     amount: depositors_amount, address: depositors_address,
@@ -122,7 +122,7 @@ function showWithdrawal(index, ele){
     const redrawableAmount = ele.getAttribute("data-amount");
     if(redrawableAmount >= 10){
 
-        console.log("Jesus is Lord!")
+        // console.log("Jesus is Lord!")
         modelSubtitle.innerHTML = `Withdrawing from ${ index == 0 ? "Investment" : index == 1 ? "Ultra token" : "Referral Bonus"} Earnings`;
         modelSubtitle.setAttribute("data-from", index == 0 ? "invest" : index == 1 ? "ultra" : "referral");
         

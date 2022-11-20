@@ -116,7 +116,7 @@ if(
             </nav>
             <menu>
                 <div id="title">
-                    <span> Hey Nora👋🏾  </span>
+                    <span> Welcome Back👋🏾  </span>
                     <h2>Exploring Referrals</h2>
                 </div>
                 <div id="profiling">

@@ -119,7 +119,7 @@ use app\controller\UserController;
             </nav>
             <menu>
                 <div id="title">
-                    <span> Hey Nora👋🏾  </span>
+                    <span> Welcome Back👋🏾  </span>
                     <h2>Exploring Contact Form Request</h2>
                 </div>
                 <div id="profiling">

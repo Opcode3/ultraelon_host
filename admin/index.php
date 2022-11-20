@@ -135,7 +135,7 @@ use app\helper\AddWalletFund;
             </nav>
             <menu>
                 <div id="title">
-                    <span> Hey Nora👋🏾  </span>
+                    <span> Welcome Back👋🏾  </span>
                     <h2>Exploring Dashboard</h2>
                 </div>
                 <div id="profiling">

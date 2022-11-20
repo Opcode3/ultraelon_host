@@ -1,8 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-    <?php 
+    <?php
+
+use app\controller\SiteController;
+
         $title = "Our Investors";
-        require_once("./include/header.inc.php"); 
+        require_once("./include/header.inc.php");
+        require_once("./vendor/autoload.php");
+
+        $siteController = new SiteController();
+        $testimonyResponse = json_decode($siteController->getTestimonies(), true);
+
     ?>
     <!-- breadcrumb content begin -->
     <div class="uk-section uk-padding-remove-vertical in-equity-breadcrumb">
@@ -77,9 +85,13 @@
         <!-- section content begin -->
         <div class="uk-section in-offset-top-60 in-offset-top-50@s">
             <div class="uk-container">
+                <?php
+                    if(is_array($testimonyResponse["message"]) && count($testimonyResponse["message"]) > 0){
+                        
+                ?>
                 <div class="uk-grid uk-child-width-1-3@m in-testimonial-7" data-uk-grid>
                     <?php
-                        for($m = 0; $m < 5; $m++){
+                        foreach($testimonyResponse["message"] as $key => $testimony){
                     ?>
                     <div>
                         <div class="uk-card uk-card-default uk-box-shadow-small uk-border-rounded">
@@ -88,46 +100,13 @@
                             </div> -->
                             <div class="uk-card-body">
                                 <blockquote>
-                                    <p>Really love the product! It saves so much time and helps a lot in organize our feedback. Very huge potential.</p>
+                                    <p style="min-height: 160px;"><?php echo $testimony["testimony_message"] ?></p>
+                                    <!-- <p>Really love the product! It saves so much time and helps a lot in organize our feedback. Very huge potential.</p> -->
                                 </blockquote>
                             </div>
                             <div class="uk-card-footer">
                                 <blockquote>
-                                    <footer>Gabrielle Barger<br><cite>Help Desk at pushbullet</cite></footer>
-                                </blockquote>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="uk-card uk-card-default uk-box-shadow-small uk-border-rounded">
-                            <!-- <div class="uk-card-header">
-                                <img src="img/blockit/in-client-testi-4.svg" alt="client-logo" width="60">
-                            </div> -->
-                            <div class="uk-card-body">
-                                <blockquote>
-                                    <p>This is my one stop shop for sending all Updates to investors, board of directors or even exec team members.</p>
-                                </blockquote>
-                            </div>
-                            <div class="uk-card-footer">
-                                <blockquote>
-                                    <footer>Melvin Cortez<br><cite>Cloud Architect at stormpath</cite></footer>
-                                </blockquote>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="uk-card uk-card-default uk-box-shadow-small uk-border-rounded">
-                            <!-- <div class="uk-card-header">
-                                <img src="img/blockit/in-client-testi-5.svg" alt="client-logo" width="60">
-                            </div> -->
-                            <div class="uk-card-body">
-                                <blockquote>
-                                    <p>Has been a great tool for me on monthly updates & helps to communicate the key issues/plan with our team.</p>
-                                </blockquote>
-                            </div>
-                            <div class="uk-card-footer">
-                                <blockquote>
-                                    <footer>Franklin Clark<br><cite>Sales Analyst at eventbrite</cite></footer>
+                                    <footer><?php echo $testimony["testimony_name"] ?><br><cite><?php echo $testimony["testimony_country"] ?></cite></footer>
                                 </blockquote>
                             </div>
                         </div>
@@ -136,6 +115,9 @@
                         }
                     ?>
                 </div>
+                <?php
+                    }
+                ?>
             </div>
         </div>
         <!-- section content end -->

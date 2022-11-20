@@ -214,6 +214,86 @@ if(btnReferralPending){
 
 
 
+// delete from site setting
+
+const delTestimony = document.querySelectorAll(".delTestimony");
+const viewTestimony = document.querySelectorAll(".viewTestimony");
+const delFaq = document.querySelectorAll(".delFaq");
+const viewFaq = document.querySelectorAll(".viewFaq");
+
+if(delTestimony){
+    for(let m = 0; m < delTestimony.length; m++){
+        delTestimony[m].addEventListener("click", function(){
+            const slug = this.getAttribute("data-value");
+
+            const loading = startBtnLoader(this)
+
+            const payload = { type: "testimony", slug};
+
+            make_call( async () => {
+                const data = await deletetRequest(`${api_url}site.php`, JSON.stringify(payload));
+                if(data.status_code == 200){
+                    alert(data.message);
+                    console.log("clicked!!")
+                    setTimeout(()=>{ window.location.reload()}, 10);
+                }else{
+                    alert(data.message)
+                }
+                stopBtnLoader(loading);
+            });
+        })
+    }
+}
+
+if(viewTestimony){
+    for(let m = 0; m < viewTestimony.length; m++){
+        viewTestimony[m].addEventListener("click", function(){
+            const content = this.getAttribute("data-value");
+            alert(content);
+        })
+    }
+}
+
+
+if(delFaq){
+    for(let m = 0; m < delFaq.length; m++){
+        delFaq[m].addEventListener("click", function(){
+            const slug = this.getAttribute("data-value");
+
+            const loading = startBtnLoader(this)
+
+            const payload = { type: "faq", slug};
+
+            make_call( async () => {
+                const data = await deletetRequest(`${api_url}site.php`, JSON.stringify(payload));
+                if(data.status_code == 200){
+                    alert(data.message);
+                    console.log("clicked!!")
+                    setTimeout(()=>{ window.location.reload()}, 10);
+                }else{
+                    alert(data.message)
+                }
+                stopBtnLoader(loading);
+            });
+
+            // alert(slug);
+        })
+    }
+}
+
+if(viewFaq){
+    for(let m = 0; m < viewFaq.length; m++){
+        viewFaq[m].addEventListener("click", function(){
+            const question = this.getAttribute("data-title");
+            const content = this.getAttribute("data-value");
+            alert("Question : \n"+question+"\n\nContent: \n"+content);
+        })
+    }
+}
+
+
+
+
 
 //login formHandler
 
@@ -248,7 +328,7 @@ function stopBtnLoader(metaData){
     setTimeout(()=>{
         clearInterval(metaData[0]);
         metaData[1].innerHTML = metaData[2];
-        console.log("Okay Cleared!")
+        // console.log("Okay Cleared!")
     }, 200)
 }
 
@@ -278,5 +358,17 @@ async function postRequest(url, request_data = [], headers = {'Content-Type': 'a
         // console.error("Unable to connect to server", error)
         console.log("Here");
         return { message: 'unable to 55 connect to server.'}
+    }
+}
+
+
+async function deletetRequest(url, request_data = [], headers = {'Content-Type': 'application/json'}){
+    try {
+        const response = await fetch(url, {method: 'DELETE', headers: headers, body: request_data});
+        // console.log(response.text())
+        return await response.json();
+    } catch (error) {
+        // console.error("Unable to connect to server", error)
+        return { message: 'An error was encountered while processing this information...'}
     }
 }

@@ -48,7 +48,9 @@ use app\config\DatabaseHandler;
         }
 
         protected function delete($sql, $payload){
-
+            $stmt = $this->dbconnector->prepare($sql);
+            $stmt->execute($payload);
+            return ($stmt->rowCount() == 1);
         }
 
         protected function query($sql, $payload){

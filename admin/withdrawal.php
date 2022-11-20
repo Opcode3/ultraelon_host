@@ -116,7 +116,7 @@ use app\controller\WithdrawController;
             </nav>
             <menu>
                 <div id="title">
-                    <span> Hey Nora👋🏾  </span>
+                    <span> Welcome Back👋🏾  </span>
                     <h2>Exploring Withdrawals</h2>
                 </div>
                 <div id="profiling">

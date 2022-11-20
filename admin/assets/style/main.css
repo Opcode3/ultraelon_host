@@ -757,6 +757,66 @@ ul li {
   min-width: -moz-fit-content;
   min-width: fit-content;
 }
+.container main .mainContainer #settingFrame .item .itemContent .overflow table {
+  border-collapse: collapse;
+  overflow: hidden;
+  width: 100%;
+  border-radius: 6px;
+}
+.container main .mainContainer #settingFrame .item .itemContent .overflow table td, .container main .mainContainer #settingFrame .item .itemContent .overflow table th {
+  padding: 10px 12px;
+  text-align: left;
+}
+.container main .mainContainer #settingFrame .item .itemContent .overflow table .delete, .container main .mainContainer #settingFrame .item .itemContent .overflow table .view {
+  background: #2D225B;
+  color: #f3f2fa;
+  padding: 4px 7px;
+  font-size: 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 1.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.container main .mainContainer #settingFrame .item .itemContent .overflow table .delete:hover, .container main .mainContainer #settingFrame .item .itemContent .overflow table .view:hover {
+  background: rgba(45, 34, 91, 0.7);
+}
+.container main .mainContainer #settingFrame .item .itemContent .overflow table .delete {
+  background: rgb(232, 38, 38);
+  color: rgb(255, 239, 239);
+  display: inline-block;
+}
+.container main .mainContainer #settingFrame .item .itemContent .overflow table .delete:hover {
+  background: rgba(232, 38, 38, 0.7);
+}
+.container main .mainContainer #settingFrame .item .itemContent .overflow table thead tr {
+  background: rgba(45, 34, 91, 0.2);
+}
+.container main .mainContainer #settingFrame .item .itemContent .overflow table thead tr th:first-child {
+  width: 30px;
+}
+.container main .mainContainer #settingFrame .item .itemContent .overflow table thead tr th:last-child {
+  width: 140px;
+}
+.container main .mainContainer #settingFrame .item .itemContent .overflow table tbody tr:nth-child(even) {
+  background: #f3f2fa;
+}
+.container main .mainContainer #settingFrame #navigator {
+  padding-bottom: 13px;
+  text-align: right;
+}
+.container main .mainContainer #settingFrame #navigator a {
+  padding: 3px 6px;
+  border-radius: 4px;
+  background: rgba(45, 34, 91, 0.2);
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  font-size: 15px;
+  transition: all 1.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.container main .mainContainer #settingFrame #navigator a:hover {
+  background: rgba(45, 34, 91, 0.4);
+  color: #f3f2fa;
+}
 
 #modalFrame {
   background: rgba(31, 28, 45, 0.7);

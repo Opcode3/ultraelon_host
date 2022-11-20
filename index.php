@@ -3,22 +3,23 @@
     <?php
 
 
-        // use app\controller\SiteController;
+        use app\controller\SiteController;
 
         $title = "Home";
         require_once("./include/header.inc.php");
-        // require_once("./vendor/autoload.php");
-        // $siteController = new SiteController();
+        require_once("./vendor/autoload.php");
+        $siteController = new SiteController();
 
-        // $recordResponse = json_decode($siteController->getRecord(), true);
-        // $statisticResponse = $siteController->getStatistics();
-        // $investorRecord = $recordResponse["message"]["record_investor"];
-        // $depositRecord = $recordResponse["message"]["record_deposit"];
-        // $withdrawRecord = $recordResponse["message"]["record_withdrawal"];
+        $recordResponse = json_decode($siteController->getRecord(), true);
+        $depositResponse = json_decode($siteController->getDepositStatistics(), true);
+        $withdrawResponse = json_decode($siteController->getWithdrawStatistics(), true);
+        $investorRecord = $recordResponse["message"]["record_investor"];
+        $depositRecord = $recordResponse["message"]["record_deposit"];
+        $withdrawRecord = $recordResponse["message"]["record_withdrawal"];
 
-        $investorRecord = 209;
-        $depositRecord = 5940.89;
-        $withdrawRecord = 409322.90;
+        // $investorRecord = 209;
+        // $depositRecord = 5940.89;
+        // $withdrawRecord = 409322.90;
 
         // print_r($statisticResponse);
         // var_dump($recordResponse);
@@ -254,6 +255,31 @@
                                         </tr>
                                     </thead>
                                     <tbody class="tbody" id="depositStatistic">
+                                        <?php
+                                            if(is_array($depositResponse["message"]) && count($depositResponse["message"]) > 0){
+                                                foreach($depositResponse["message"] as $key => $value){
+                                                    ?>
+                                                     <tr>
+                                                        <?php
+                                                            if($value["statistic_wallet_type"] == "bitcoin"){
+                                                                echo "<td><span class='in-icon icon-btc'>BTC</span></td>";
+                                                            }else if($value["statistic_wallet_type"] == "eth"){
+                                                                echo "<td><span class='in-icon icon-eth'>ETH</span></td>";
+                                                            }else if($value["statistic_wallet_type"] == "bnb"){
+                                                                echo "<td><span class='in-icon icon-bnb'>BNB</span></td>";
+                                                            }else if($value["statistic_wallet_type"] == "usdt"){
+                                                                echo "<td><span class='in-icon icon-usdt'>USDT</span></td>";
+                                                            }else if($value["statistic_wallet_type"] == "ultra"){
+                                                                echo "<td><span class='in-icon icon-ultra'>Ultra Token</span></td>";
+                                                            }
+                                                        ?>
+                                                        <td><?php echo "$".$value["statistic_amount"]; ?></td>
+                                                        <td><?php echo $value["statistic_investor_name"]; ?></td>
+                                                    </tr>
+                                                    <?php
+                                                }
+                                            }else{
+                                        ?>
                                         <tr>
                                             <td><span class="in-icon icon-btc">BTC</span></td>
                                             <td>$3,500</td>
@@ -279,6 +305,9 @@
                                             <td>$25</td>
                                             <td>Bolbina Jesse</td>
                                         </tr>
+                                        <?php
+                                            }
+                                        ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -292,6 +321,31 @@
                                             </tr>
                                         </thead>
                                         <tbody class="tbody" id="withdrawStatistic">
+                                        <?php
+                                            if(is_array($withdrawResponse["message"]) && count($withdrawResponse["message"]) > 0){
+                                                foreach($withdrawResponse["message"] as $key => $value){
+                                                    ?>
+                                                     <tr>
+                                                        <?php
+                                                            if($value["statistic_wallet_type"] == "bitcoin"){
+                                                                echo "<td><span class='in-icon icon-btc'>BTC</span></td>";
+                                                            }else if($value["statistic_wallet_type"] == "eth"){
+                                                                echo "<td><span class='in-icon icon-eth'>ETH</span></td>";
+                                                            }else if($value["statistic_wallet_type"] == "bnb"){
+                                                                echo "<td><span class='in-icon icon-bnb'>BNB</span></td>";
+                                                            }else if($value["statistic_wallet_type"] == "usdt"){
+                                                                echo "<td><span class='in-icon icon-usdt'>USDT</span></td>";
+                                                            }else if($value["statistic_wallet_type"] == "ultra"){
+                                                                echo "<td><span class='in-icon icon-ultra'>Ultra Token</span></td>";
+                                                            }
+                                                        ?>
+                                                        <td><?php echo "$".$value["statistic_amount"]; ?></td>
+                                                        <td><?php echo $value["statistic_investor_name"]; ?></td>
+                                                    </tr>
+                                                    <?php
+                                                }
+                                            }else{
+                                        ?>
                                             <tr>
                                                 <td><span class="in-icon icon-btc">BTC</span></td>
                                                 <td>$3,500</td>
@@ -317,6 +371,9 @@
                                                 <td>$25</td>
                                                 <td>Bolbina Jesse</td>
                                             </tr>
+                                            <?php
+                                                }
+                                            ?>
                                         </tbody>
                                     </table>
                                 </marquee>
@@ -443,7 +500,7 @@
         
 
         if(withdrawStatistic){
-            fetch("http://127.0.0.1:3000/include/withdraw.php", {method: "GET"})
+            fetch("http://127.0.0.1/projects/ultra/include/withdraw.php", {method: "GET"})
                 .then(res => res.json())
                 .then(data => {
                     // console.log(data);
@@ -456,7 +513,7 @@
         }
 
         if(depositStatistic){
-            fetch("http://127.0.0.1:3000/include/deposit.php", {method: "GET"})
+            fetch("http://127.0.0.1/projects/ultra/include/deposit.php", {method: "GET"})
                 .then(res => res.json())
                 .then(data => {
                     // console.log(data);

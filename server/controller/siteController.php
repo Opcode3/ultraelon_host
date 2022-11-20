@@ -17,7 +17,8 @@ use app\services\SiteService;
         function getContact(){ return $this->siteService->findContact();}
         function getFaqs(){ return $this->siteService->findFaqs();}
         function getFaqsByWithdraws(){ return $this->siteService->findFaqsByAffiliate();}
-        function getStatistics(){ return $this->siteService->findStatistics();}
+        function getDepositStatistics(){ return $this->siteService->findStatistics("deposit");}
+        function getWithdrawStatistics(){ return $this->siteService->findStatistics("withdrawal");}
         function getTestimonies(){ return $this->siteService->findTestimony();}
 
 
@@ -43,6 +44,14 @@ use app\services\SiteService;
 
         function updateFaq(array $data){ // update
             return $this->siteService->editFaqs($data);
+        }
+
+        function removeFaq(string $slug){ // update
+            return $this->siteService->deleteFaqs($slug);
+        }
+
+        function removeTestimony(string $slug){ // update
+            return $this->siteService->deleteTestimony($slug);
         }
     }
 

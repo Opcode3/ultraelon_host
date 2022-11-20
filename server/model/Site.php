@@ -74,8 +74,14 @@ use app\config\DatabaseHandler;
 
         // delete all
 
-        function deleteFaq(int $faqId){
-            // $sql = "DELETE "
+        function deleteFaq(string $faqId){
+            $sql = "DELETE FROM faq_site_tb WHERE faq_slug=?";
+            return $this->delete($sql, [$faqId]);
+        }
+
+        function deleteTestimony(string $slug){
+            $sql = "DELETE FROM testimony_site_tb WHERE testimony_slug=?";
+            return $this->delete($sql, [$slug]);
         }
 
 
@@ -89,9 +95,9 @@ use app\config\DatabaseHandler;
             $sql = "SELECT * FROM contact_site_tb WHERE contact_id = :id";
             return $this->fetch($sql, array("id" => 1));
         }
-        function fetchStatistics(){
-            $sql = "SELECT * FROM statistic_site_tb";
-            return $this->fetchMany($sql);
+        function fetchStatistics(string $type){
+            $sql = "SELECT * FROM statistic_site_tb WHERE statistic_type = ?";
+            return $this->fetchMany($sql, [strtolower($type)]);
         }
 
         function fetchFaqs(){

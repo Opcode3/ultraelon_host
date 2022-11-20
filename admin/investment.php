@@ -118,7 +118,7 @@ use app\controller\InvestmentController;
             </nav>
             <menu>
                 <div id="title">
-                    <span> Hey Nora👋🏾  </span>
+                    <span> Welcome Back👋🏾  </span>
                     <h2>Exploring Investment</h2>
                 </div>
                 <div id="profiling">

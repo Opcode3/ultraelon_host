@@ -50,9 +50,9 @@ use app\services\impl\SiteServiceImpl;
             return Response::json("This statistics has already been created!", 200);
         }
 
-        function findStatistics(): string
+        function findStatistics(string $type): string
         {
-            $res = $this->model->fetchStatistics();
+            $res = $this->model->fetchStatistics($type);
             return Response::json($res, 200);
         }
 
@@ -83,6 +83,15 @@ use app\services\impl\SiteServiceImpl;
             return $res ? Response::json("Platform contact was successfully updated!", 200) : Response::json("Platform contact was not updated.");
         }
 
+        function deleteFaqs(string $slug): string
+        {
+            $res = $this->model->deleteFaq($slug);
+            if($res){
+                return Response::json("FAQ was deleted", 200);
+            }
+            return Response::json("Unable to delete FAQ");
+        }
+
         function createTestimony(array $new): string
         {
             $res = $this->model->newTestimony($new);
@@ -96,6 +105,15 @@ use app\services\impl\SiteServiceImpl;
         {
             $res = $this->model->fetchTestimony();
             return Response::json($res, 200);
+        }
+
+        function deleteTestimony(string $slug): string
+        {
+            $res = $this->model->deleteTestimony($slug);
+            if($res){
+                return Response::json("Testimony was deleted", 200);
+            }
+            return Response::json("Unable to delete testimony!");
         }
 
     }

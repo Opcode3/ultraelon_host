@@ -497,10 +497,13 @@
         const withdrawStatistic = document.querySelector("#withdrawStatistic");
         const depositStatistic = document.querySelector("#depositStatistic");
 
+        const urls = "http://127.0.0.1/projects/ultra/";
+        // const urls =  (location.protocol !== 'https:') ? "http://ultraelon.giembs.com/" : "https://ultraelon.giembs.com/" ; 
+
         
 
         if(withdrawStatistic){
-            fetch("http://127.0.0.1/projects/ultra/include/withdraw.php", {method: "GET"})
+            fetch(`${urls}include/withdraw.php`, {method: "GET"})
                 .then(res => res.json())
                 .then(data => {
                     // console.log(data);
@@ -509,11 +512,10 @@
                     console.log("An error was encountered!")
                     // console.log(error)
                 });
-
         }
 
         if(depositStatistic){
-            fetch("http://127.0.0.1/projects/ultra/include/deposit.php", {method: "GET"})
+            fetch(`${urls}include/deposit.php`, {method: "GET"})
                 .then(res => res.json())
                 .then(data => {
                     // console.log(data);

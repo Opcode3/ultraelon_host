@@ -86,6 +86,38 @@
     font-size: 0.9rem;
   }
 }
+.dashboard .outCard > .card, .withdrawals .outCard > .card, .setting .outCard > .card, .investment .outCard > .card, .referral .outCard > .card {
+  margin-left: 10px;
+}
+.dashboard .outCard > .card p, .withdrawals .outCard > .card p, .setting .outCard > .card p, .investment .outCard > .card p, .referral .outCard > .card p {
+  padding: 0;
+  margin: 0;
+  color: rgba(31, 28, 45, 0.8);
+}
+.dashboard .outCard > .card .socials, .withdrawals .outCard > .card .socials, .setting .outCard > .card .socials, .investment .outCard > .card .socials, .referral .outCard > .card .socials {
+  display: block;
+  margin-top: 10px;
+}
+.dashboard .outCard > .card .socials a, .withdrawals .outCard > .card .socials a, .setting .outCard > .card .socials a, .investment .outCard > .card .socials a, .referral .outCard > .card .socials a {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 10px 16px;
+  gap: 9px;
+  font-weight: 500;
+  background: #38b0e3;
+  border-radius: 4px;
+  box-shadow: 0 0 1px 1px rgba(243, 242, 250, 0.3), 0 0 1px 3px rgba(243, 242, 250, 0.6);
+  color: #f3f2fa;
+  cursor: pointer;
+}
+.dashboard .outCard > .card .socials a:last-child, .withdrawals .outCard > .card .socials a:last-child, .setting .outCard > .card .socials a:last-child, .investment .outCard > .card .socials a:last-child, .referral .outCard > .card .socials a:last-child {
+  background: rgb(64, 248, 64);
+  gap: 3px;
+}
 .dashboard .outCard .cardGroup, .withdrawals .outCard .cardGroup, .setting .outCard .cardGroup, .investment .outCard .cardGroup, .referral .outCard .cardGroup {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

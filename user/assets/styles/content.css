@@ -113,10 +113,17 @@
   box-shadow: 0 0 1px 1px rgba(243, 242, 250, 0.3), 0 0 1px 3px rgba(243, 242, 250, 0.6);
   color: #f3f2fa;
   cursor: pointer;
+  transition: all 1.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.dashboard .outCard > .card .socials a:hover, .withdrawals .outCard > .card .socials a:hover, .setting .outCard > .card .socials a:hover, .investment .outCard > .card .socials a:hover, .referral .outCard > .card .socials a:hover {
+  background: #1e8ebd;
 }
 .dashboard .outCard > .card .socials a:last-child, .withdrawals .outCard > .card .socials a:last-child, .setting .outCard > .card .socials a:last-child, .investment .outCard > .card .socials a:last-child, .referral .outCard > .card .socials a:last-child {
   background: rgb(64, 248, 64);
   gap: 3px;
+}
+.dashboard .outCard > .card .socials a:last-child:hover, .withdrawals .outCard > .card .socials a:last-child:hover, .setting .outCard > .card .socials a:last-child:hover, .investment .outCard > .card .socials a:last-child:hover, .referral .outCard > .card .socials a:last-child:hover {
+  background: rgb(41, 187, 41);
 }
 .dashboard .outCard .cardGroup, .withdrawals .outCard .cardGroup, .setting .outCard .cardGroup, .investment .outCard .cardGroup, .referral .outCard .cardGroup {
   display: grid;

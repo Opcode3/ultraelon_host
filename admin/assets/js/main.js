@@ -95,11 +95,13 @@ if(btnInvestmentPaid){
             const investId = this.getAttribute("data-id");
             const userId = this.getAttribute("data-user");
             const dataProfit = this.getAttribute("data-profit");
-            if(confirm("Hello Admin; You are about to pay this user for investing on the specified investment plan. Hope this investment duration has elapsed. Your are about to remove his fund from locked savings into his wallet account. Say Okay if Yes or Cancel if No? ")){
+            
+            const investProfit = dataProfit.split("&");
+            const walletInvest = investProfit[0];
+            const walletUltra = investProfit[1];
+
+            if(confirm(`Hello Admin; You are about to pay this user a sum of $ ${walletInvest} as ROI and ${walletUltra} as Ultra Profit for investing on the specified investment plan. Hope this investment duration has elapsed. Your are about to remove his fund from locked savings into his wallet account. Say Okay if Yes or Cancel if No? `)){
                 // alert(`User ID ${userID}`);
-                const investProfit = dataProfit.split("&");
-                const walletInvest = investProfit[0];
-                const walletUltra = investProfit[1];
                 const form_data = {investId, userId, walletInvest, walletUltra, type: "paidInvestment"}
                 // console.log(form_data)
                 // console.log(walletInvest)

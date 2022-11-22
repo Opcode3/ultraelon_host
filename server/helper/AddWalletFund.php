@@ -27,24 +27,26 @@
             return $amount;
         }
 
-        static function getInvestmentROI(int $amount, $plan){
+        static function getInvestmentROI(int $amount, $plan, $createdAt){
             $amt = 0;
+            $days = TimeFormatter::getDaysLeft($createdAt);
             if( $plan == "classic" ){
-                $amt += ((0.08 * $amount) + $amount);
+                $amt += ((0.08 * $amount) * $days) + $amount;
             }else if ($plan == "premium"){
-                $amt += ((0.2 * $amount) + $amount);
+                $amt += ((0.2 * $amount) * $days) + $amount;
             }
             return $amt;
         }
 
-        static function getUltraProfit($amount, $plan){
+        static function getUltraProfit($amount, $plan, $createdAt){
+            $days = TimeFormatter::getDaysLeft($createdAt);
             $amt = 0;
             if( $plan == "classic" ){
                 $amt += (0.02 * $amount);
             }else if ($plan == "premium"){
                 $amt += (0.1 * $amount);
             }
-            return $amt;
+            return $amt * $days;
         }
     }
 

@@ -1,6 +1,7 @@
 <?php
 
 use app\helper\GetLockedCapital;
+use app\helper\TimeFormatter;
 
     $investmentController = $GLOBALS["investmentController"];
     $response = json_decode($investmentController->getAllPaidInvestment(), true);
@@ -24,7 +25,7 @@ use app\helper\GetLockedCapital;
                     <th>Depositors address</th>
                     <th>Payment Type</th>
                     <th>Amount</th>
-                    <th>Date</th>
+                    <th>Days Covered</th>
                     <th>Status</th>
                 </tr>
             </thead>
@@ -40,8 +41,8 @@ use app\helper\GetLockedCapital;
                                 <td><?php echo $investment["invest_depositor_address"]; ?></td>
                                 <td><?php echo ucfirst($investment["invest_depositor_account_type"]); ?></td>
                                 <td><?php echo "$".number_format($investment["invest_amount"], 2); ?></td>
-                                <td><?php echo date("D, d-M-Y", strtotime($investment["createdAt"]));?></td>                    
-                                <td> <span data-profit="<?php echo GetLockedCapital::getPaymentFromInvestment((int) $investment["invest_amount"], strtolower($investment["invest_plan"])); ?>" data-user="<?php echo (int) $investment["invest_user_id"]; ?>" data-id="<?php echo (int) $investment["invest_id"]; ?>"  class="paid btnInvestmentPaid">Paid</span> </td>
+                                <td><?php echo TimeFormatter::getDaysDiff($investment["createdAt"]);?></td>                    
+                                <td> <span data-profit="<?php echo GetLockedCapital::getPaymentFromInvestment((int) $investment["invest_amount"], strtolower($investment["invest_plan"]), $investment["createdAt"]); ?>" data-user="<?php echo (int) $investment["invest_user_id"]; ?>" data-id="<?php echo (int) $investment["invest_id"]; ?>"  class="paid btnInvestmentPaid">Paid</span> </td>
                             </tr>
                             <?php
                         }

@@ -9,12 +9,13 @@
                 $investStatus = (int) $value["invest_status"];
                 $investPlan = strtolower($value["invest_plan"]);
                 $investAmount = (int) $value["invest_amount"];
+                $days = TimeFormatter::getDaysLeft($value["createdAt"]);
 
                 if($investStatus == 1){
                     if( $investPlan == "classic" ){
-                        $amount += ((0.08 * $investAmount) + $investAmount);
+                        $amount += (((0.08 * $investAmount) * $days) + $investAmount);
                     }else if ($investPlan == "premium"){
-                        $amount += ((0.2 * $investAmount) + $investAmount);
+                        $amount += (((0.2 * $investAmount) * $days) + $investAmount);
                     }
                 }
             }
@@ -22,15 +23,17 @@
         }
 
 
-        static function getPaymentFromInvestment(int $amount, $plan): string{
+        static function getPaymentFromInvestment(int $amount, $plan, $createdAt): string{
             $amt = 0; $ultra = 0;
+            $days = TimeFormatter::getDaysLeft($createdAt);
+
             if( $plan == "classic" ){
-                $amt += ((0.08 * $amount) + $amount);
-                $ultra += (0.02 * $amount);
+                $amt += ((0.08 * $amount) * $days) + $amount;
+                $ultra += (0.02 * $amount) * $days;
 
             }else if ($plan == "premium"){
-                $amt += ((0.2 * $amount) + $amount);
-                $ultra += (0.1 * $amount);
+                $amt += ((0.2 * $amount) * $days) + $amount;
+                $ultra += (0.1 * $amount) * $days;
             }
             $profitInvest =  $amt;
             $profitUltra =  $ultra;
@@ -43,12 +46,13 @@
                 $investStatus = (int) $value["invest_status"];
                 $investPlan = strtolower($value["invest_plan"]);
                 $investAmount = (int) $value["invest_amount"];
+                $days = TimeFormatter::getDaysLeft($value["createdAt"]);
 
                 if($investStatus == 1){
                     if( $investPlan == "classic" ){
-                        $amount += (0.02 * $investAmount);
+                        $amount += ((0.02 * $investAmount) * $days);
                     }else if ($investPlan == "premium"){
-                        $amount += (0.1 * $investAmount);
+                        $amount += ((0.1 * $investAmount) * $days);
                     }
                 }
             }

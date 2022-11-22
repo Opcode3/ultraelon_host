@@ -43,9 +43,16 @@
                     display: inline-flex; justify-content: center; align-items: center;
                     width: fit-content; padding: 10px 16px; gap: 9px; font-weight: 500;
                     background: #38b0e3; border-radius: 4px; box-shadow: 0 0 1px 1px rgba($primaryWhiteColor, 0.3), 0 0 1px 3px rgba($primaryWhiteColor, 0.6);
-                    color: $primaryWhiteColor; cursor: pointer;
+                    color: $primaryWhiteColor; cursor: pointer; transition: all 1.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+                    
+                    &:hover{
+                        background: #1e8ebd;
+                    }
                     &:last-child{
                         background: rgb(64, 248, 64); gap: 3px;
+                        &:hover{
+                            background: rgb(41, 187, 41);
+                        }
                     }
                 }
             }

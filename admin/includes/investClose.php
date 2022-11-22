@@ -38,7 +38,7 @@
                                 <td><?php echo $investment["invest_depositor_address"]; ?></td>
                                 <td><?php echo ucfirst($investment["invest_depositor_account_type"]); ?></td>
                                 <td><?php echo "$".number_format($investment["invest_amount"], 2); ?></td>
-                                <td><?php echo date("D, d-M-Y", strtotime($investment["createdAt"]));?></td>                    
+                                <td><?php echo date("D, d-M-Y", strtotime($investment["updatedAt"]));?></td>                    
                                 <td> <span class="closed btnInvestmentClosed">Settled</span> </td>
                             </tr>
                             <?php

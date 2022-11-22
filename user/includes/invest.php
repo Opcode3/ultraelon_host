@@ -3,6 +3,7 @@
 
 use app\controller\InvestmentController;
 use app\helper\AddWalletFund;
+use app\helper\TimeFormatter;
 
     $user_id = (int) $GLOBALS["user_id"];
 
@@ -61,7 +62,8 @@ use app\helper\AddWalletFund;
                         <th>Capital</th>
                         <th>Start Date</th>
                         <!-- <th>Elapse Date</th> -->
-                        <th>Duration</th>
+                        <th>Day(s) Covered</th>
+                        <!-- <th>Duration</th> -->
                         <th>Total ROI</th>
                         <th>Total Ultra</th>
                         <th>Status</th>
@@ -108,9 +110,9 @@ use app\helper\AddWalletFund;
                             <td><?php echo "$".$value["invest_amount"]; ?></td>
                             <td><?php  echo date_format(date_create($value["createdAt"]), "D, d-M-Y");?></td>
                             <!-- <td>20-11-2023</td> -->
-                            <td>1 day (24 Hours)</td>
-                            <td><?php echo "$".number_format(AddWalletFund::getInvestmentROI(floatval($value["invest_amount"]), strtolower($value["invest_plan"])), 2); ?></td>
-                            <td><?php echo number_format(AddWalletFund::getUltraProfit(floatval($value["invest_amount"]), strtolower($value["invest_plan"])), 2) ?> ultra token</td>
+                            <td><?php  echo TimeFormatter::getDaysDiff($value["createdAt"]);?></td>
+                            <td><?php echo $value["invest_status"] == 0 ? "$0.00" : "$".number_format(AddWalletFund::getInvestmentROI(floatval($value["invest_amount"]), strtolower($value["invest_plan"]), $value["createdAt"]), 2); ?></td>
+                            <td><?php echo $value["invest_status"] == 0 ? "0.00" : number_format(AddWalletFund::getUltraProfit(floatval($value["invest_amount"]), strtolower($value["invest_plan"]), $value["createdAt"]), 2) ?> ultra token</td>
                             
                             <td> 
                                 <?php

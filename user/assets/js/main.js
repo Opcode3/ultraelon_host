@@ -23,8 +23,8 @@ let investmentType = -1;
 const modalAlertCloseBtn = document.querySelector("#modalAlertCloseBtn");
 const notifier = document.querySelector(".modalNotifier");
 
-const api_url =  (location.protocol == 'http:') ? "http://127.0.0.1/projects/ultra/api/v1/" : "https://127.0.0.1/projects/ultra/api/v1/" ; 
-// const api_url =  (location.protocol !== 'https:') ? "http://ultraelon.giembs.com/api/v1/" : "https://ultraelon.giembs.com/api/v1/" ; 
+// const api_url =  (location.protocol == 'http:') ? "http://127.0.0.1/projects/ultra/api/v1/" : "https://127.0.0.1/projects/ultra/api/v1/" ; 
+const api_url =  (location.protocol !== 'https:') ? "http://ultraelon.giembs.com/api/v1/" : "https://ultraelon.giembs.com/api/v1/" ; 
 
 // referrals
 const copyLink = document.querySelector("#copyLink");

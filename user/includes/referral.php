@@ -25,7 +25,8 @@ use app\controller\ReferralController;
                 <p>Share your referral link to earn commissions on every investor that uses your link!</p>
 
                 <label for="copyLink" class="referLink">
-                    <p id="linkToCopy"><?php echo $_SERVER["REQUEST_SCHEME"]."://".$_SERVER["HTTP_HOST"]."/projects/ultra/register.php?a=".$GLOBALS["slug"]; ?></p>
+                    <!-- <p id="linkToCopy"><php echo $_SERVER["REQUEST_SCHEME"]."://".$_SERVER["HTTP_HOST"]."/projects/ultra/register.php?a=".$GLOBALS["slug"]; ?></p> -->
+                    <p id="linkToCopy"><?php echo $_SERVER["REQUEST_SCHEME"]."://".$_SERVER["HTTP_HOST"]."/register.php?a=".$GLOBALS["slug"]; ?></p>
                     <span id="copyLink">Copy Link</span>
                 </label>
 

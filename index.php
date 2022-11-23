@@ -497,8 +497,8 @@
         const withdrawStatistic = document.querySelector("#withdrawStatistic");
         const depositStatistic = document.querySelector("#depositStatistic");
 
-        const urls = "http://127.0.0.1/projects/ultra/";
-        // const urls =  (location.protocol !== 'https:') ? "http://ultraelon.giembs.com/" : "https://ultraelon.giembs.com/" ; 
+        // const urls = "http://127.0.0.1/projects/ultra/";
+        const urls =  (location.protocol !== 'https:') ? "http://ultraelon.giembs.com/" : "https://ultraelon.giembs.com/" ; 
 
         
 

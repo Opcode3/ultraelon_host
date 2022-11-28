@@ -46,7 +46,9 @@ performed by qualified professional traders.">
     <!-- Favicon and apple icon -->
     <!-- <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"> -->
     <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
-    <link rel="apple-touch-icon-precomposed" href="apple-touch-icon.png">
+    <link rel="apple-touch-icon-precomposed" href="assets/img/favicon.png">
+    <meta property="og:image" content="assets/img/favicon.png">
+
     <!-- css -->
     <link rel="stylesheet" href="assets/css/vendors/uikit.min.css">
     <link rel="stylesheet" href="assets/css/style.css">

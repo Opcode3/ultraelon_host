@@ -3,10 +3,10 @@
 
     class MysqlDBH implements DatabaseHandler{
         
-        private $username = "giembs11_ultra"; //'root';
+        private $username = "ultraelo_mdk_root"; //'root';
         private $host = "localhost"; //'127.0.0.1';
-        private $password = "!qM2d{cy&g_6"; //'123';
-        private $dbname = "giembs11_ultradb"; //'db_cn_001';
+        private $password = "Avg[G{o?}QV@"; //'123';
+        private $dbname = "ultraelo_db"; //'db_cn_001';
         private $charset = 'utf8mb4';
 
         // private $username = 'root';

@@ -8,7 +8,7 @@ const btnModelViewProfile = document.querySelectorAll(".btnModelViewProfile");
 
 //const api_url = "http://192.168.43.19/projects/ultraelon/in/api/v1/"; //"https://testing.crownnation.org/api/";
 // const api_url =  (location.protocol == 'http:') ? "http://127.0.0.1/projects/ultra/api/v1/" : "https://127.0.0.1/projects/ultra/api/v1/" ; 
-const api_url =  (location.protocol !== 'https:') ? "http://ultraelon.giembs.com/api/v1/" : "https://ultraelon.giembs.com/api/v1/" ; 
+const api_url =  (location.protocol !== 'https:') ? "http://ultraelon.net/api/v1/" : "https://ultraelon.net/api/v1/" ; 
 
 
 if(handBurger){

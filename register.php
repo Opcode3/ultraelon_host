@@ -13,13 +13,16 @@ performed by qualified professional traders.">
     <!-- Site Properties -->
     <title>Sign up - Ultraelon Investment Platform</title>
     <!-- critical preload -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
     <link rel="preload" href="assets/js/vendors/uikit.min.js" as="script">
     <link rel="preload" href="assets/css/vendors/uikit.min.css" as="style">
     <link rel="preload" href="assets/css/style.css" as="style">
     <!-- icon preload -->
     <link rel="preload" href="assets/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="assets/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    <meta property="og:image" content="assets/img/favicon.png">
 
     <!-- font preload -->
    <!-- Favicon and apple icon -->

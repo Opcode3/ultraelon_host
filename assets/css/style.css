@@ -2348,7 +2348,7 @@ a.in-generic-email:hover {
     top: 4px;
 }
 
-@font-face {
+/* @font-face {
     font-family: 'Archivo';
     font-style: normal;
     font-weight: 400;
@@ -2370,7 +2370,7 @@ a.in-generic-email:hover {
     font-weight: 700;
     src: local(""), url("../fonts/archivo-v9-latin-700.woff2") format("woff2"), url("../fonts/archivo-v9-latin-700.woff") format("woff");
     font-display: swap;
-}
+} */
 
 .in-icon-wrap {
     font-family: inherit;

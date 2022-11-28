@@ -10,6 +10,8 @@ use app\controller\ReferralController;
     $referrals = $callReferrals["message"];
     // var_dump($referrals);
     // var_dump($GLOBALS[]);
+
+    $referralLink = $_SERVER["REQUEST_SCHEME"]."://".$_SERVER["HTTP_HOST"]."/register.php?a=".$GLOBALS["slug"];
 ?>
 <div class="referral">
     <h2>Referrals</h2>
@@ -22,11 +24,11 @@ use app\controller\ReferralController;
             </div>
             <div class="referInfo">
                 <h4 class="outCardTitle">Earn by referring an investor</h4>
-                <p>Share your referral link to earn commissions on every investor that uses your link!</p>
+                <p>Share your <a style="display: inline; text-decoration:underline; color:blue;" href="<?php echo $referralLink; ?>" target="_blank">referral link</a> to earn commissions on every investor that uses your link!</p>
 
                 <label for="copyLink" class="referLink">
                     <!-- <p id="linkToCopy"><php echo $_SERVER["REQUEST_SCHEME"]."://".$_SERVER["HTTP_HOST"]."/projects/ultra/register.php?a=".$GLOBALS["slug"]; ?></p> -->
-                    <p id="linkToCopy"><?php echo $_SERVER["REQUEST_SCHEME"]."://".$_SERVER["HTTP_HOST"]."/register.php?a=".$GLOBALS["slug"]; ?></p>
+                    <p id="linkToCopy"><?php echo $referralLink; ?></p>
                     <span id="copyLink">Copy Link</span>
                 </label>
 
@@ -87,16 +89,6 @@ use app\controller\ReferralController;
                     </tr>
                     <?php } ?>
                 </tbody>
-
-
-                <!-- <tr>
-                        <td>1</td>
-                        <td>Opcode3</td>
-                        <td>Opcode3@gmail.com</td>
-                        <td>20-11-2023</td>
-                        <td> <span class="pending">pending</span> </td>
-                    </tr> -->
-
 
             </table>
         </div>

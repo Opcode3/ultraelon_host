@@ -170,13 +170,13 @@ use app\controller\WalletController;
                 </div>
                 <div id="modalInclude">
                     <?php
-                        if($_GET["page"] == "invest"){
+                        if(isset($_GET["page"]) && $_GET["page"] == "invest"){
                     ?>
                         <div id="modalInvest">
                             <?php include_once("./modal/invest.php"); ?>
                         </div>
                     <?php
-                        }else if($_GET["page"] == "withdraw"){
+                        }else if(isset($_GET["page"]) && $_GET["page"] == "withdraw"){
                     ?>
                         <div id="modalWithdraw">
                             <?php include_once("./modal/withdraw.php"); ?>
